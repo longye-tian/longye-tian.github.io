@@ -75,14 +75,8 @@
                     in economics.
                 </p>
 
-                <!-- TEST SECTION -->
-                <div style="background: red; padding: 20px; margin: 20px 0;">
-                    <h3>TEST: Can you see this red box?</h3>
-                    <p>If you can see this, the HTML is loading correctly.</p>
-                </div>
-                
-                <div class="info-cards" style="display: grid !important; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin: 40px 0;">
-                    <div class="info-card" style="display: block !important; background: #2d2d2d; border: 1px solid #3e3e3e; border-radius: 8px; padding: 25px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin: 40px 0;">
+                    <div style="background: #2d2d2d; border: 1px solid #3e3e3e; border-radius: 8px; padding: 25px;">
                         <h3 style="color: #dcdcaa; margin-bottom: 15px; display: block !important;">Research Interests</h3>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="margin-bottom: 10px;">→ Markov Decision Processes</li>
@@ -92,7 +86,7 @@
                         </ul>
                     </div>
                     
-                    <div class="info-card" style="display: block !important; background: #2d2d2d; border: 1px solid #3e3e3e; border-radius: 8px; padding: 25px;">
+                    <div style="background: #2d2d2d; border: 1px solid #3e3e3e; border-radius: 8px; padding: 25px;">
                         <h3 style="color: #dcdcaa; margin-bottom: 15px; display: block !important;">Current Projects</h3>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="margin-bottom: 10px;">→ Optimal stopping in labor markets</li>
@@ -117,29 +111,29 @@
                     <span style="color: #6a9955;">$</span> git log --oneline --research
                 </h2>
                 
-                <div class="git-timeline" style="background: #2d2d2d; border-radius: 8px; padding: 30px; margin: 40px 0; display: block !important;">
-                    <div class="timeline-header">
+                <div style="background: #2d2d2d; border-radius: 8px; padding: 30px; margin: 40px 0;">
+                    <div style="color: #6a9955; font-family: monospace; margin-bottom: 20px; font-size: 0.9em;">
                         Showing recent research activity...
                     </div>
-                    <div class="commit">
-                        <span class="commit-hash">a7f3d2e</span>
-                        <span class="commit-message">feat: Implemented new RL algorithm for job search models</span>
-                        <span class="commit-date">2 days ago</span>
+                    <div style="padding: 15px 0; border-bottom: 1px solid #3e3e3e; font-family: monospace; font-size: 0.95em;">
+                        <span style="color: #dcdcaa; font-size: 0.9em; margin-right: 15px;">a7f3d2e</span>
+                        <span style="color: #d4d4d4;">feat: Implemented new RL algorithm for job search models</span>
+                        <span style="color: #808080; float: right;">2 days ago</span>
                     </div>
-                    <div class="commit">
-                        <span class="commit-hash">b9e4c15</span>
-                        <span class="commit-message">docs: Updated working paper on computational methods</span>
-                        <span class="commit-date">1 week ago</span>
+                    <div style="padding: 15px 0; border-bottom: 1px solid #3e3e3e; font-family: monospace; font-size: 0.95em;">
+                        <span style="color: #dcdcaa; font-size: 0.9em; margin-right: 15px;">b9e4c15</span>
+                        <span style="color: #d4d4d4;">docs: Updated working paper on computational methods</span>
+                        <span style="color: #808080; float: right;">1 week ago</span>
                     </div>
-                    <div class="commit">
-                        <span class="commit-hash">c2d8f91</span>
-                        <span class="commit-message">perf: Optimized value iteration using GPU acceleration</span>
-                        <span class="commit-date">2 weeks ago</span>
+                    <div style="padding: 15px 0; border-bottom: 1px solid #3e3e3e; font-family: monospace; font-size: 0.95em;">
+                        <span style="color: #dcdcaa; font-size: 0.9em; margin-right: 15px;">c2d8f91</span>
+                        <span style="color: #d4d4d4;">perf: Optimized value iteration using GPU acceleration</span>
+                        <span style="color: #808080; float: right;">2 weeks ago</span>
                     </div>
-                    <div class="commit">
-                        <span class="commit-hash">d4a2c88</span>
-                        <span class="commit-message">init: Started collaboration on climate economics project</span>
-                        <span class="commit-date">1 month ago</span>
+                    <div style="padding: 15px 0; font-family: monospace; font-size: 0.95em;">
+                        <span style="color: #dcdcaa; font-size: 0.9em; margin-right: 15px;">d4a2c88</span>
+                        <span style="color: #d4d4d4;">init: Started collaboration on climate economics project</span>
+                        <span style="color: #808080; float: right;">1 month ago</span>
                     </div>
                 </div>
             </section>
@@ -149,10 +143,10 @@
                     <span style="color: #6a9955;">></span> Recent Code Sample
                 </h2>
                 
-                <div class="code-block" style="background: #2d2d2d; border: 1px solid #3e3e3e; border-radius: 8px; padding: 20px; overflow-x: auto; display: block !important;">
-                    <span class="code-lang">Python</span>
-                    <pre style="margin: 0; color: var(--text-primary);"><code><span style="color: var(--accent-blue);">def</span> <span style="color: var(--accent-yellow);">value_iteration</span>(mdp, tolerance=<span style="color: var(--accent-teal);">1e-6</span>):
-    <span style="color: var(--accent-green);">"""
+                <div style="background: #2d2d2d; border: 1px solid #3e3e3e; border-radius: 8px; padding: 20px; overflow-x: auto; position: relative;">
+                    <span style="position: absolute; top: 10px; right: 15px; color: #808080; font-size: 0.8em; font-family: monospace;">Python</span>
+                    <pre style="margin: 0; color: #d4d4d4; font-family: monospace;"><code><span style="color: #569cd6;">def</span> <span style="color: #dcdcaa;">value_iteration</span>(mdp, tolerance=<span style="color: #4ec9b0;">1e-6</span>):
+    <span style="color: #6a9955;">"""
     Solve MDP using value iteration algorithm.
     
     Args:
@@ -161,13 +155,13 @@
     """</span>
     V = np.zeros(mdp.num_states)
     
-    <span style="color: var(--accent-blue);">while</span> <span style="color: var(--accent-blue);">True</span>:
+    <span style="color: #569cd6;">while</span> <span style="color: #569cd6;">True</span>:
         V_new = bellman_operator(mdp, V)
-        <span style="color: var(--accent-blue);">if</span> np.max(np.abs(V - V_new)) < tolerance:
-            <span style="color: var(--accent-blue);">break</span>
+        <span style="color: #569cd6;">if</span> np.max(np.abs(V - V_new)) < tolerance:
+            <span style="color: #569cd6;">break</span>
         V = V_new
     
-    <span style="color: var(--accent-blue);">return</span> V, derive_policy(mdp, V)</code></pre>
+    <span style="color: #569cd6;">return</span> V, derive_policy(mdp, V)</code></pre>
                 </div>
             </section>
         </main>
