@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Longye Tian</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <style>
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .error-content {
+            max-width: 600px;
+            padding: 40px;
+        }
+        
+        .error-code {
+            font-size: 8em;
+            color: var(--accent-red);
+            font-weight: 300;
+            margin: 0;
+            animation: pulse 2s infinite;
+        }
+        
+        .error-message {
+            font-size: 1.5em;
+            color: var(--accent-blue);
+            margin: 20px 0;
+        }
+        
+        .error-description {
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+        
+        .error-ascii {
+            font-family: var(--font-mono);
+            color: var(--accent-teal);
+            font-size: 0.9em;
+            margin: 30px 0;
+            line-height: 1.2;
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .error-actions a {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-small);
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+        
+        .error-actions a:hover {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-subtle);
+        }
+        
+        @keyframes glitch {
+            0%, 100% { text-shadow: 0 0 5px var(--accent-red); }
+            25% { text-shadow: -2px 0 5px var(--accent-blue); }
+            50% { text-shadow: 2px 0 5px var(--accent-teal); }
+            75% { text-shadow: 0 0 5px var(--accent-yellow); }
+        }
+        
+        .glitch {
+            animation: glitch 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-content">
+            <h1 class="error-code">404</h1>
+            <p class="error-message glitch">Page Not Found</p>
+            <p class="error-description">
+                The page you're looking for has ventured into the void of cyberspace.
+            </p>
+            
+            <pre class="error-ascii">
+    _______________
+   |,----------.  |\
+   ||           |=| |
+   ||  404      | | |
+   ||  ERROR    | | |
+   |`-----------' |/
+    ~~~~~~~~~~~~~~~
+            </pre>
+            
+            <p class="error-description">
+                It seems you've stumbled upon a page that doesn't exist. 
+                Perhaps it was moved, deleted, or never existed in the first place.
+            </p>
+            
+            <div class="error-actions">
+                <a href="/">Return Home</a>
+                <a href="/pages/research.html">View Research</a>
+                <a href="/pages/contact.html">Contact Me</a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/assets/js/main.js"></script>
+    <script>
+        // Add some interactive elements
+        document.querySelector('.error-code').addEventListener('mouseover', function() {
+            this.style.transform = 'scale(1.1) rotate(5deg)';
+        });
+        
+        document.querySelector('.error-code').addEventListener('mouseout', function() {
+            this.style.transform = 'scale(1) rotate(0deg)';
+        });
+        
+        // Redirect to home after 30 seconds
+        setTimeout(() => {
+            console.log('Redirecting to home page...');
+        }, 30000);
+    </script>
+</body>
+</html>

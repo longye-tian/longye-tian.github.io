@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code & Projects - Longye Tian</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/pages/coding.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">Longye Tian</a>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="research.html" class="nav-link">Research</a></li>
+                <li class="nav-item"><a href="background.html" class="nav-link">Background</a></li>
+                <li class="nav-item"><a href="coding.html" class="nav-link active">Code</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="page-header">
+            <h1 class="page-title">Code & Projects</h1>
+            <p style="color: var(--text-secondary); margin-top: 10px;">
+                Open source contributions to computational economics
+            </p>
+            
+            <div class="github-stats">
+                <div class="stat">
+                    <div class="stat-number">23</div>
+                    <div class="stat-label">Repositories</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">147</div>
+                    <div class="stat-label">Total Stars</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">342</div>
+                    <div class="stat-label">Contributions</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Followers</div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- GitHub Contribution Graph -->
+        <div class="contribution-graph">
+            <div class="contribution-title">// contributions in the last year</div>
+            <div class="contribution-grid">Jan    Feb    Mar    Apr    May    Jun    Jul    Aug    Sep    Oct    Nov    Dec
+▪▫▪▪▫  ▪▪▫▪▫  ▫▪▪▪▫  ▪▫▪▫▪  ▫▪▪▫▪  ▪▪▪▪▫  ▫▪▫▪▪  ▪▫▪▪▫  ▪▪▫▪▪  ▫▪▪▫▪  ▪▫▪▪▫  ▫▪▫▪▫
+▫▪▫▫▪  ▫▪▪▫▪  ▪▫▫▪▪  ▫▪▫▪▫  ▪▫▪▪▫  ▫▫▪▫▪  ▪▫▪▫▫  ▫▪▫▪▪  ▫▪▪▫▫  ▪▫▪▪▫  ▫▪▫▫▪  ▪▫▪▪▫
+▪▫▪▪▫  ▪▫▫▪▫  ▫▪▫▫▪  ▪▪▫▪▪  ▫▪▫▪▪  ▪▫▪▫▫  ▫▪▪▫▪  ▪▫▫▪▫  ▪▫▫▪▪  ▫▪▫▫▪  ▪▪▫▪▫  ▫▪▫▫▪
+▫▪▫▫▪  ▫▪▪▫▪  ▪▪▪▫▫  ▫▫▪▫▫  ▪▫▫▪▫  ▫▪▫▪▪  ▪▫▫▪▫  ▫▪▪▫▪  ▫▪▪▫▫  ▪▪▫▪▫  ▫▫▪▪▫  ▪▫▪▫▪</div>
+        </div>
+        
+        <!-- Featured Project -->
+        <section class="featured-section">
+            <h2 class="section-title">Featured Project</h2>
+            
+            <div class="featured-project">
+                <span class="featured-badge">⭐ Featured</span>
+                <h3 style="color: var(--accent-yellow); font-size: 1.5em; margin-bottom: 15px;">
+                    EconRL: Reinforcement Learning for Economics
+                </h3>
+                
+                <p style="color: var(--text-primary); font-family: var(--font-sans); line-height: 1.8; margin-bottom: 20px;">
+                    A comprehensive Python library implementing state-of-the-art reinforcement learning algorithms 
+                    specifically designed for economic modeling. Features include specialized environments for 
+                    job search, optimal taxation, and dynamic pricing problems. Used by researchers at 5+ universities.
+                </p>
+                
+                <div class="code-preview">
+                    <div class="code-preview-header">
+                        <span>example.py</span>
+                        <span>Python</span>
+                    </div>
+                    <pre><code><span style="color: var(--accent-blue);">from</span> econrl <span style="color: var(--accent-blue);">import</span> JobSearchEnv, DQNAgent
+
+<span style="color: var(--accent-green);"># Initialize environment and agent</span>
+env = JobSearchEnv(wage_dist=<span style="color: var(--accent-orange);">'lognormal'</span>, search_cost=<span style="color: var(--accent-teal);">5</span>)
+agent = DQNAgent(state_dim=env.state_dim, action_dim=<span style="color: var(--accent-teal);">2</span>)
+
+<span style="color: var(--accent-green);"># Train the agent</span>
+agent.train(env, episodes=<span style="color: var(--accent-teal);">1000</span>)
+optimal_policy = agent.get_policy()</code></pre>
+                </div>
+                
+                <div class="project-stats" style="margin-top: 25px;">
+                    <div class="project-stat">
+                        <span>⭐</span> 89 stars
+                    </div>
+                    <div class="project-stat">
+                        <span>🍴</span> 23 forks
+                    </div>
+                    <div class="project-stat">
+                        <span>📦</span> 156 downloads/month
+                    </div>
+                </div>
+                
+                <div class="project-links" style="margin-top: 20px;">
+                    <a href="#" class="project-link">
+                        <span>🔗</span> GitHub
+                    </a>
+                    <a href="#" class="project-link">
+                        <span>📚</span> Documentation
+                    </a>
+                    <a href="#" class="project-link">
+                        <span>📦</span> PyPI
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Project Filters -->
+        <div class="project-filters">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="research">Research Tools</button>
+            <button class="filter-btn" data-filter="teaching">Teaching Resources</button>
+            <button class="filter-btn" data-filter="experiments">Experiments</button>
+        </div>
+        
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card" data-category="research">
+                <div class="project-header">
+                    <div>
+                        <h3 class="project-title">gpu-value-iteration</h3>
+                        <div class="project-language">
+                            <span class="language-dot cpp"></span>
+                            <span>C++/CUDA</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="project-description">
+                    CUDA implementation of value function iteration for high-dimensional dynamic programming 
+                    problems. Achieves 50x speedup over CPU implementations for problems with >10,000 states.
+                </p>
+                
+                <div class="project-tags">
+                    <span class="project-tag">CUDA</span>
+                    <span class="project-tag">Dynamic Programming</span>
+                    <span class="project-tag">HPC</span>
+                </div>
+                
+                <div class="project-stats">
+                    <div class="project-stat">
+                        <span>⭐</span> 34
+                    </div>
+                    <div class="project-stat">
+                        <span>🍴</span> 8
+                    </div>
+                </div>
+                
+                <div class="project-links">
+                    <a href="#" class="project-link">
+                        <span>💻</span> Code
+                    </a>
+                    <a href="#" class="project-link">
+                        <span>📄</span> Paper
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card" data-category="research">
+                <div class="project-header">
+                    <div>
+                        <h3 class="project-title">macro-deep-learning</h3>
+                        <div class="project-language">
+                            <span class="language-dot python"></span>
+                            <span>Python</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="project-description">
+                    Neural network approaches to solving and estimating DSGE models. Implements deep learning 
+                    methods for approximating policy functions in heterogeneous agent models.
+                </p>
+                
+                <div class="project-tags">
+                    <span class="project-tag">PyTorch</span>
+                    <span class="project-tag">DSGE</span>
+                    <span class="project-tag">Deep Learning</span>
+                </div>
+                
+                <div class="project-stats">
+                    <div class="project-stat">
+                        <span>⭐</span> 67
+                    </div>
+                    <div class="project-stat">
+                        <span>🍴</span> 19
+                    </div>
+                </div>
+                
+                <div class="project-links">
+                    <a href="#" class="project-link">
+                        <span>💻</span> Code
+                    </a>
+                    <a href="#" class="project-link">
+                        <span>🎥</span> Demo
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-card" data-category="teaching">
+                <div class="project-header">
+                    <div>
+                        <h3 class="project-title">computational-econ-tutorials</h3>
+                        <div class="project-language">
+                            <span class="language-dot julia"></span>
+                            <span>Julia</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="project-description">
+                    Interactive Jupyter notebooks teaching computational methods in economics. Covers optimization, 
+                    dynamic programming, and numerical methods with economic applications.
+                </p>
+                
+                <div class="project-tags">
+                    <span class="project-tag">Education</span>
+                    <span class="project-tag">Julia</span>
+                    <span class="project-tag">Notebooks</span>
+                </div>
+                
+                <div class="project-stats">
+                    <div class="project-stat">
+                        <span>⭐</span> 123
+                    </div>
+                    <div class="project-stat">
+                        <span>🍴</span> 45
+                    </div>
+                </div>
+                
+                <div class="project-links">
+                    <a href="#" class="project-link">
+                        <span>💻</span> Code
+                    </a>
+                    <a href="#" class="project-link">
+                        <span>🚀</span> Binder
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Project 4 -->
+            <div class="project-card" data-category="experiments">
+                <div class="project-header">
+                    <div>
+                        <h3 class="project-title">market-rl-agents</h3>
+                        <div class="project-language">
+                            <span class="language-dot python"></span>
+                            <span>Python</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="project-description">
+                    Experimental framework for testing reinforcement learning agents in various market 
+                    mechanisms. Includes implementations of auction environments and multi-agent simulations.
+                </p>
+                
+                <div class="project-tags">
+                    <span class="project-tag">Multi-Agent RL</span>
+                    <span class="project-tag">Market Design</span>
+                    <span class="project-tag">Simulation</span>
+                </div>
+                
+                <div class="project-stats">
+                    <div class="project-stat">
+                        <span>⭐</span> 18
+                    </div>
+                    <div class="project-stat">
+                        <span>🍴</span> 5
+                    </div>
+                </div>
+                
+                <div class="project-links">
+                    <a href="#" class="project-link">
+                        <span>💻</span> Code
+                    </a>
+                    <a href="#" class="project-link">
+                        <span>📊</span> Results
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Project 5 -->
+            <div class="project-card" data-category="research">
+                <div class="project-header">
+                    <div>
+                        <h3 class="project-title">climate-optimal-stopping</h3>
+                        <div class="project-language">
+                            <span class="language-dot python"></span>
+                            <span>Python</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="project-description">
+                    Monte Carlo methods for solving optimal stopping problems in climate economics. 
+                    Implements American option pricing techniques for environmental policy timing.
+                </p>
+                
+                <div class="project-tags">
+                    <span class="project-tag">Climate Economics</span>
+                    <span class="project-tag">Monte Carlo</span>
+                    <span class="project-tag">Optimal Stopping</span>
+                </div>
+                
+                <div class="project-stats">
+                    <div class="project-stat">
+                        <span>⭐</span> 29
+                    </div>
+                    <div class="project-stat">
+                        <span>🍴</span> 11
+                    </div>
+                </div>
+                
+                <div class="project-links">
+                    <a href="#" class="project-link">
+                        <span>💻</span> Code
+                    </a>
+                    <a href="#" class="project-link">
+                        <span>📄</span> Working Paper
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Project 6 -->
+            <div class="project-card" data-category="teaching">
+                <div class="project-header">
+                    <div>
+                        <h3 class="project-title">econ-data-viz</h3>
+                        <div class="project-language">
+                            <span class="language-dot javascript"></span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="project-description">
+                    D3.js visualizations for economic concepts. Interactive demos for teaching supply/demand, 
+                    game theory, and macroeconomic models. Used in undergraduate courses.
+                </p>
+                
+                <div class="project-tags">
+                    <span class="project-tag">D3.js</span>
+                    <span class="project-tag">Visualization</span>
+                    <span class="project-tag">Education</span>
+                </div>
+                
+                <div class="project-stats">
+                    <div class="project-stat">
+                        <span>⭐</span> 56
+                    </div>
+                    <div class="project-stat">
+                        <span>🍴</span> 23
+                    </div>
+                </div>
+                
+                <div class="project-links">
+                    <a href="#" class="project-link">
+                        <span>💻</span> Code
+                    </a>
+                    <a href="#" class="project-link">
+                        <span>🌐</span> Live Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CLI Section -->
+        <div class="cli-section">
+            <div class="cli-command">$ git log --oneline -5</div>
+            <div class="cli-output">
+a7f3d2e (HEAD -> main) feat: Add parallel computing support to value iteration<br>
+b9e4c15 docs: Update README with installation instructions<br>
+c2d8f91 perf: Optimize memory usage in large-scale simulations<br>
+d4a2c88 fix: Correct convergence criterion in policy iteration<br>
+e5b3f77 feat: Implement Q-learning for continuous state spaces
+            </div>
+        </div>
+        
+        <!-- Contribution CTA -->
+        <section style="text-align: center; margin-top: 60px;">
+            <h2 style="color: var(--accent-purple); margin-bottom: 20px;">Open to Collaboration</h2>
+            <p style="color: var(--text-secondary); font-family: var(--font-sans); max-width: 600px; margin: 0 auto 30px;">
+                I'm always interested in collaborating on computational economics projects. 
+                If you're working on something interesting or want to contribute to any of my projects, 
+                feel free to reach out!
+            </p>
+            <a href="https://github.com/longyetian" class="project-link" style="font-size: 1.1em;">
+                <span>🔗</span> Visit my GitHub
+            </a>
+        </section>
+    </div>
+    
+    <!-- External JavaScript -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/pages/coding.js"></script>
+</body>
+</html>

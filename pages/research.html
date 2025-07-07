@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - Longye Tian</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/pages/research.css">
+    
+    <!-- MathJax for LaTeX rendering -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">Longye Tian</a>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="research.html" class="nav-link active">Research</a></li>
+                <li class="nav-item"><a href="background.html" class="nav-link">Background</a></li>
+                <li class="nav-item"><a href="coding.html" class="nav-link">Code</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="research-header">
+            <h1>Research</h1>
+            <p style="color: var(--text-secondary);">
+                <span style="color: var(--accent-green);">//</span> Computational methods for economic theory
+            </p>
+        </div>
+        
+        <!-- Research statistics -->
+        <div class="research-stats">
+            <div class="stat-item">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Total Papers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Published</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Working Papers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Citations</div>
+            </div>
+        </div>
+        
+        <!-- Filter tabs -->
+        <div class="filter-tabs">
+            <div class="filter-tab active" data-filter="all">
+                All Papers <span class="filter-count">(5)</span>
+            </div>
+            <div class="filter-tab" data-filter="published">
+                Published <span class="filter-count">(2)</span>
+            </div>
+            <div class="filter-tab" data-filter="working">
+                Working Papers <span class="filter-count">(2)</span>
+            </div>
+            <div class="filter-tab" data-filter="wip">
+                Work in Progress <span class="filter-count">(1)</span>
+            </div>
+        </div>
+        
+        <!-- Papers container -->
+        <div class="papers-container">
+            <!-- Published Paper 1 -->
+            <article class="paper-entry" data-status="published">
+                <span class="paper-status status-published">Published</span>
+                
+                <h2 class="paper-title">
+                    Reinforcement Learning Approaches to Dynamic Stochastic Job Search Models
+                </h2>
+                
+                <div class="paper-authors">
+                    <strong>Longye Tian</strong>, John Stachurski
+                </div>
+                
+                <div class="paper-venue">
+                    Journal of Economic Dynamics and Control, 2024
+                </div>
+                
+                <div class="paper-tags">
+                    <span class="tag">Dynamic Programming</span>
+                    <span class="tag">Job Search</span>
+                    <span class="tag">Q-Learning</span>
+                    <span class="tag">Python</span>
+                </div>
+                
+                <div class="paper-abstract">
+                    <div class="abstract-toggle">
+                        <span>▶</span> Show Abstract
+                    </div>
+                    <div class="abstract-content">
+                        This paper introduces a novel reinforcement learning framework for solving 
+                        dynamic stochastic job search models with heterogeneous agents. Traditional 
+                        approaches rely on value function iteration, which becomes computationally 
+                        intractable in high-dimensional state spaces. We demonstrate that Q-learning 
+                        algorithms can efficiently approximate optimal job search strategies while 
+                        maintaining theoretical convergence guarantees. Our method reduces computation 
+                        time by 85% compared to standard techniques and scales linearly with the 
+                        number of agent types.
+                    </div>
+                </div>
+                
+                <div class="math-preview">
+                    <p style="color: var(--accent-green); font-size: 0.9em; margin-bottom: 15px;">
+                        // Core Bellman equation for job search
+                    </p>
+                    $$V(w) = \max\left\{\frac{w}{1-\beta}, \beta \int V(w') dF(w')\right\}$$
+                </div>
+                
+                <div class="paper-actions">
+                    <a href="#" class="action-btn">
+                        <span>📄</span> PDF
+                    </a>
+                    <a href="#" class="action-btn">
+                        <span>📊</span> Slides
+                    </a>
+                    <a href="#" class="action-btn show-math-btn">
+                        <span>∑</span> Key Equations
+                    </a>
+                    <a href="#" class="action-btn">
+                        <span>📝</span> BibTeX
+                    </a>
+                </div>
+                
+                <a href="https://github.com/longyetian/rl-job-search" class="code-link">
+                    <span>💻</span> github.com/longyetian/rl-job-search
+                </a>
+            </article>
+            
+            <!-- Published Paper 2 -->
+            <article class="paper-entry" data-status="published">
+                <span class="paper-status status-published">Published</span>
+                
+                <h2 class="paper-title">
+                    GPU-Accelerated Methods for Large-Scale Economic Equilibrium Computation
+                </h2>
+                
+                <div class="paper-authors">
+                    <strong>Longye Tian</strong>
+                </div>
+                
+                <div class="paper-venue">
+                    Computational Economics, 2023
+                </div>
+                
+                <div class="paper-tags">
+                    <span class="tag">High-Performance Computing</span>
+                    <span class="tag">CUDA</span>
+                    <span class="tag">General Equilibrium</span>
+                </div>
+                
+                <div class="paper-abstract">
+                    <div class="abstract-toggle">
+                        <span>▶</span> Show Abstract
+                    </div>
+                    <div class="abstract-content">
+                        We present a GPU-accelerated framework for computing equilibria in large-scale 
+                        heterogeneous agent models. By leveraging parallel computing architectures, 
+                        our method achieves up to 50x speedup compared to traditional CPU-based 
+                        implementations. We demonstrate applications to overlapping generations models 
+                        with thousands of agent types and show how CUDA kernels can be optimized 
+                        for economic applications with sparse transition matrices.
+                    </div>
+                </div>
+                
+                <div class="paper-actions">
+                    <a href="#" class="action-btn">
+                        <span>📄</span> PDF
+                    </a>
+                    <a href="#" class="action-btn">
+                        <span>📊</span> Poster
+                    </a>
+                    <a href="#" class="action-btn">
+                        <span>🎥</span> Video
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Working Paper 1 -->
+            <article class="paper-entry" data-status="working">
+                <span class="paper-status status-working">Working Paper</span>
+                
+                <h2 class="paper-title">
+                    Optimal Stopping in Climate Economics: A Computational Approach
+                </h2>
+                
+                <div class="paper-authors">
+                    <strong>Longye Tian</strong>, Maria Rodriguez, Chen Wei
+                </div>
+                
+                <div class="paper-venue">
+                    Submitted to Review of Economic Dynamics
+                </div>
+                
+                <div class="paper-tags">
+                    <span class="tag">Climate Economics</span>
+                    <span class="tag">Optimal Stopping</span>
+                    <span class="tag">Monte Carlo</span>
+                </div>
+                
+                <div class="paper-abstract">
+                    <div class="abstract-toggle">
+                        <span>▶</span> Show Abstract
+                    </div>
+                    <div class="abstract-content">
+                        This paper develops a computational framework for analyzing optimal timing 
+                        of climate policy interventions under uncertainty. We model the problem as 
+                        a high-dimensional optimal stopping problem and propose novel Monte Carlo 
+                        methods for approximating the value function. Our approach incorporates 
+                        stochastic climate dynamics, economic growth uncertainty, and technological 
+                        progress in renewable energy sectors.
+                    </div>
+                </div>
+                
+                <div class="paper-actions">
+                    <a href="#" class="action-btn">
+                        <span>📄</span> Latest Draft
+                    </a>
+                    <a href="#" class="action-btn">
+                        <span>📊</span> Online Appendix
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Working Paper 2 -->
+            <article class="paper-entry" data-status="working">
+                <span class="paper-status status-working">Working Paper</span>
+                
+                <h2 class="paper-title">
+                    Deep Learning for Solving Dynamic Economic Models: Theory and Applications
+                </h2>
+                
+                <div class="paper-authors">
+                    <strong>Longye Tian</strong>, John Stachurski
+                </div>
+                
+                <div class="paper-venue">
+                    Target: Journal of Political Economy
+                </div>
+                
+                <div class="paper-tags">
+                    <span class="tag">Deep Learning</span>
+                    <span class="tag">Neural Networks</span>
+                    <span class="tag">Computational Theory</span>
+                </div>
+                
+                <div class="paper-abstract">
+                    <div class="abstract-toggle">
+                        <span>▶</span> Show Abstract
+                    </div>
+                    <div class="abstract-content">
+                        We establish theoretical foundations for using deep neural networks to solve 
+                        dynamic economic models. Building on universal approximation theorems, we 
+                        prove convergence results for neural network approximations of value functions 
+                        and policy functions in infinite-horizon settings. We implement our methods 
+                        using PyTorch and demonstrate applications to growth models, asset pricing, 
+                        and optimal taxation problems.
+                    </div>
+                </div>
+                
+                <div class="paper-actions">
+                    <a href="#" class="action-btn">
+                        <span>📄</span> Current Version
+                    </a>
+                    <a href="#" class="action-btn">
+                        <span>💻</span> Replication Code
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Work in Progress -->
+            <article class="paper-entry" data-status="wip">
+                <span class="paper-status status-wip">Work in Progress</span>
+                
+                <h2 class="paper-title">
+                    Market Design with Reinforcement Learning Agents
+                </h2>
+                
+                <div class="paper-authors">
+                    <strong>Longye Tian</strong>
+                </div>
+                
+                <div class="paper-venue">
+                    Early stage research
+                </div>
+                
+                <div class="paper-tags">
+                    <span class="tag">Market Design</span>
+                    <span class="tag">Multi-Agent RL</span>
+                    <span class="tag">Mechanism Design</span>
+                </div>
+                
+                <div class="paper-abstract">
+                    <div class="abstract-toggle">
+                        <span>▶</span> Show Abstract
+                    </div>
+                    <div class="abstract-content">
+                        This project explores how reinforcement learning agents behave in various 
+                        market mechanisms. We simulate auctions, matching markets, and exchanges 
+                        with RL agents to understand emergent behaviors and design robust mechanisms. 
+                        Preliminary results suggest that traditional mechanism design principles may 
+                        need revision when participants are learning algorithms rather than rational 
+                        agents.
+                    </div>
+                </div>
+                
+                <div class="paper-actions">
+                    <a href="#" class="action-btn">
+                        <span>📝</span> Research Proposal
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+    
+    <!-- External JavaScript -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/pages/research.js"></script>
+</body>
+</html>

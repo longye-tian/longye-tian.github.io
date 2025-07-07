@@ -1,0 +1,423 @@
+/* Index Page Specific Styles */
+
+/* Hero Section */
+header {
+    position: relative;
+    margin-bottom: 60px;
+    padding: 40px 0;
+}
+
+.header-content {
+    border-left: 4px solid var(--accent-blue);
+    padding-left: 30px;
+}
+
+h1 {
+    font-size: clamp(2em, 4vw, 3em);
+    font-weight: 400;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.english-name {
+    color: var(--accent-teal);
+}
+
+.chinese-name {
+    color: var(--accent-blue);
+    font-family: 'Noto Sans Mono CJK SC', 'Source Han Mono SC', var(--font-mono);
+}
+
+/* Typing Animation Container */
+.typing-container {
+    height: 30px;
+    margin: 20px 0;
+    font-family: var(--font-mono);
+    color: var(--accent-green);
+}
+
+.typing-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--accent-teal);
+    animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--accent-teal); }
+}
+
+/* Command Palette */
+.command-palette {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.command-palette.active {
+    display: block;
+}
+
+.command-input {
+    width: 100%;
+    padding: 20px;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 1.1em;
+    outline: none;
+}
+
+.command-input::placeholder {
+    color: var(--text-secondary);
+}
+
+.command-results {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.command-item {
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.command-item:hover {
+    background: var(--bg-tertiary);
+}
+
+.command-icon {
+    color: var(--accent-blue);
+}
+
+/* Navigation */
+nav {
+    background: var(--bg-secondary);
+    padding: 20px 30px;
+    margin: 0 -20px 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    position: relative;
+    font-size: 0.95em;
+}
+
+nav a:hover {
+    color: var(--accent-teal);
+}
+
+nav a.current {
+    color: var(--accent-teal);
+}
+
+nav a.current::before {
+    content: "> ";
+    color: var(--accent-blue);
+    position: absolute;
+    left: -20px;
+}
+
+.nav-shortcut {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.kbd {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.9em;
+}
+
+/* Main Content */
+.main-content {
+    font-family: var(--font-sans);
+    font-size: 1.1em;
+    line-height: 1.8;
+    max-width: 850px;
+}
+
+/* Info Cards */
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 40px 0;
+}
+
+.info-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-color: var(--accent-blue);
+}
+
+.info-card h3 {
+    color: var(--accent-yellow);
+    font-family: var(--font-mono);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-card h3::before {
+    content: "//";
+    color: var(--accent-green);
+}
+
+.info-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-card li {
+    margin-bottom: 10px;
+}
+
+.info-card li::before {
+    content: "→ ";
+    color: var(--accent-teal);
+}
+
+/* Git-style Timeline */
+.git-timeline {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 30px;
+    margin: 40px 0;
+}
+
+.timeline-header {
+    color: var(--accent-green);
+    font-family: var(--font-mono);
+    margin-bottom: 20px;
+    font-size: 0.9em;
+}
+
+.commit {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-family: var(--font-mono);
+    font-size: 0.95em;
+}
+
+.commit:last-child {
+    border-bottom: none;
+}
+
+.commit-hash {
+    color: var(--accent-yellow);
+    font-size: 0.9em;
+    margin-right: 15px;
+}
+
+.commit-message {
+    color: var(--text-primary);
+}
+
+.commit-date {
+    color: var(--text-secondary);
+    float: right;
+}
+
+/* Code Block with Language Indicator */
+.code-block {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    overflow-x: auto;
+    position: relative;
+}
+
+.code-lang {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--text-secondary);
+    font-size: 0.85em;
+}
+
+.code-block pre {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.code-block code {
+    background: none;
+    padding: 0;
+}
+
+/* Syntax highlighting */
+.code-block .keyword {
+    color: var(--accent-blue);
+}
+
+.code-block .function {
+    color: var(--accent-yellow);
+}
+
+.code-block .string {
+    color: var(--accent-green);
+}
+
+.code-block .number {
+    color: var(--accent-teal);
+}
+
+/* Interactive Demo */
+.interactive-demo {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 40px;
+    margin: 40px 0;
+    text-align: center;
+}
+
+.demo-canvas {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin: 20px auto;
+}
+
+/* Math Equation */
+.math-equation {
+    margin: 30px 0;
+    padding: 20px;
+    background: var(--bg-secondary);
+    border-left: 3px solid var(--accent-blue);
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+.math-equation p:first-child {
+    margin: 0;
+    color: var(--accent-green);
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+}
+
+.math-equation p:last-child {
+    text-align: center;
+    margin: 15px 0;
+}
+
+/* Terminal Footer */
+footer {
+    margin-top: 100px;
+    padding: 40px 0;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.terminal-footer {
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.prompt {
+    color: var(--accent-green);
+}
+
+/* Section Headers */
+section h2 {
+    color: var(--accent-teal);
+    font-family: var(--font-mono);
+    margin-bottom: 30px;
+}
+
+section h2 .prompt-symbol {
+    color: var(--accent-green);
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--bg-tertiary);
+    border-top-color: var(--accent-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+    nav {
+        padding: 15px;
+    }
+    
+    .nav-shortcut {
+        display: none;
+    }
+    
+    .commit-date {
+        display: block;
+        float: none;
+        margin-top: 5px;
+    }
+    
+    .demo-canvas {
+        width: 100%;
+        max-width: 400px;
+    }
+}

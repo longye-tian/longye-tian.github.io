@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Longye Tian | 田垄业 - Computational Economics @ ANU</title>
+    
+    <!-- MathJax for LaTeX rendering - Only load when needed -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <!-- External CSS Files -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/pages/index.css">
+</head>
+<body>
+    <!-- Command Palette -->
+    <div class="command-palette" id="commandPalette">
+        <input type="text" class="command-input" placeholder="Type a command or search..." id="commandInput">
+        <div class="command-results" id="commandResults">
+            <div class="command-item" data-action="research">
+                <span class="command-icon">📄</span>
+                <span>Go to Research</span>
+            </div>
+            <div class="command-item" data-action="contact">
+                <span class="command-icon">✉️</span>
+                <span>Contact Information</span>
+            </div>
+            <div class="command-item" data-action="github">
+                <span class="command-icon">💻</span>
+                <span>View GitHub</span>
+            </div>
+            <div class="command-item" data-action="cv">
+                <span class="command-icon">📋</span>
+                <span>Download CV</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>
+                    <span class="english-name">Longye Tian</span>
+                    <span class="chinese-name">田垄业</span>
+                </h1>
+                <div class="typing-container">
+                    <span class="typing-text">PhD Student of Economics @ Australian National University</span>
+                </div>
+                <p style="color: var(--text-secondary); margin-top: 20px;">
+                    Supervisor: John.Stachurski | Research: Markov.dynamics + Dynamic.Programming + Reinforcement.Learning
+                </p>
+            </div>
+        </header>
+        
+        <nav>
+            <div class="nav-links">
+                <a href="#about" class="current">About</a>
+                <a href="pages/research.html">Research</a>
+                <a href="pages/background.html">Background</a>
+                <a href="pages/code.html">Code</a>
+                <a href="pages/contact.html">Contact</a>
+            </div>
+            <div class="nav-shortcut">
+                Press <kbd>Ctrl</kbd>+<kbd>K</kbd> to open command palette
+            </div>
+        </nav>
+        
+        <main class="main-content">
+            <section id="about">
+                <p>
+                    Welcome to my digital workspace. I'm a PhD student at the Australian National University, 
+                    where I explore the intersection of <span style="color: var(--accent-yellow); font-family: var(--font-mono);">computational methods</span> 
+                    and <span style="color: var(--accent-yellow); font-family: var(--font-mono);">economic theory</span>. 
+                    My research focuses on developing algorithms that solve complex dynamic optimization problems 
+                    in economics.
+                </p>
+                
+                <div class="info-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin: 40px 0;">
+                    <div class="info-card" style="background: var(--bg-secondary, #2d2d2d); border: 1px solid var(--border-color, #3e3e3e); border-radius: 8px; padding: 25px;">
+                        <h3 style="color: var(--accent-yellow, #dcdcaa); margin-bottom: 15px;">Research Interests</h3>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="margin-bottom: 10px;">→ Markov Decision Processes</li>
+                            <li style="margin-bottom: 10px;">→ Dynamic Programming Algorithms</li>
+                            <li style="margin-bottom: 10px;">→ Reinforcement Learning in Economics</li>
+                            <li>→ Computational General Equilibrium</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card" style="background: var(--bg-secondary, #2d2d2d); border: 1px solid var(--border-color, #3e3e3e); border-radius: 8px; padding: 25px;">
+                        <h3 style="color: var(--accent-yellow, #dcdcaa); margin-bottom: 15px;">Current Projects</h3>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="margin-bottom: 10px;">→ Optimal stopping in labor markets</li>
+                            <li style="margin-bottom: 10px;">→ RL agents in macroeconomic models</li>
+                            <li>→ High-performance computing for econ</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="math-equation">
+                    <p style="margin: 0; color: var(--accent-green); font-family: var(--font-mono); font-size: 0.9em;">
+                        // Core optimization framework
+                    </p>
+                    <p style="text-align: center; margin: 15px 0;">
+                        $$V(x) = \max_{a \in \Gamma(x)} \left\{ r(x,a) + \beta \sum_{x' \in X} P(x'|x,a) V(x') \right\}$$
+                    </p>
+                </div>
+            </section>
+            
+            <section id="research-preview" style="margin-top: 60px;">
+                <h2 style="color: var(--accent-teal); font-family: var(--font-mono); margin-bottom: 30px;">
+                    <span style="color: var(--accent-green);">$</span> git log --oneline --research
+                </h2>
+                
+                <div class="git-timeline">
+                    <div class="timeline-header">
+                        Showing recent research activity...
+                    </div>
+                    <div class="commit">
+                        <span class="commit-hash">a7f3d2e</span>
+                        <span class="commit-message">feat: Implemented new RL algorithm for job search models</span>
+                        <span class="commit-date">2 days ago</span>
+                    </div>
+                    <div class="commit">
+                        <span class="commit-hash">b9e4c15</span>
+                        <span class="commit-message">docs: Updated working paper on computational methods</span>
+                        <span class="commit-date">1 week ago</span>
+                    </div>
+                    <div class="commit">
+                        <span class="commit-hash">c2d8f91</span>
+                        <span class="commit-message">perf: Optimized value iteration using GPU acceleration</span>
+                        <span class="commit-date">2 weeks ago</span>
+                    </div>
+                    <div class="commit">
+                        <span class="commit-hash">d4a2c88</span>
+                        <span class="commit-message">init: Started collaboration on climate economics project</span>
+                        <span class="commit-date">1 month ago</span>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="code-preview" style="margin-top: 60px;">
+                <h2 style="color: var(--accent-teal); font-family: var(--font-mono); margin-bottom: 30px;">
+                    <span style="color: var(--accent-green);">></span> Recent Code Sample
+                </h2>
+                
+                <div class="code-block">
+                    <span class="code-lang">Python</span>
+                    <pre style="margin: 0; color: var(--text-primary);"><code><span style="color: var(--accent-blue);">def</span> <span style="color: var(--accent-yellow);">value_iteration</span>(mdp, tolerance=<span style="color: var(--accent-teal);">1e-6</span>):
+    <span style="color: var(--accent-green);">"""
+    Solve MDP using value iteration algorithm.
+    
+    Args:
+        mdp: MarkovDecisionProcess object
+        tolerance: Convergence criterion
+    """</span>
+    V = np.zeros(mdp.num_states)
+    
+    <span style="color: var(--accent-blue);">while</span> <span style="color: var(--accent-blue);">True</span>:
+        V_new = bellman_operator(mdp, V)
+        <span style="color: var(--accent-blue);">if</span> np.max(np.abs(V - V_new)) < tolerance:
+            <span style="color: var(--accent-blue);">break</span>
+        V = V_new
+    
+    <span style="color: var(--accent-blue);">return</span> V, derive_policy(mdp, V)</code></pre>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="terminal-footer">
+                <span class="prompt">longye@anu:~$</span>
+                <span class="command">./collaborate --field computational-economics</span>
+                <span class="cursor">_</span>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- External JavaScript Files -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/pages/index.js"></script>
+</body>
+</html>
