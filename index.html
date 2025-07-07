@@ -75,9 +75,9 @@
                     in economics.
                 </p>
                 
-                <div class="info-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin: 40px 0;">
-                    <div class="info-card" style="background: var(--bg-secondary, #2d2d2d); border: 1px solid var(--border-color, #3e3e3e); border-radius: 8px; padding: 25px;">
-                        <h3 style="color: var(--accent-yellow, #dcdcaa); margin-bottom: 15px;">Research Interests</h3>
+                <div class="info-cards" style="display: grid !important; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin: 40px 0;">
+                    <div class="info-card" style="display: block !important; background: #2d2d2d; border: 1px solid #3e3e3e; border-radius: 8px; padding: 25px;">
+                        <h3 style="color: #dcdcaa; margin-bottom: 15px; display: block !important;">Research Interests</h3>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="margin-bottom: 10px;">→ Markov Decision Processes</li>
                             <li style="margin-bottom: 10px;">→ Dynamic Programming Algorithms</li>
@@ -86,8 +86,8 @@
                         </ul>
                     </div>
                     
-                    <div class="info-card" style="background: var(--bg-secondary, #2d2d2d); border: 1px solid var(--border-color, #3e3e3e); border-radius: 8px; padding: 25px;">
-                        <h3 style="color: var(--accent-yellow, #dcdcaa); margin-bottom: 15px;">Current Projects</h3>
+                    <div class="info-card" style="display: block !important; background: #2d2d2d; border: 1px solid #3e3e3e; border-radius: 8px; padding: 25px;">
+                        <h3 style="color: #dcdcaa; margin-bottom: 15px; display: block !important;">Current Projects</h3>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="margin-bottom: 10px;">→ Optimal stopping in labor markets</li>
                             <li style="margin-bottom: 10px;">→ RL agents in macroeconomic models</li>
@@ -106,12 +106,12 @@
                 </div>
             </section>
             
-            <section id="research-preview" style="margin-top: 60px;">
-                <h2 style="color: var(--accent-teal); font-family: var(--font-mono); margin-bottom: 30px;">
-                    <span style="color: var(--accent-green);">$</span> git log --oneline --research
+            <section id="research-preview" style="margin-top: 60px; display: block !important;">
+                <h2 style="color: #4ec9b0; font-family: monospace; margin-bottom: 30px; display: block !important;">
+                    <span style="color: #6a9955;">$</span> git log --oneline --research
                 </h2>
                 
-                <div class="git-timeline">
+                <div class="git-timeline" style="background: #2d2d2d; border-radius: 8px; padding: 30px; margin: 40px 0; display: block !important;">
                     <div class="timeline-header">
                         Showing recent research activity...
                     </div>
@@ -138,12 +138,12 @@
                 </div>
             </section>
             
-            <section id="code-preview" style="margin-top: 60px;">
-                <h2 style="color: var(--accent-teal); font-family: var(--font-mono); margin-bottom: 30px;">
-                    <span style="color: var(--accent-green);">></span> Recent Code Sample
+            <section id="code-preview" style="margin-top: 60px; display: block !important;">
+                <h2 style="color: #4ec9b0; font-family: monospace; margin-bottom: 30px; display: block !important;">
+                    <span style="color: #6a9955;">></span> Recent Code Sample
                 </h2>
                 
-                <div class="code-block">
+                <div class="code-block" style="background: #2d2d2d; border: 1px solid #3e3e3e; border-radius: 8px; padding: 20px; overflow-x: auto; display: block !important;">
                     <span class="code-lang">Python</span>
                     <pre style="margin: 0; color: var(--text-primary);"><code><span style="color: var(--accent-blue);">def</span> <span style="color: var(--accent-yellow);">value_iteration</span>(mdp, tolerance=<span style="color: var(--accent-teal);">1e-6</span>):
     <span style="color: var(--accent-green);">"""
