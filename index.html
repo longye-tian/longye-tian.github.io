@@ -76,7 +76,7 @@
                 </p>
 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin: 40px 0;">
-                    <div style="background: #2d2d2d; border: 1px solid #3e3e3e; border-radius: 8px; padding: 25px;">
+                    <div class="hover-card" style="background: #2d2d2d; border: 1px solid #3e3e3e; border-radius: 8px; padding: 25px; transition: all 0.3s ease; cursor: pointer;">
                         <h3 style="color: #dcdcaa; margin-bottom: 15px; display: block !important;">Research Interests</h3>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="margin-bottom: 10px;">→ Markov Decision Processes</li>
@@ -86,7 +86,7 @@
                         </ul>
                     </div>
                     
-                    <div style="background: #2d2d2d; border: 1px solid #3e3e3e; border-radius: 8px; padding: 25px;">
+                    <div class="hover-card" style="background: #2d2d2d; border: 1px solid #3e3e3e; border-radius: 8px; padding: 25px; transition: all 0.3s ease; cursor: pointer;">
                         <h3 style="color: #dcdcaa; margin-bottom: 15px; display: block !important;">Current Projects</h3>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="margin-bottom: 10px;">→ Optimal stopping in labor markets</li>
@@ -143,7 +143,7 @@
                     <span style="color: #6a9955;">></span> Recent Code Sample
                 </h2>
                 
-                <div style="background: #2d2d2d; border: 1px solid #3e3e3e; border-radius: 8px; padding: 20px; overflow-x: auto; position: relative;">
+                <div style="background: #2d2d2d; border: 1px solid #3e3e3e; border-radius: 8px; padding: 20px; overflow-x: auto; position: relative; transition: all 0.3s ease; cursor: pointer;">
                     <span style="position: absolute; top: 10px; right: 15px; color: #808080; font-size: 0.8em; font-family: monospace;">Python</span>
                     <pre style="margin: 0; color: #d4d4d4; font-family: monospace;"><code><span style="color: #569cd6;">def</span> <span style="color: #dcdcaa;">value_iteration</span>(mdp, tolerance=<span style="color: #4ec9b0;">1e-6</span>):
     <span style="color: #6a9955;">"""
@@ -179,5 +179,53 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/navigation.js"></script>
     <script src="assets/js/pages/index.js"></script>
+    
+    <!-- Inline hover effects since CSS classes aren't working -->
+    <script>
+        // Add hover effects to cards
+        document.querySelectorAll('.hover-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
+                this.style.borderColor = '#569cd6';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+                this.style.borderColor = '#3e3e3e';
+            });
+        });
+        
+        // Add hover effects to git commits
+        document.querySelectorAll('#research-preview div[style*="padding: 15px"]').forEach(commit => {
+            commit.style.transition = 'all 0.2s ease';
+            commit.style.cursor = 'pointer';
+            
+            commit.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#3e3e3e';
+                this.style.paddingLeft = '20px';
+            });
+            
+            commit.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = 'transparent';
+                this.style.paddingLeft = '0';
+            });
+        });
+        
+        // Add hover effect to code block
+        const codeBlock = document.querySelector('#code-preview > div');
+        if (codeBlock) {
+            codeBlock.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+                this.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+            });
+            
+            codeBlock.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        }
+    </script>
 </body>
 </html>
