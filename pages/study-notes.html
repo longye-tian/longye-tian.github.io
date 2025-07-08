@@ -19,6 +19,13 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .paper-entry.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .paper-entry:hover {
@@ -33,7 +40,7 @@
             left: 0;
             width: 0;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(86, 156, 214, 0.05));
+            background: linear-gradient(90deg, transparent, rgba(206, 145, 120, 0.05));
             transition: width 0.3s ease;
         }
         
@@ -43,8 +50,8 @@
         
         /* Status badge enhancements */
         .status-theory {
-            background: linear-gradient(135deg, #569cd6, #4a80b5);
-            box-shadow: 0 2px 4px rgba(86, 156, 214, 0.3);
+            background: linear-gradient(135deg, #ce9178, #b67a63);
+            box-shadow: 0 2px 4px rgba(206, 145, 120, 0.3);
         }
         
         .status-applications {
@@ -60,7 +67,7 @@
         }
         
         .paper-tags .tag:hover {
-            background: var(--accent-blue);
+            background: var(--accent-orange);
             color: var(--bg-primary);
             transform: translateY(-2px);
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
@@ -71,7 +78,7 @@
             font-size: 0.95em;
             line-height: 1.7;
             color: var(--text-secondary);
-            border-left: 2px solid var(--accent-green);
+            border-left: 2px solid var(--accent-orange);
             padding-left: 15px;
             margin-left: 10px;
         }
@@ -248,7 +255,7 @@
         <!-- Study notes container -->
         <div class="papers-container" id="notes-container">
             <!-- Du's Theorem -->
-            <article class="paper-entry" data-status="theory" style="border-left: 3px solid var(--accent-blue); padding-left: 25px;">
+            <article class="paper-entry" data-status="theory" style="border-left: 3px solid var(--accent-orange); padding-left: 25px;">
                 <span class="paper-status status-theory">Theory</span>
                 <h2 class="paper-title">Du's Theorem and Lemmas</h2>
                 <div class="paper-venue">Personal Study Notes • 2024</div>
@@ -273,7 +280,7 @@
             </article>
 
             <!-- Stochastic Approximation -->
-            <article class="paper-entry" data-status="theory" style="border-left: 3px solid var(--accent-blue); padding-left: 25px;">
+            <article class="paper-entry" data-status="theory" style="border-left: 3px solid var(--accent-orange); padding-left: 25px;">
                 <span class="paper-status status-theory">Theory</span>
                 <h2 class="paper-title">Extending Stochastic Approximation to Eventual Contraction</h2>
                 <div class="paper-venue">Personal Study Notes • 2024</div>
@@ -324,7 +331,7 @@
             </article>
 
             <!-- Neural Networks -->
-            <article class="paper-entry" data-status="theory" style="border-left: 3px solid var(--accent-blue); padding-left: 25px;">
+            <article class="paper-entry" data-status="theory" style="border-left: 3px solid var(--accent-orange); padding-left: 25px;">
                 <span class="paper-status status-theory">Theory</span>
                 <h2 class="paper-title">Neural Network and Curse of Dimensionality</h2>
                 <div class="paper-venue">Personal Study Notes • 2024</div>
@@ -350,7 +357,7 @@
             </article>
 
             <!-- Stochastic Analysis -->
-            <article class="paper-entry" data-status="theory" style="border-left: 3px solid var(--accent-blue); padding-left: 25px;">
+            <article class="paper-entry" data-status="theory" style="border-left: 3px solid var(--accent-orange); padding-left: 25px;">
                 <span class="paper-status status-theory">Theory</span>
                 <h2 class="paper-title">Note on Stochastic Analysis</h2>
                 <div class="paper-venue">Personal Study Notes • 2024</div>
@@ -375,7 +382,7 @@
             </article>
 
             <!-- Positive Operators -->
-            <article class="paper-entry" data-status="theory" style="border-left: 3px solid var(--accent-blue); padding-left: 25px;">
+            <article class="paper-entry" data-status="theory" style="border-left: 3px solid var(--accent-orange); padding-left: 25px;">
                 <span class="paper-status status-theory">Theory</span>
                 <h2 class="paper-title">Positive Operators are Order Continuous</h2>
                 <div class="paper-venue">Personal Study Notes • 2024</div>
@@ -400,7 +407,7 @@
             </article>
 
             <!-- Graph Neural Networks -->
-            <article class="paper-entry" data-status="theory" style="border-left: 3px solid var(--accent-blue); padding-left: 25px;">
+            <article class="paper-entry" data-status="theory" style="border-left: 3px solid var(--accent-orange); padding-left: 25px;">
                 <span class="paper-status status-theory">Theory</span>
                 <h2 class="paper-title">Power of Graph Neural Networks</h2>
                 <div class="paper-venue">Personal Study Notes • 2024</div>
@@ -505,5 +512,52 @@
     <!-- External JavaScript -->
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/pages/research.js"></script>
+    
+    <!-- Study notes specific animations -->
+    <script>
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all paper entries
+            const entries = document.querySelectorAll('.paper-entry');
+            
+            // Create intersection observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Add visible class with a slight delay for staggered effect
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 50);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            // Observe all entries
+            entries.forEach(entry => {
+                observer.observe(entry);
+            });
+            
+            // Fix for filter animations
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Reset animations when filtering
+                    setTimeout(() => {
+                        const visibleEntries = document.querySelectorAll('.paper-entry:not([style*="display: none"])');
+                        visibleEntries.forEach((entry, index) => {
+                            entry.classList.remove('visible');
+                            setTimeout(() => {
+                                entry.classList.add('visible');
+                            }, index * 50);
+                        });
+                    }, 100);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
