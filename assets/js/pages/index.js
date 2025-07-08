@@ -133,7 +133,8 @@ const navigationScroll = {
         
         this.navLinks.forEach(link => {
             link.classList.remove('current');
-            if (link.getAttribute('href').slice(1) === current) {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#') && href.slice(1) === current) {
                 link.classList.add('current');
             }
         });
