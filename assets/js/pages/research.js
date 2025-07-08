@@ -9,7 +9,8 @@ function initializeAbstractToggles() {
             
             content.classList.toggle('show');
             arrow.textContent = content.classList.contains('show') ? '▼' : '▶';
-            this.innerHTML = `<span>${arrow.textContent}</span> ${content.classList.contains('show') ? 'Hide' : 'Show'} Abstract`;
+            const label = this.textContent.includes('Abstract') ? 'Abstract' : 'Summary';
+            this.innerHTML = `<span>${arrow.textContent}</span> ${content.classList.contains('show') ? 'Hide' : 'Show'} ${label}`;
         });
     });
 }
@@ -164,21 +165,35 @@ function initializeEntranceAnimations() {
     });
 }
 
-// Update research statistics dynamically
+// Update study notes statistics dynamically
 function updateResearchStats() {
-    const papers = document.querySelectorAll('.paper-entry');
+    const notes = document.querySelectorAll('.paper-entry:not([style*="display: none"])');
     const stats = {
-        total: papers.length,
-        published: document.querySelectorAll('.paper-entry[data-status="published"]').length,
-        working: document.querySelectorAll('.paper-entry[data-status="working"]').length,
-        wip: document.querySelectorAll('.paper-entry[data-status="wip"]').length
+        total: notes.length,
+        theory: document.querySelectorAll('.paper-entry[data-status="theory"]:not([style*="display: none"])').length,
+        applications: document.querySelectorAll('.paper-entry[data-status="applications"]:not([style*="display: none"])').length,
+        code: document.querySelectorAll('.paper-entry[data-status="code"]:not([style*="display: none"])').length
     };
     
     // Update filter counts
-    document.querySelector('.filter-tab[data-filter="all"] .filter-count').textContent = `(${stats.total})`;
-    document.querySelector('.filter-tab[data-filter="published"] .filter-count').textContent = `(${stats.published})`;
-    document.querySelector('.filter-tab[data-filter="working"] .filter-count').textContent = `(${stats.working})`;
-    document.querySelector('.filter-tab[data-filter="wip"] .filter-count').textContent = `(${stats.wip})`;
+    const allTab = document.querySelector('.filter-tab[data-filter="all"] .filter-count');
+    const theoryTab = document.querySelector('.filter-tab[data-filter="theory"] .filter-count');
+    const applicationsTab = document.querySelector('.filter-tab[data-filter="applications"] .filter-count');
+    const codeTab = document.querySelector('.filter-tab[data-filter="code"] .filter-count');
+    
+    if (allTab) allTab.textContent = `(${stats.total})`;
+    if (theoryTab) theoryTab.textContent = `(${stats.theory})`;
+    if (applicationsTab) applicationsTab.textContent = `(${stats.applications})`;
+    if (codeTab) codeTab.textContent = `(${stats.code})`;
+    
+    // Update main statistics
+    const statNumbers = document.querySelectorAll('.stat-number');
+    if (statNumbers.length >= 4) {
+        statNumbers[0].textContent = stats.total;
+        statNumbers[1].textContent = stats.theory;
+        statNumbers[2].textContent = stats.applications;
+        statNumbers[3].textContent = stats.code;
+    }
 }
 
 // Add CSS for notifications
