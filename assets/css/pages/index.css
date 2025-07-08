@@ -216,20 +216,24 @@ nav a.current::before {
 
 /* Info Cards */
 .info-cards {
-    display: grid;
+    display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
     margin: 40px 0;
+    background: yellow !important;
+    padding: 20px !important;
+    min-height: 200px !important;
 }
 
 .info-card {
     background: var(--bg-secondary) !important;
-    border: 1px solid var(--border-color) !important;
+    border: 2px solid red !important;
     border-radius: 8px;
     padding: 25px;
     transition: transform 0.2s, box-shadow 0.2s;
     display: block !important;
     visibility: visible !important;
+    min-height: 100px !important;
 }
 
 .info-card:hover {
