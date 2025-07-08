@@ -655,6 +655,16 @@
             await loadGitHubEvents();
         }
         
+        // Force refresh function
+        async function forceRefreshRepos() {
+            console.log('Force refreshing repository data...');
+            localStorage.removeItem(CACHE_KEY);
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('projects-container').style.display = 'none';
+            await initializeGitHub();
+            console.log('Repository data refreshed!');
+        }
+        
         // Wait for DOM to be ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initializeGitHub);
@@ -662,6 +672,9 @@
             // DOM is already ready
             initializeGitHub();
         }
+        
+        // Auto-refresh to get latest repos
+        forceRefreshRepos();
     </script>
     
     <!-- External JavaScript -->
