@@ -67,6 +67,9 @@
                     <div class="stat-label">Following</div>
                 </div>
             </div>
+            
+            <!-- Debug button -->
+            <button onclick="debugGitHub()" style="margin-top: 10px; padding: 5px 10px; background: #333; color: #fff; border: 1px solid #555; cursor: pointer;">Debug API</button>
         </header>
         
         <!-- Loading indicator -->
@@ -141,6 +144,49 @@
     <!-- GitHub API Script -->
     <script>
         const username = 'longye-tian';
+        
+        // Debug: Test immediately
+        console.log('Script loaded. Testing GitHub API...');
+        fetch('https://api.github.com/users/longye-tian')
+            .then(r => r.json())
+            .then(data => {
+                console.log('Quick test - GitHub user data:', data);
+                console.log('Repos:', data.public_repos, 'Followers:', data.followers);
+            })
+            .catch(err => console.error('Quick test failed:', err));
+            
+        // Debug function
+        window.debugGitHub = async function() {
+            console.log('=== DEBUG START ===');
+            console.log('Username:', username);
+            
+            // Check if elements exist
+            console.log('repo-count element:', document.getElementById('repo-count'));
+            console.log('star-count element:', document.getElementById('star-count'));
+            console.log('follower-count element:', document.getElementById('follower-count'));
+            console.log('following-count element:', document.getElementById('following-count'));
+            
+            // Try manual API call
+            try {
+                const response = await fetch(`https://api.github.com/users/${username}`);
+                console.log('API Response status:', response.status);
+                const data = await response.json();
+                console.log('API Data:', data);
+                
+                // Try manual update
+                if (document.getElementById('repo-count')) {
+                    document.getElementById('repo-count').textContent = data.public_repos || 0;
+                    console.log('Manually set repo-count to:', data.public_repos);
+                }
+                if (document.getElementById('follower-count')) {
+                    document.getElementById('follower-count').textContent = data.followers || 0;
+                    console.log('Manually set follower-count to:', data.followers);
+                }
+            } catch (error) {
+                console.error('Debug error:', error);
+            }
+            console.log('=== DEBUG END ===');
+        };
         const languageColors = {
             'Python': '#3572A5',
             'JavaScript': '#f1e05a',
@@ -176,9 +222,25 @@
                 console.log('Following:', userData.following);
                 
                 // Update stats with better error handling
-                document.getElementById('repo-count').textContent = userData.public_repos || 0;
-                document.getElementById('follower-count').textContent = userData.followers || 0;
-                document.getElementById('following-count').textContent = userData.following || 0;
+                const repoElement = document.getElementById('repo-count');
+                const followerElement = document.getElementById('follower-count');
+                const followingElement = document.getElementById('following-count');
+                
+                if (repoElement) {
+                    repoElement.textContent = userData.public_repos || 0;
+                    repoElement.style.color = '#6a9955'; // Force green color
+                    console.log('Set repo count:', repoElement.textContent);
+                }
+                if (followerElement) {
+                    followerElement.textContent = userData.followers || 0;
+                    followerElement.style.color = '#6a9955'; // Force green color
+                    console.log('Set follower count:', followerElement.textContent);
+                }
+                if (followingElement) {
+                    followingElement.textContent = userData.following || 0;
+                    followingElement.style.color = '#6a9955'; // Force green color
+                    console.log('Set following count:', followingElement.textContent);
+                }
                 
                 // Fetch repositories
                 const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
@@ -186,7 +248,12 @@
                 
                 // Calculate total stars
                 const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
-                document.getElementById('star-count').textContent = totalStars;
+                const starElement = document.getElementById('star-count');
+                if (starElement) {
+                    starElement.textContent = totalStars;
+                    starElement.style.color = '#6a9955'; // Force green color
+                    console.log('Set star count:', starElement.textContent);
+                }
                 
                 // Calculate language statistics
                 const languageStats = {};
