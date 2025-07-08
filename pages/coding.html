@@ -35,385 +35,269 @@
         <header class="page-header">
             <h1 class="page-title">Code & Projects</h1>
             <p style="color: var(--text-secondary); margin-top: 10px;">
-                Open source contributions to computational economics
+                My GitHub repositories and open source contributions
             </p>
             
-            <div class="github-stats">
+            <div class="github-stats" id="github-stats">
                 <div class="stat">
-                    <div class="stat-number">23</div>
+                    <div class="stat-number" id="repo-count">-</div>
                     <div class="stat-label">Repositories</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-number">147</div>
+                    <div class="stat-number" id="star-count">-</div>
                     <div class="stat-label">Total Stars</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-number">342</div>
-                    <div class="stat-label">Contributions</div>
+                    <div class="stat-number" id="follower-count">-</div>
+                    <div class="stat-label">Followers</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-number">12</div>
-                    <div class="stat-label">Followers</div>
+                    <div class="stat-number" id="following-count">-</div>
+                    <div class="stat-label">Following</div>
                 </div>
             </div>
         </header>
         
-        <!-- GitHub Contribution Graph -->
-        <div class="contribution-graph">
-            <div class="contribution-title">// contributions in the last year</div>
-            <div class="contribution-grid">Jan    Feb    Mar    Apr    May    Jun    Jul    Aug    Sep    Oct    Nov    Dec
-▪▫▪▪▫  ▪▪▫▪▫  ▫▪▪▪▫  ▪▫▪▫▪  ▫▪▪▫▪  ▪▪▪▪▫  ▫▪▫▪▪  ▪▫▪▪▫  ▪▪▫▪▪  ▫▪▪▫▪  ▪▫▪▪▫  ▫▪▫▪▫
-▫▪▫▫▪  ▫▪▪▫▪  ▪▫▫▪▪  ▫▪▫▪▫  ▪▫▪▪▫  ▫▫▪▫▪  ▪▫▪▫▫  ▫▪▫▪▪  ▫▪▪▫▫  ▪▫▪▪▫  ▫▪▫▫▪  ▪▫▪▪▫
-▪▫▪▪▫  ▪▫▫▪▫  ▫▪▫▫▪  ▪▪▫▪▪  ▫▪▫▪▪  ▪▫▪▫▫  ▫▪▪▫▪  ▪▫▫▪▫  ▪▫▫▪▪  ▫▪▫▫▪  ▪▪▫▪▫  ▫▪▫▫▪
-▫▪▫▫▪  ▫▪▪▫▪  ▪▪▪▫▫  ▫▫▪▫▫  ▪▫▫▪▫  ▫▪▫▪▪  ▪▫▫▪▫  ▫▪▪▫▪  ▫▪▪▫▫  ▪▪▫▪▫  ▫▫▪▪▫  ▪▫▪▫▪</div>
-        </div>
-        
-        <!-- Featured Project -->
-        <section class="featured-section">
-            <h2 class="section-title">Featured Project</h2>
-            
-            <div class="featured-project">
-                <span class="featured-badge">⭐ Featured</span>
-                <h3 style="color: var(--accent-yellow); font-size: 1.5em; margin-bottom: 15px;">
-                    EconRL: Reinforcement Learning for Economics
-                </h3>
-                
-                <p style="color: var(--text-primary); font-family: var(--font-sans); line-height: 1.8; margin-bottom: 20px;">
-                    A comprehensive Python library implementing state-of-the-art reinforcement learning algorithms 
-                    specifically designed for economic modeling. Features include specialized environments for 
-                    job search, optimal taxation, and dynamic pricing problems. Used by researchers at 5+ universities.
-                </p>
-                
-                <div class="code-preview">
-                    <div class="code-preview-header">
-                        <span>example.py</span>
-                        <span>Python</span>
-                    </div>
-                    <pre><code><span style="color: var(--accent-blue);">from</span> econrl <span style="color: var(--accent-blue);">import</span> JobSearchEnv, DQNAgent
-
-<span style="color: var(--accent-green);"># Initialize environment and agent</span>
-env = JobSearchEnv(wage_dist=<span style="color: var(--accent-orange);">'lognormal'</span>, search_cost=<span style="color: var(--accent-teal);">5</span>)
-agent = DQNAgent(state_dim=env.state_dim, action_dim=<span style="color: var(--accent-teal);">2</span>)
-
-<span style="color: var(--accent-green);"># Train the agent</span>
-agent.train(env, episodes=<span style="color: var(--accent-teal);">1000</span>)
-optimal_policy = agent.get_policy()</code></pre>
-                </div>
-                
-                <div class="project-stats" style="margin-top: 25px;">
-                    <div class="project-stat">
-                        <span>⭐</span> 89 stars
-                    </div>
-                    <div class="project-stat">
-                        <span>🍴</span> 23 forks
-                    </div>
-                    <div class="project-stat">
-                        <span>📦</span> 156 downloads/month
-                    </div>
-                </div>
-                
-                <div class="project-links" style="margin-top: 20px;">
-                    <a href="#" class="project-link">
-                        <span>🔗</span> GitHub
-                    </a>
-                    <a href="#" class="project-link">
-                        <span>📚</span> Documentation
-                    </a>
-                    <a href="#" class="project-link">
-                        <span>📦</span> PyPI
-                    </a>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Project Filters -->
-        <div class="project-filters">
-            <button class="filter-btn active" data-filter="all">All Projects</button>
-            <button class="filter-btn" data-filter="research">Research Tools</button>
-            <button class="filter-btn" data-filter="teaching">Teaching Resources</button>
-            <button class="filter-btn" data-filter="experiments">Experiments</button>
-        </div>
-        
-        <!-- Projects Grid -->
-        <div class="projects-grid">
-            <!-- Project 1 -->
-            <div class="project-card" data-category="research">
-                <div class="project-header">
-                    <div>
-                        <h3 class="project-title">gpu-value-iteration</h3>
-                        <div class="project-language">
-                            <span class="language-dot cpp"></span>
-                            <span>C++/CUDA</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <p class="project-description">
-                    CUDA implementation of value function iteration for high-dimensional dynamic programming 
-                    problems. Achieves 50x speedup over CPU implementations for problems with >10,000 states.
-                </p>
-                
-                <div class="project-tags">
-                    <span class="project-tag">CUDA</span>
-                    <span class="project-tag">Dynamic Programming</span>
-                    <span class="project-tag">HPC</span>
-                </div>
-                
-                <div class="project-stats">
-                    <div class="project-stat">
-                        <span>⭐</span> 34
-                    </div>
-                    <div class="project-stat">
-                        <span>🍴</span> 8
-                    </div>
-                </div>
-                
-                <div class="project-links">
-                    <a href="#" class="project-link">
-                        <span>💻</span> Code
-                    </a>
-                    <a href="#" class="project-link">
-                        <span>📄</span> Paper
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Project 2 -->
-            <div class="project-card" data-category="research">
-                <div class="project-header">
-                    <div>
-                        <h3 class="project-title">macro-deep-learning</h3>
-                        <div class="project-language">
-                            <span class="language-dot python"></span>
-                            <span>Python</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <p class="project-description">
-                    Neural network approaches to solving and estimating DSGE models. Implements deep learning 
-                    methods for approximating policy functions in heterogeneous agent models.
-                </p>
-                
-                <div class="project-tags">
-                    <span class="project-tag">PyTorch</span>
-                    <span class="project-tag">DSGE</span>
-                    <span class="project-tag">Deep Learning</span>
-                </div>
-                
-                <div class="project-stats">
-                    <div class="project-stat">
-                        <span>⭐</span> 67
-                    </div>
-                    <div class="project-stat">
-                        <span>🍴</span> 19
-                    </div>
-                </div>
-                
-                <div class="project-links">
-                    <a href="#" class="project-link">
-                        <span>💻</span> Code
-                    </a>
-                    <a href="#" class="project-link">
-                        <span>🎥</span> Demo
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Project 3 -->
-            <div class="project-card" data-category="teaching">
-                <div class="project-header">
-                    <div>
-                        <h3 class="project-title">computational-econ-tutorials</h3>
-                        <div class="project-language">
-                            <span class="language-dot julia"></span>
-                            <span>Julia</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <p class="project-description">
-                    Interactive Jupyter notebooks teaching computational methods in economics. Covers optimization, 
-                    dynamic programming, and numerical methods with economic applications.
-                </p>
-                
-                <div class="project-tags">
-                    <span class="project-tag">Education</span>
-                    <span class="project-tag">Julia</span>
-                    <span class="project-tag">Notebooks</span>
-                </div>
-                
-                <div class="project-stats">
-                    <div class="project-stat">
-                        <span>⭐</span> 123
-                    </div>
-                    <div class="project-stat">
-                        <span>🍴</span> 45
-                    </div>
-                </div>
-                
-                <div class="project-links">
-                    <a href="#" class="project-link">
-                        <span>💻</span> Code
-                    </a>
-                    <a href="#" class="project-link">
-                        <span>🚀</span> Binder
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Project 4 -->
-            <div class="project-card" data-category="experiments">
-                <div class="project-header">
-                    <div>
-                        <h3 class="project-title">market-rl-agents</h3>
-                        <div class="project-language">
-                            <span class="language-dot python"></span>
-                            <span>Python</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <p class="project-description">
-                    Experimental framework for testing reinforcement learning agents in various market 
-                    mechanisms. Includes implementations of auction environments and multi-agent simulations.
-                </p>
-                
-                <div class="project-tags">
-                    <span class="project-tag">Multi-Agent RL</span>
-                    <span class="project-tag">Market Design</span>
-                    <span class="project-tag">Simulation</span>
-                </div>
-                
-                <div class="project-stats">
-                    <div class="project-stat">
-                        <span>⭐</span> 18
-                    </div>
-                    <div class="project-stat">
-                        <span>🍴</span> 5
-                    </div>
-                </div>
-                
-                <div class="project-links">
-                    <a href="#" class="project-link">
-                        <span>💻</span> Code
-                    </a>
-                    <a href="#" class="project-link">
-                        <span>📊</span> Results
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Project 5 -->
-            <div class="project-card" data-category="research">
-                <div class="project-header">
-                    <div>
-                        <h3 class="project-title">climate-optimal-stopping</h3>
-                        <div class="project-language">
-                            <span class="language-dot python"></span>
-                            <span>Python</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <p class="project-description">
-                    Monte Carlo methods for solving optimal stopping problems in climate economics. 
-                    Implements American option pricing techniques for environmental policy timing.
-                </p>
-                
-                <div class="project-tags">
-                    <span class="project-tag">Climate Economics</span>
-                    <span class="project-tag">Monte Carlo</span>
-                    <span class="project-tag">Optimal Stopping</span>
-                </div>
-                
-                <div class="project-stats">
-                    <div class="project-stat">
-                        <span>⭐</span> 29
-                    </div>
-                    <div class="project-stat">
-                        <span>🍴</span> 11
-                    </div>
-                </div>
-                
-                <div class="project-links">
-                    <a href="#" class="project-link">
-                        <span>💻</span> Code
-                    </a>
-                    <a href="#" class="project-link">
-                        <span>📄</span> Working Paper
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Project 6 -->
-            <div class="project-card" data-category="teaching">
-                <div class="project-header">
-                    <div>
-                        <h3 class="project-title">econ-data-viz</h3>
-                        <div class="project-language">
-                            <span class="language-dot javascript"></span>
-                            <span>JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <p class="project-description">
-                    D3.js visualizations for economic concepts. Interactive demos for teaching supply/demand, 
-                    game theory, and macroeconomic models. Used in undergraduate courses.
-                </p>
-                
-                <div class="project-tags">
-                    <span class="project-tag">D3.js</span>
-                    <span class="project-tag">Visualization</span>
-                    <span class="project-tag">Education</span>
-                </div>
-                
-                <div class="project-stats">
-                    <div class="project-stat">
-                        <span>⭐</span> 56
-                    </div>
-                    <div class="project-stat">
-                        <span>🍴</span> 23
-                    </div>
-                </div>
-                
-                <div class="project-links">
-                    <a href="#" class="project-link">
-                        <span>💻</span> Code
-                    </a>
-                    <a href="#" class="project-link">
-                        <span>🌐</span> Live Demo
-                    </a>
-                </div>
+        <!-- Loading indicator -->
+        <div id="loading" style="text-align: center; padding: 40px; color: var(--text-secondary);">
+            <div style="font-size: 1.2em; margin-bottom: 20px;">
+                <span style="display: inline-block; animation: pulse 1.5s infinite;">●</span> Loading repositories from GitHub...
             </div>
         </div>
         
-        <!-- CLI Section -->
-        <div class="cli-section">
-            <div class="cli-command">$ git log --oneline -5</div>
-            <div class="cli-output">
-a7f3d2e (HEAD -> main) feat: Add parallel computing support to value iteration<br>
-b9e4c15 docs: Update README with installation instructions<br>
-c2d8f91 perf: Optimize memory usage in large-scale simulations<br>
-d4a2c88 fix: Correct convergence criterion in policy iteration<br>
-e5b3f77 feat: Implement Q-learning for continuous state spaces
-            </div>
+        <!-- Projects Container -->
+        <div id="projects-container" style="display: none;">
+            <!-- Language Stats -->
+            <section style="margin-bottom: 40px;">
+                <h2 style="color: var(--accent-purple); font-family: monospace; margin-bottom: 20px;">
+                    <span style="color: var(--accent-green);">//</span> Languages Used
+                </h2>
+                <div id="language-stats" style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <!-- Language stats will be populated here -->
+                </div>
+            </section>
+            
+            <!-- Repository List -->
+            <section>
+                <h2 style="color: var(--accent-purple); font-family: monospace; margin-bottom: 20px;">
+                    <span style="color: var(--accent-green);">//</span> Public Repositories
+                </h2>
+                
+                <!-- Projects Grid -->
+                <div class="projects-grid" id="projects-grid">
+                    <!-- Repositories will be populated here -->
+                </div>
+            </section>
+        </div>
+        
+        <!-- Error Message -->
+        <div id="error-message" style="display: none; text-align: center; padding: 40px; color: var(--text-secondary);">
+            <p style="color: var(--accent-red); margin-bottom: 20px;">Unable to load repositories. Please try again later.</p>
         </div>
         
         <!-- Contribution CTA -->
         <section style="text-align: center; margin-top: 60px;">
-            <h2 style="color: var(--accent-purple); margin-bottom: 20px;">Open to Collaboration</h2>
+            <h2 style="color: var(--accent-purple); margin-bottom: 20px;">Let's Collaborate!</h2>
             <p style="color: var(--text-secondary); font-family: var(--font-sans); max-width: 600px; margin: 0 auto 30px;">
-                I'm always interested in collaborating on computational economics projects. 
-                If you're working on something interesting or want to contribute to any of my projects, 
-                feel free to reach out!
+                I'm always interested in collaborating on computational economics and machine learning projects. 
+                Check out my repositories and feel free to contribute or reach out!
             </p>
-            <a href="https://github.com/longyetian" class="project-link" style="font-size: 1.1em;">
-                <span>🔗</span> Visit my GitHub
+            <a href="https://github.com/longye-tian" class="project-link" style="font-size: 1.1em;">
+                <span>🔗</span> Visit my GitHub Profile
             </a>
         </section>
     </div>
+    
+    <!-- GitHub API Script -->
+    <script>
+        const username = 'longye-tian';
+        const languageColors = {
+            'Python': '#3572A5',
+            'JavaScript': '#f1e05a',
+            'HTML': '#e34c26',
+            'CSS': '#563d7c',
+            'Julia': '#a270ba',
+            'C++': '#f34b7d',
+            'C': '#555555',
+            'Jupyter Notebook': '#DA5B0B',
+            'R': '#198CE7',
+            'MATLAB': '#e16737',
+            'Shell': '#89e051',
+            'TeX': '#3D6117',
+            'TypeScript': '#2b7489'
+        };
+        
+        async function loadGitHubData() {
+            try {
+                // Fetch user data
+                const userResponse = await fetch(`https://api.github.com/users/${username}`);
+                const userData = await userResponse.json();
+                
+                // Update stats
+                document.getElementById('repo-count').textContent = userData.public_repos || 0;
+                document.getElementById('follower-count').textContent = userData.followers || 0;
+                document.getElementById('following-count').textContent = userData.following || 0;
+                
+                // Fetch repositories
+                const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
+                const repos = await reposResponse.json();
+                
+                // Calculate total stars
+                const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+                document.getElementById('star-count').textContent = totalStars;
+                
+                // Calculate language statistics
+                const languageStats = {};
+                repos.forEach(repo => {
+                    if (repo.language) {
+                        languageStats[repo.language] = (languageStats[repo.language] || 0) + 1;
+                    }
+                });
+                
+                // Display language stats
+                const languageStatsContainer = document.getElementById('language-stats');
+                Object.entries(languageStats)
+                    .sort((a, b) => b[1] - a[1])
+                    .forEach(([language, count]) => {
+                        const color = languageColors[language] || '#666';
+                        const stat = document.createElement('div');
+                        stat.style.cssText = `
+                            background: var(--bg-secondary);
+                            border: 1px solid var(--border-color);
+                            border-radius: 8px;
+                            padding: 10px 20px;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                        `;
+                        stat.innerHTML = `
+                            <span style="width: 12px; height: 12px; border-radius: 50%; background: ${color};"></span>
+                            <span style="color: var(--text-primary);">${language}</span>
+                            <span style="color: var(--text-secondary); font-size: 0.9em;">${count}</span>
+                        `;
+                        languageStatsContainer.appendChild(stat);
+                    });
+                
+                // Display repositories
+                const projectsGrid = document.getElementById('projects-grid');
+                repos
+                    .filter(repo => !repo.fork) // Only show non-forked repos
+                    .sort((a, b) => {
+                        // Sort by stars, then by update date
+                        if (b.stargazers_count !== a.stargazers_count) {
+                            return b.stargazers_count - a.stargazers_count;
+                        }
+                        return new Date(b.updated_at) - new Date(a.updated_at);
+                    })
+                    .forEach(repo => {
+                        const projectCard = createProjectCard(repo);
+                        projectsGrid.appendChild(projectCard);
+                    });
+                
+                // Hide loading and show content
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('projects-container').style.display = 'block';
+                
+            } catch (error) {
+                console.error('Error loading GitHub data:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error-message').style.display = 'block';
+            }
+        }
+        
+        function createProjectCard(repo) {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            card.style.cssText = 'cursor: pointer; transition: all 0.3s ease;';
+            
+            const languageColor = languageColors[repo.language] || '#666';
+            const updatedDate = new Date(repo.updated_at);
+            const timeAgo = getTimeAgo(updatedDate);
+            
+            card.innerHTML = `
+                <div class="project-header">
+                    <div>
+                        <h3 class="project-title">${repo.name}</h3>
+                        ${repo.language ? `
+                            <div class="project-language">
+                                <span class="language-dot" style="background: ${languageColor};"></span>
+                                <span>${repo.language}</span>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+                
+                <p class="project-description">
+                    ${repo.description || 'No description available'}
+                </p>
+                
+                ${repo.topics && repo.topics.length > 0 ? `
+                    <div class="project-tags">
+                        ${repo.topics.slice(0, 3).map(topic => 
+                            `<span class="project-tag">${topic}</span>`
+                        ).join('')}
+                    </div>
+                ` : ''}
+                
+                <div class="project-stats">
+                    ${repo.stargazers_count > 0 ? `
+                        <div class="project-stat">
+                            <span>⭐</span> ${repo.stargazers_count}
+                        </div>
+                    ` : ''}
+                    ${repo.forks_count > 0 ? `
+                        <div class="project-stat">
+                            <span>🍴</span> ${repo.forks_count}
+                        </div>
+                    ` : ''}
+                    <div class="project-stat" style="margin-left: auto; font-size: 0.85em; color: var(--text-secondary);">
+                        Updated ${timeAgo}
+                    </div>
+                </div>
+                
+                <div class="project-links">
+                    <a href="${repo.html_url}" class="project-link" target="_blank" onclick="event.stopPropagation();">
+                        <span>💻</span> View Code
+                    </a>
+                    ${repo.homepage ? `
+                        <a href="${repo.homepage}" class="project-link" target="_blank" onclick="event.stopPropagation();">
+                            <span>🌐</span> Demo
+                        </a>
+                    ` : ''}
+                </div>
+            `;
+            
+            // Make entire card clickable
+            card.addEventListener('click', () => {
+                window.open(repo.html_url, '_blank');
+            });
+            
+            return card;
+        }
+        
+        function getTimeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            const intervals = {
+                year: 31536000,
+                month: 2592000,
+                week: 604800,
+                day: 86400,
+                hour: 3600,
+                minute: 60
+            };
+            
+            for (const [unit, secondsInUnit] of Object.entries(intervals)) {
+                const interval = Math.floor(seconds / secondsInUnit);
+                if (interval >= 1) {
+                    return `${interval} ${unit}${interval === 1 ? '' : 's'} ago`;
+                }
+            }
+            return 'just now';
+        }
+        
+        // Load data when page loads
+        loadGitHubData();
+    </script>
     
     <!-- External JavaScript -->
     <script src="../assets/js/main.js"></script>
