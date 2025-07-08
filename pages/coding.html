@@ -433,13 +433,24 @@
         }
         
         // Load data when page loads
-        loadGitHubData();
-        loadGitHubCommits();
+        function initializeGitHub() {
+            console.log('Initializing GitHub data fetch...');
+            loadGitHubData();
+            loadGitHubCommits();
+            
+            // Auto-refresh commits every 2 minutes
+            setInterval(() => {
+                loadGitHubCommits(true);
+            }, 2 * 60 * 1000);
+        }
         
-        // Auto-refresh commits every 2 minutes
-        setInterval(() => {
-            loadGitHubCommits(true);
-        }, 2 * 60 * 1000);
+        // Wait for DOM to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeGitHub);
+        } else {
+            // DOM is already ready
+            initializeGitHub();
+        }
     </script>
     
     <!-- External JavaScript -->

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GitHub API Test</title>
+</head>
+<body>
+    <h1>GitHub API Debug Test</h1>
+    <div id="results"></div>
+    
+    <script>
+        const username = 'longye-tian';
+        const results = document.getElementById('results');
+        
+        async function testAPI() {
+            results.innerHTML = '<h2>Testing GitHub API...</h2>';
+            
+            // Test 1: User data
+            try {
+                const userResponse = await fetch(`https://api.github.com/users/${username}`);
+                results.innerHTML += `<p>User API Status: ${userResponse.status}</p>`;
+                
+                if (userResponse.ok) {
+                    const userData = await userResponse.json();
+                    results.innerHTML += `
+                        <h3>User Data:</h3>
+                        <ul>
+                            <li>Username: ${userData.login}</li>
+                            <li>Public Repos: ${userData.public_repos}</li>
+                            <li>Followers: ${userData.followers}</li>
+                            <li>Following: ${userData.following}</li>
+                        </ul>
+                    `;
+                }
+            } catch (error) {
+                results.innerHTML += `<p style="color: red;">User API Error: ${error.message}</p>`;
+            }
+            
+            // Test 2: Events
+            try {
+                const eventsResponse = await fetch(`https://api.github.com/users/${username}/events/public`);
+                results.innerHTML += `<p>Events API Status: ${eventsResponse.status}</p>`;
+                
+                if (eventsResponse.ok) {
+                    const events = await eventsResponse.json();
+                    const pushEvents = events.filter(e => e.type === 'PushEvent');
+                    results.innerHTML += `
+                        <h3>Recent Push Events: ${pushEvents.length}</h3>
+                        <ul>
+                    `;
+                    
+                    pushEvents.slice(0, 5).forEach(event => {
+                        const date = new Date(event.created_at);
+                        results.innerHTML += `<li>${event.repo.name} - ${date.toLocaleString()}</li>`;
+                    });
+                    
+                    results.innerHTML += '</ul>';
+                }
+            } catch (error) {
+                results.innerHTML += `<p style="color: red;">Events API Error: ${error.message}</p>`;
+            }
+            
+            // Test 3: Check console
+            results.innerHTML += '<p>Check browser console for detailed logs</p>';
+        }
+        
+        // Run test
+        testAPI();
+    </script>
+</body>
+</html>
