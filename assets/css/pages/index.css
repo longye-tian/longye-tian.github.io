@@ -232,7 +232,7 @@ nav a.current::before {
 
 .info-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-elevated);
     border-color: var(--accent-blue);
 }
 
@@ -248,6 +248,22 @@ nav a.current::before {
 .info-card h3::before {
     content: "//";
     color: var(--accent-green);
+}
+
+/* Hover card styles for Research Interests and Current Projects */
+.hover-card {
+    cursor: pointer;
+}
+
+.hover-card h3 {
+    color: var(--accent-yellow);
+    margin-bottom: 15px;
+    display: block !important;
+}
+
+/* Remove the :: before from hover-card h3 */
+.hover-card.info-card h3::before {
+    content: none;
 }
 
 .info-card ul {
@@ -474,6 +490,11 @@ section h2 .prompt-symbol {
 }
 
 /* Timeline Styles */
+.timeline {
+    position: relative;
+    padding-left: 40px;
+}
+
 .timeline-line {
     position: absolute;
     left: 10px;
@@ -481,6 +502,26 @@ section h2 .prompt-symbol {
     bottom: 0;
     width: 2px;
     background: var(--border-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideIn 0.6s ease forwards;
+}
+
+.timeline-item:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.timeline-item:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.timeline-item:nth-child(4) {
+    animation-delay: 0.3s;
 }
 
 .timeline-dot {
