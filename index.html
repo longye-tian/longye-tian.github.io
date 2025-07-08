@@ -80,60 +80,37 @@
                         <h3 style="color: #dcdcaa; margin-bottom: 15px; display: block !important;">Research Interests</h3>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="margin-bottom: 10px;">→ Markov Decision Processes</li>
-                            <li style="margin-bottom: 10px;">→ Dynamic Programming Algorithms</li>
+                            <li style="margin-bottom: 10px;">→ Dynamic Programming</li>
                             <li style="margin-bottom: 10px;">→ Reinforcement Learning in Economics</li>
-                            <li>→ Computational General Equilibrium</li>
                         </ul>
                     </div>
                     
                     <div class="hover-card" style="background: #2d2d2d; border: 1px solid #3e3e3e; border-radius: 8px; padding: 25px; transition: all 0.3s ease; cursor: pointer;">
                         <h3 style="color: #dcdcaa; margin-bottom: 15px; display: block !important;">Current Projects</h3>
                         <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li style="margin-bottom: 10px;">→ Optimal stopping in labor markets</li>
-                            <li style="margin-bottom: 10px;">→ RL agents in macroeconomic models</li>
-                            <li>→ High-performance computing for econ</li>
+                            <li style="margin-bottom: 10px;">→ Study Markov Dynamics</li>
+                            <li style="margin-bottom: 10px;">→ Du's Theorem and Contractions</li>
+                            <li>→ Quasi-hyperbolic Discounting</li>
                         </ul>
                     </div>
                 </div>
                 
-                <div class="math-equation">
-                    <p style="margin: 0; color: var(--accent-green); font-family: var(--font-mono); font-size: 0.9em;">
-                        // Core optimization framework
-                    </p>
-                    <p style="text-align: center; margin: 15px 0;">
-                        $$V(x) = \max_{a \in \Gamma(x)} \left\{ r(x,a) + \beta \sum_{x' \in X} P(x'|x,a) V(x') \right\}$$
-                    </p>
-                </div>
             </section>
             
             <section id="research-preview" style="margin-top: 60px; display: block !important;">
                 <h2 style="color: #4ec9b0; font-family: monospace; margin-bottom: 30px; display: block !important;">
                     <span style="color: #6a9955;">$</span> git log --oneline --research
+                    <a href="https://github.com/longye-tian" style="float: right; font-size: 0.6em; color: #808080; text-decoration: none; hover: color: #4ec9b0;">
+                        View on GitHub →
+                    </a>
                 </h2>
                 
                 <div style="background: #2d2d2d; border-radius: 8px; padding: 30px; margin: 40px 0;">
                     <div style="color: #6a9955; font-family: monospace; margin-bottom: 20px; font-size: 0.9em;">
-                        Showing recent research activity...
+                        Loading recent commits from GitHub...
                     </div>
-                    <div style="padding: 15px 0; border-bottom: 1px solid #3e3e3e; font-family: monospace; font-size: 0.95em;">
-                        <span style="color: #dcdcaa; font-size: 0.9em; margin-right: 15px;">a7f3d2e</span>
-                        <span style="color: #d4d4d4;">feat: Implemented new RL algorithm for job search models</span>
-                        <span style="color: #808080; float: right;">2 days ago</span>
-                    </div>
-                    <div style="padding: 15px 0; border-bottom: 1px solid #3e3e3e; font-family: monospace; font-size: 0.95em;">
-                        <span style="color: #dcdcaa; font-size: 0.9em; margin-right: 15px;">b9e4c15</span>
-                        <span style="color: #d4d4d4;">docs: Updated working paper on computational methods</span>
-                        <span style="color: #808080; float: right;">1 week ago</span>
-                    </div>
-                    <div style="padding: 15px 0; border-bottom: 1px solid #3e3e3e; font-family: monospace; font-size: 0.95em;">
-                        <span style="color: #dcdcaa; font-size: 0.9em; margin-right: 15px;">c2d8f91</span>
-                        <span style="color: #d4d4d4;">perf: Optimized value iteration using GPU acceleration</span>
-                        <span style="color: #808080; float: right;">2 weeks ago</span>
-                    </div>
-                    <div style="padding: 15px 0; font-family: monospace; font-size: 0.95em;">
-                        <span style="color: #dcdcaa; font-size: 0.9em; margin-right: 15px;">d4a2c88</span>
-                        <span style="color: #d4d4d4;">init: Started collaboration on climate economics project</span>
-                        <span style="color: #808080; float: right;">1 month ago</span>
+                    <div id="github-commits" style="min-height: 200px;">
+                        <!-- Commits will be loaded here -->
                     </div>
                 </div>
             </section>
@@ -226,6 +203,77 @@
                 this.style.boxShadow = 'none';
             });
         }
+        
+        // Fetch real GitHub commits
+        async function loadGitHubCommits() {
+            const username = 'longye-tian';
+            const commitsContainer = document.getElementById('github-commits');
+            
+            try {
+                // Fetch user's recent events
+                const response = await fetch(`https://api.github.com/users/${username}/events/public`);
+                const events = await response.json();
+                
+                // Filter for push events and extract commits
+                const pushEvents = events.filter(event => event.type === 'PushEvent');
+                const commits = [];
+                
+                pushEvents.slice(0, 5).forEach(event => {
+                    event.payload.commits.forEach(commit => {
+                        commits.push({
+                            sha: commit.sha.substring(0, 7),
+                            message: commit.message.split('\n')[0], // First line only
+                            repo: event.repo.name,
+                            date: new Date(event.created_at)
+                        });
+                    });
+                });
+                
+                // Display commits
+                if (commits.length > 0) {
+                    commitsContainer.innerHTML = commits.slice(0, 4).map(commit => {
+                        const timeAgo = getTimeAgo(commit.date);
+                        return `
+                            <div style="padding: 15px 0; border-bottom: 1px solid #3e3e3e; font-family: monospace; font-size: 0.95em;">
+                                <span style="color: #dcdcaa; font-size: 0.9em; margin-right: 15px;">${commit.sha}</span>
+                                <span style="color: #d4d4d4;">${commit.message}</span>
+                                <div style="font-size: 0.8em; color: #808080; margin-top: 5px;">
+                                    ${commit.repo} · ${timeAgo}
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                } else {
+                    commitsContainer.innerHTML = '<p style="color: #808080;">No recent commits found</p>';
+                }
+            } catch (error) {
+                console.error('Error fetching commits:', error);
+                commitsContainer.innerHTML = '<p style="color: #808080;">Unable to load commits</p>';
+            }
+        }
+        
+        function getTimeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            const intervals = {
+                year: 31536000,
+                month: 2592000,
+                week: 604800,
+                day: 86400,
+                hour: 3600,
+                minute: 60
+            };
+            
+            for (const [unit, secondsInUnit] of Object.entries(intervals)) {
+                const interval = Math.floor(seconds / secondsInUnit);
+                if (interval >= 1) {
+                    return `${interval} ${unit}${interval === 1 ? '' : 's'} ago`;
+                }
+            }
+            return 'just now';
+        }
+        
+        // Load commits when page loads
+        loadGitHubCommits();
     </script>
 </body>
 </html>
