@@ -28,7 +28,9 @@ h1 {
 
 .chinese-name {
     color: var(--accent-blue);
-    font-family: 'Noto Sans Mono CJK SC', 'Source Han Mono SC', var(--font-mono);
+    font-family: 'Noto Sans SC', 'Source Han Sans SC', 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', 'SimHei', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.1em;
 }
 
 /* Typing Animation Container */
