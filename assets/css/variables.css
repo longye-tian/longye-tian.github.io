@@ -44,4 +44,63 @@
     --z-sticky: 100;
     --z-modal: 1000;
     --z-tooltip: 1100;
+    
+    /* Language colors for dark theme */
+    --lang-python: #3572A5;
+    --lang-julia: #a270ba;
+    --lang-cpp: #f34b7d;
+    --lang-javascript: #f1e05a;
+    
+    /* Contribution graph colors for dark theme */
+    --contrib-level-0: var(--bg-tertiary);
+    --contrib-level-1: #0e4429;
+    --contrib-level-2: #006d32;
+    --contrib-level-3: #26a641;
+    --contrib-level-4: #39d353;
+    
+    /* Terminal button colors */
+    --terminal-red: #ff5f56;
+    --terminal-yellow: #ffbd2e;
+    --terminal-green: #27c93f;
+}
+
+/* Light Theme Variables */
+:root[data-theme="light"] {
+    /* Color Palette */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --bg-tertiary: #e0e0e0;
+    --text-primary: #1e1e1e;
+    --text-secondary: #606060;
+    --accent-blue: #0066cc;
+    --accent-teal: #007acc;
+    --accent-yellow: #b89500;
+    --accent-red: #d73a49;
+    --accent-green: #28a745;
+    --accent-purple: #6f42c1;
+    --accent-orange: #d73a49;
+    --border-color: #d1d5db;
+    
+    /* Shadows for light mode */
+    --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-normal: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-elevated: 0 10px 15px rgba(0, 0, 0, 0.1);
+    
+    /* Language colors for light theme */
+    --lang-python: #3572A5;
+    --lang-julia: #a270ba;
+    --lang-cpp: #f34b7d;
+    --lang-javascript: #f1e05a;
+    
+    /* Contribution graph colors for light theme */
+    --contrib-level-0: #ebedf0;
+    --contrib-level-1: #c6e48b;
+    --contrib-level-2: #7bc96f;
+    --contrib-level-3: #239a3b;
+    --contrib-level-4: #196127;
+    
+    /* Terminal button colors (same for light) */
+    --terminal-red: #ff5f56;
+    --terminal-yellow: #ffbd2e;
+    --terminal-green: #27c93f;
 }

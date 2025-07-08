@@ -143,7 +143,7 @@
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-elevated);
 }
 
 .project-header {
@@ -174,10 +174,10 @@
     background: var(--accent-blue);
 }
 
-.language-dot.python { background: #3572A5; }
-.language-dot.julia { background: #a270ba; }
-.language-dot.cpp { background: #f34b7d; }
-.language-dot.javascript { background: #f1e05a; }
+.language-dot.python { background: var(--lang-python); }
+.language-dot.julia { background: var(--lang-julia); }
+.language-dot.cpp { background: var(--lang-cpp); }
+.language-dot.javascript { background: var(--lang-javascript); }
 
 .project-description {
     color: var(--text-primary);
@@ -322,15 +322,15 @@
 .contribution-day {
     width: 11px;
     height: 11px;
-    background: var(--bg-tertiary);
+    background: var(--contrib-level-0);
     border-radius: 2px;
     transition: all 0.2s;
 }
 
-.contribution-day.level-1 { background: #0e4429; }
-.contribution-day.level-2 { background: #006d32; }
-.contribution-day.level-3 { background: #26a641; }
-.contribution-day.level-4 { background: #39d353; }
+.contribution-day.level-1 { background: var(--contrib-level-1); }
+.contribution-day.level-2 { background: var(--contrib-level-2); }
+.contribution-day.level-3 { background: var(--contrib-level-3); }
+.contribution-day.level-4 { background: var(--contrib-level-4); }
 
 .contribution-day:hover {
     transform: scale(1.5);

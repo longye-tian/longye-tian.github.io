@@ -13,6 +13,9 @@
     <!-- MathJax for LaTeX rendering - Only load when needed -->
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- External CSS Files -->
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/pages/index.css">
@@ -67,6 +70,9 @@
                 <a href="pages/study-notes.html">Study Notes</a>
                 <a href="pages/coding.html">Code</a>
                 <a href="pages/contact.html">Contact</a>
+                <button class="theme-toggle" onclick="CommonUtils.toggleTheme()" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
             <div class="nav-shortcut">
                 Press <kbd>Ctrl</kbd>+<kbd>K</kbd> to open command palette

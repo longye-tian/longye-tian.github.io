@@ -73,7 +73,7 @@
 
 .paper-entry:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-elevated);
     border-color: var(--accent-purple);
 }
 

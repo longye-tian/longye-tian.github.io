@@ -20,7 +20,7 @@
 
 .contact-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-elevated);
     border-color: var(--accent-blue);
 }
 
@@ -71,9 +71,9 @@
     background: var(--bg-secondary);
 }
 
-.terminal-button.red { background: #ff5f56; }
-.terminal-button.yellow { background: #ffbd2e; }
-.terminal-button.green { background: #27c93f; }
+.terminal-button.red { background: var(--terminal-red); }
+.terminal-button.yellow { background: var(--terminal-yellow); }
+.terminal-button.green { background: var(--terminal-green); }
 
 .terminal-title {
     color: var(--text-secondary);
@@ -147,7 +147,7 @@
 
 .info-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-elevated);
     border-color: var(--accent-teal);
 }
 
@@ -266,12 +266,12 @@
     background: var(--accent-blue);
     color: var(--bg-primary);
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-normal);
 }
 
 .interest-tag:active {
     transform: translateY(-1px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-subtle);
 }
 
 /* Office hours widget */

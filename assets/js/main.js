@@ -3,6 +3,39 @@
  */
 
 /**
+ * Theme management
+ */
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    // Update theme toggle button icon on load
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (themeToggle) {
+        const icon = themeToggle.querySelector('i');
+        if (icon) {
+            icon.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+    }
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // Update theme toggle button icon if it exists
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (themeToggle) {
+        const icon = themeToggle.querySelector('i');
+        if (icon) {
+            icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+    }
+}
+
+/**
  * Initialize fade-in animations using Intersection Observer
  */
 function initAnimations() {
@@ -208,6 +241,7 @@ function debounce(func, wait) {
  * Initialize all common functionality when DOM is loaded
  */
 document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
     initAnimations();
     initSmoothScroll();
     initHoverEffects();
@@ -223,5 +257,6 @@ window.CommonUtils = {
     initToggles,
     formatRelativeTime,
     copyToClipboard,
-    debounce
+    debounce,
+    toggleTheme
 };

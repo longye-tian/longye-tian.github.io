@@ -20,6 +20,12 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Smooth transitions for theme changes */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Scrollbar Styling */
@@ -256,25 +262,25 @@ li {
 }
 
 .badge.blue, .tag.blue {
-    background: rgba(86, 156, 214, 0.2);
+    background: var(--bg-tertiary);
     color: var(--accent-blue);
     border-color: var(--accent-blue);
 }
 
 .badge.green, .tag.green {
-    background: rgba(106, 153, 85, 0.2);
+    background: var(--bg-tertiary);
     color: var(--accent-green);
     border-color: var(--accent-green);
 }
 
 .badge.yellow, .tag.yellow {
-    background: rgba(220, 220, 170, 0.2);
+    background: var(--bg-tertiary);
     color: var(--accent-yellow);
     border-color: var(--accent-yellow);
 }
 
 .badge.red, .tag.red {
-    background: rgba(209, 105, 105, 0.2);
+    background: var(--bg-tertiary);
     color: var(--accent-red);
     border-color: var(--accent-red);
 }
