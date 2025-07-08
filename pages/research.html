@@ -17,25 +17,25 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav style="background-color: #252526; padding: 20px 0; margin-bottom: 40px; border-bottom: 1px solid #3e3e3e;">
-        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center;">
-            <div style="display: flex; align-items: center; gap: 40px;">
-                <div style="font-size: 1.2em; font-weight: 600;">
-                    <a href="../index.html" style="color: #e0e0e0; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;">Longye Tian</a>
+    <nav>
+        <div class="nav-wrapper">
+            <div class="nav-content">
+                <div class="nav-brand">
+                    <a href="../index.html">Longye Tian</a>
                 </div>
-                <div style="display: flex; gap: 30px; align-items: center; flex-direction: row;">
-                    <a href="../index.html" style="color: #969696; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace; transition: color 0.3s ease; display: inline-block;" onmouseover="this.style.color='#e0e0e0'" onmouseout="this.style.color='#969696'">Home</a>
-                    <a href="research.html" style="color: #e0e0e0; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace; border-bottom: 2px solid #569cd6; padding-bottom: 2px; display: inline-block;">Research</a>
-                    <a href="study-notes.html" style="color: #969696; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace; transition: color 0.3s ease; display: inline-block;" onmouseover="this.style.color='#e0e0e0'" onmouseout="this.style.color='#969696'">Study Notes</a>
-                    <a href="coding.html" style="color: #969696; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace; transition: color 0.3s ease; display: inline-block;" onmouseover="this.style.color='#e0e0e0'" onmouseout="this.style.color='#969696'">Code</a>
-                    <a href="contact.html" style="color: #969696; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace; transition: color 0.3s ease; display: inline-block;" onmouseover="this.style.color='#e0e0e0'" onmouseout="this.style.color='#969696'">Contact</a>
+                <div class="nav-links">
+                    <a href="../index.html">Home</a>
+                    <a href="research.html" class="current">Research</a>
+                    <a href="study-notes.html">Study Notes</a>
+                    <a href="coding.html">Code</a>
+                    <a href="contact.html">Contact</a>
                     <button class="theme-toggle" onclick="CommonUtils.toggleTheme()" title="Toggle theme">
                         <i class="fas fa-moon"></i>
                     </button>
                 </div>
             </div>
-            <div style="color: #606060; font-size: 0.85em; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;">
-                Press <kbd style="background: #3e3e3e; padding: 2px 6px; border-radius: 3px; border: 1px solid #555; font-size: 0.9em;">Ctrl</kbd>+<kbd style="background: #3e3e3e; padding: 2px 6px; border-radius: 3px; border: 1px solid #555; font-size: 0.9em;">K</kbd> to open command palette
+            <div class="nav-shortcut">
+                Press <kbd>Ctrl</kbd>+<kbd>K</kbd> to open command palette
             </div>
         </div>
     </nav>

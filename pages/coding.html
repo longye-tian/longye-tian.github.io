@@ -25,25 +25,25 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav style="background-color: #252526; padding: 20px 0; margin-bottom: 40px; border-bottom: 1px solid #3e3e3e;">
-        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center;">
-            <div style="display: flex; align-items: center; gap: 40px;">
-                <div style="font-size: 1.2em; font-weight: 600;">
-                    <a href="../index.html" style="color: #e0e0e0; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;">Longye Tian</a>
+    <nav>
+        <div class="nav-wrapper">
+            <div class="nav-content">
+                <div class="nav-brand">
+                    <a href="../index.html">Longye Tian</a>
                 </div>
-                <div style="display: flex; gap: 30px; align-items: center; flex-direction: row;">
-                    <a href="../index.html" style="color: #969696; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace; transition: color 0.3s ease; display: inline-block;" onmouseover="this.style.color='#e0e0e0'" onmouseout="this.style.color='#969696'">Home</a>
-                    <a href="research.html" style="color: #969696; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace; transition: color 0.3s ease; display: inline-block;" onmouseover="this.style.color='#e0e0e0'" onmouseout="this.style.color='#969696'">Research</a>
-                    <a href="study-notes.html" style="color: #969696; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace; transition: color 0.3s ease; display: inline-block;" onmouseover="this.style.color='#e0e0e0'" onmouseout="this.style.color='#969696'">Study Notes</a>
-                    <a href="coding.html" style="color: #e0e0e0; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace; border-bottom: 2px solid #569cd6; padding-bottom: 2px; display: inline-block;">Code</a>
-                    <a href="contact.html" style="color: #969696; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace; transition: color 0.3s ease; display: inline-block;" onmouseover="this.style.color='#e0e0e0'" onmouseout="this.style.color='#969696'">Contact</a>
+                <div class="nav-links">
+                    <a href="../index.html">Home</a>
+                    <a href="research.html">Research</a>
+                    <a href="study-notes.html">Study Notes</a>
+                    <a href="coding.html" class="current">Code</a>
+                    <a href="contact.html">Contact</a>
                     <button class="theme-toggle" onclick="CommonUtils.toggleTheme()" title="Toggle theme">
                         <i class="fas fa-moon"></i>
                     </button>
                 </div>
             </div>
-            <div style="color: #606060; font-size: 0.85em; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;">
-                Press <kbd style="background: #3e3e3e; padding: 2px 6px; border-radius: 3px; border: 1px solid #555; font-size: 0.9em;">Ctrl</kbd>+<kbd style="background: #3e3e3e; padding: 2px 6px; border-radius: 3px; border: 1px solid #555; font-size: 0.9em;">K</kbd> to open command palette
+            <div class="nav-shortcut">
+                Press <kbd>Ctrl</kbd>+<kbd>K</kbd> to open command palette
             </div>
         </div>
     </nav>
@@ -90,9 +90,9 @@
                     <span style="color: var(--accent-green);">//</span> Contribution Activity
                     <span style="font-size: 0.7em; color: var(--text-secondary); margin-left: 20px;">Last 52 weeks</span>
                 </h2>
-                <div style="background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%); border-radius: 12px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); position: relative; overflow: hidden;">
+                <div class="contribution-graph">
                     <!-- Animated background effect -->
-                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 50%, rgba(106, 153, 85, 0.1) 0%, transparent 50%); pointer-events: none;"></div>
+                    <div class="contribution-graph-effect"></div>
                     
                     <!-- Stats summary -->
                     <div style="display: flex; justify-content: space-between; margin-bottom: 25px; position: relative;">
@@ -107,13 +107,13 @@
                     </div>
                     
                     <!-- Graph container with glow effect -->
-                    <div style="background: rgba(0, 0, 0, 0.2); border-radius: 8px; padding: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(106, 153, 85, 0.2);">
+                    <div class="contribution-graph-container">
                         <div id="activity-graph" style="display: flex; gap: 4px; align-items: flex-end; min-height: 120px; position: relative;">
                             <!-- Activity graph will be populated here -->
                         </div>
                         
                         <!-- Tooltip -->
-                        <div id="activity-tooltip" style="position: absolute; background: rgba(30, 30, 30, 0.95); border: 1px solid var(--accent-green); border-radius: 6px; padding: 8px 12px; font-size: 0.85em; display: none; pointer-events: none; z-index: 100; backdrop-filter: blur(5px);">
+                        <div id="activity-tooltip" class="activity-tooltip" style="display: none;">
                             <div style="color: var(--accent-green); font-weight: bold;">0 contributions</div>
                             <div style="color: var(--text-secondary); font-size: 0.9em;">on date</div>
                         </div>
