@@ -226,12 +226,21 @@
     text-align: center;
     transition: all 0.3s ease;
     cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
 }
 
 .interest-tag:hover {
     background: var(--accent-blue);
     color: var(--bg-primary);
     transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.interest-tag:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 /* Office hours widget */

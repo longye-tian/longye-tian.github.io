@@ -14,7 +14,8 @@ const commands = {
   help     - Show this help message
   clear    - Clear terminal
   send     - Send a message
-  collab   - Propose a collaboration
+  projects - View current research projects
+  collab   - Learn about collaboration
   meeting  - Schedule a meeting
   cv       - Request my CV
   exit     - Close terminal`);
@@ -37,14 +38,23 @@ const commands = {
         addOutput('What\'s your name?');
     },
     
+    projects: () => {
+        addOutput('🔬 Current Research Projects:');
+        addOutput('────────────────────────────────');
+        addOutput('1. Markov Dynamics and Contraction Mappings');
+        addOutput('   - Exploring Du\'s theorem applications in economics');
+        addOutput('2. Reinforcement Learning in Economic Models');
+        addOutput('   - Developing RL algorithms for policy optimization');
+        addOutput('3. GPU-Accelerated Dynamic Programming');
+        addOutput('   - Building high-performance solvers in Julia');
+        addOutput('\nThese projects keep me quite busy, but I love discussing ideas!');
+    },
+    
     collab: () => {
-        currentStep = 'collab_type';
-        addOutput('Great! I\'m always interested in collaborations.');
-        addOutput('What type of collaboration are you interested in?');
-        addOutput('1) Research project');
-        addOutput('2) Open source contribution');
-        addOutput('3) Conference/workshop');
-        addOutput('4) Other');
+        addOutput('Thanks for your interest in collaboration!');
+        addOutput('I\'m currently focused on my ongoing research projects and not actively seeking new collaborations.');
+        addOutput('However, I\'m always happy to discuss ideas and stay connected.');
+        addOutput('Feel free to send me a message using the "send" command or email me directly.');
     },
     
     meeting: () => {
@@ -161,6 +171,25 @@ function sendMessage() {
     }, 1500);
 }
 
+// Interest descriptions
+const interestDescriptions = {
+    'RL in Economics': 'I apply reinforcement learning techniques to economic modeling, particularly in understanding agent behavior in dynamic markets and policy optimization.',
+    'GPU Computing': 'Leveraging GPU acceleration for large-scale economic simulations and solving high-dimensional dynamic programming problems.',
+    'Dynamic Programming': 'My core research focus - developing efficient algorithms for solving Bellman equations and exploring contraction mappings in economic contexts.',
+    'Market Design': 'Interested in mechanism design and algorithmic approaches to creating efficient market structures.',
+    'Climate Economics': 'Applying computational methods to climate-economy models and studying optimal carbon pricing policies.',
+    'Open Source Tools': 'Contributing to and developing open-source software for computational economics, particularly in Julia and Python.'
+};
+
+// Show interest info in terminal
+window.showInterestInfo = function(interest) {
+    addOutput(`\n📚 ${interest}`);
+    addOutput('─'.repeat(40));
+    addOutput(interestDescriptions[interest] || 'Research area description coming soon...');
+    addOutput('\nType "help" for more commands or click another topic to explore.');
+    terminalInput.focus();
+};
+
 // Initialize terminal
 document.addEventListener('DOMContentLoaded', function() {
     setupInput();
@@ -170,26 +199,11 @@ document.addEventListener('DOMContentLoaded', function() {
         terminalInput.focus();
     });
     
-    // Interest tags interaction
-    document.querySelectorAll('.interest-tag').forEach(tag => {
-        tag.addEventListener('click', function() {
-            const interest = this.textContent;
-            terminalInput.value = `collab`;
-            terminalInput.focus();
-            
-            // Trigger enter key
-            const event = new KeyboardEvent('keypress', {
-                key: 'Enter',
-                keyCode: 13,
-                which: 13
-            });
-            terminalInput.dispatchEvent(event);
-            
-            setTimeout(() => {
-                terminalInput.value = `I'm interested in collaborating on ${interest}`;
-            }, 1000);
-        });
-    });
+    // Add initial welcome message
+    setTimeout(() => {
+        addOutput('\nWelcome! I\'m currently focused on my research projects, but feel free to explore and connect.');
+        addOutput('Type "help" to see available commands or click on any research interest to learn more.\n');
+    }, 500);
     
     // Animate status dot
     const statusDot = document.querySelector('.status-dot');
