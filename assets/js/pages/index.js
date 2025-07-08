@@ -57,10 +57,13 @@ const commandPalette = {
     handleCommand(action) {
         switch(action) {
             case 'research':
-                document.getElementById('research')?.scrollIntoView({ behavior: 'smooth' });
+                window.location.href = 'pages/research.html';
+                break;
+            case 'study-notes':
+                window.location.href = 'pages/study-notes.html';
                 break;
             case 'contact':
-                window.location.href = '#contact';
+                window.location.href = 'pages/contact.html';
                 break;
             case 'github':
                 window.open('https://github.com/longyetian', '_blank');

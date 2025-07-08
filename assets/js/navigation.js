@@ -10,6 +10,7 @@ class CommandPalette {
         this.commands = [
             { name: 'Go to About', action: () => this.navigateTo('#about'), icon: '👤' },
             { name: 'Go to Research', action: () => this.navigateTo('research.html'), icon: '📚' },
+            { name: 'Go to Study Notes', action: () => this.navigateTo('study-notes.html'), icon: '📝' },
             { name: 'Go to Background', action: () => this.navigateTo('background.html'), icon: '🎓' },
             { name: 'Go to Code', action: () => this.navigateTo('coding.html'), icon: '💻' },
             { name: 'Go to Contact', action: () => this.navigateTo('contact.html'), icon: '📧' },

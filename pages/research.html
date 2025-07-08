@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Notes - Longye Tian</title>
+    <title>Research - Longye Tian</title>
     
     <!-- External CSS -->
     <link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,8 @@
                 </div>
                 <div style="display: flex; gap: 30px; align-items: center;">
                     <a href="../index.html" style="color: #969696; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace; transition: color 0.3s ease;" onmouseover="this.style.color='#e0e0e0'" onmouseout="this.style.color='#969696'">Home</a>
-                    <a href="research.html" style="color: #e0e0e0; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace; border-bottom: 2px solid #569cd6; padding-bottom: 2px;">Study Notes</a>
+                    <a href="research.html" style="color: #e0e0e0; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace; border-bottom: 2px solid #569cd6; padding-bottom: 2px;">Research</a>
+                    <a href="study-notes.html" style="color: #969696; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace; transition: color 0.3s ease;" onmouseover="this.style.color='#e0e0e0'" onmouseout="this.style.color='#969696'">Study Notes</a>
                     <a href="background.html" style="color: #969696; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace; transition: color 0.3s ease;" onmouseover="this.style.color='#e0e0e0'" onmouseout="this.style.color='#969696'">Background</a>
                     <a href="coding.html" style="color: #969696; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace; transition: color 0.3s ease;" onmouseover="this.style.color='#e0e0e0'" onmouseout="this.style.color='#969696'">Code</a>
                     <a href="contact.html" style="color: #969696; text-decoration: none; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace; transition: color 0.3s ease;" onmouseover="this.style.color='#e0e0e0'" onmouseout="this.style.color='#969696'">Contact</a>
@@ -36,299 +37,107 @@
 
     <div class="container">
         <div class="research-header">
-            <h1>Study Notes</h1>
+            <h1>Research</h1>
             <p style="color: var(--text-secondary);">
-                <span style="color: var(--accent-green);">//</span> Personal notes on economics, computation, and machine learning
+                <span style="color: var(--accent-green);">//</span> Working papers and research in computational economics
             </p>
         </div>
         
-        <!-- Study notes statistics -->
+        <!-- Research statistics -->
         <div class="research-stats">
             <div class="stat-item">
-                <div class="stat-number">8</div>
-                <div class="stat-label">Total Notes</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">6</div>
-                <div class="stat-label">Theory</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">2</div>
-                <div class="stat-label">Applications</div>
+                <div class="stat-number">0</div>
+                <div class="stat-label">Published</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">0</div>
-                <div class="stat-label">Code Examples</div>
+                <div class="stat-label">Working Papers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">0</div>
+                <div class="stat-label">In Progress</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Presentations</div>
             </div>
         </div>
         
         <!-- Filter tabs -->
         <div class="filter-tabs">
             <div class="filter-tab active" data-filter="all">
-                All Notes <span class="filter-count">(8)</span>
+                All Papers <span class="filter-count">(0)</span>
             </div>
-            <div class="filter-tab" data-filter="theory">
-                Theory <span class="filter-count">(6)</span>
+            <div class="filter-tab" data-filter="published">
+                Published <span class="filter-count">(0)</span>
             </div>
-            <div class="filter-tab" data-filter="applications">
-                Applications <span class="filter-count">(2)</span>
+            <div class="filter-tab" data-filter="working">
+                Working Papers <span class="filter-count">(0)</span>
             </div>
-            <div class="filter-tab" data-filter="code">
-                Code Examples <span class="filter-count">(0)</span>
+            <div class="filter-tab" data-filter="progress">
+                In Progress <span class="filter-count">(0)</span>
             </div>
         </div>
         
-        <!-- Study notes container -->
-        <div class="papers-container" id="notes-container">
-            <!-- Du's Theorem -->
-            <article class="paper-entry" data-status="theory">
-                <span class="paper-status status-theory">Theory</span>
-                <h2 class="paper-title">Du's Theorem and Lemmas</h2>
-                <div class="paper-venue">Personal Study Notes • 2024</div>
-                <div class="paper-tags">
-                    <span class="tag">Fixed Point Theory</span>
-                    <span class="tag">Contraction Mappings</span>
-                    <span class="tag">Mathematical Analysis</span>
-                </div>
-                <div class="paper-abstract">
-                    <div class="abstract-toggle">
-                        <span>▶</span> Show Summary
-                    </div>
-                    <div class="abstract-content">
-                        Detailed exploration of Du's theorem and its applications in fixed point theory. Includes comprehensive proofs, lemmas, and connections to contraction mapping principles used in economic dynamics.
-                    </div>
-                </div>
-                <div class="paper-actions">
-                    <a href="../assets/study-notes/Du's theorem and lemms.pdf" class="action-btn" target="_blank">
-                        <span>📄</span> PDF
-                    </a>
-                </div>
-            </article>
-
-            <!-- Stochastic Approximation -->
-            <article class="paper-entry" data-status="theory">
-                <span class="paper-status status-theory">Theory</span>
-                <h2 class="paper-title">Extending Stochastic Approximation to Eventual Contraction</h2>
-                <div class="paper-venue">Personal Study Notes • 2024</div>
-                <div class="paper-tags">
-                    <span class="tag">Stochastic Approximation</span>
-                    <span class="tag">Contraction Theory</span>
-                    <span class="tag">Convergence Analysis</span>
-                </div>
-                <div class="paper-abstract">
-                    <div class="abstract-toggle">
-                        <span>▶</span> Show Summary
-                    </div>
-                    <div class="abstract-content">
-                        Analysis of stochastic approximation methods extended to cases with eventual contraction properties. Explores convergence guarantees and applications to reinforcement learning algorithms in economics.
-                    </div>
-                </div>
-                <div class="paper-actions">
-                    <a href="../assets/study-notes/Extending Stochastic Approximation to Eventual Contraction.pdf" class="action-btn" target="_blank">
-                        <span>📄</span> PDF
-                    </a>
-                </div>
-            </article>
-
-            <!-- Natural Gradient Descent -->
-            <article class="paper-entry" data-status="applications">
-                <span class="paper-status status-applications">Applications</span>
-                <h2 class="paper-title">Natural Gradient Descent on RBC</h2>
-                <div class="paper-venue">Personal Study Notes • 2024</div>
-                <div class="paper-tags">
-                    <span class="tag">Natural Gradient</span>
-                    <span class="tag">RBC Models</span>
-                    <span class="tag">Optimization</span>
-                    <span class="tag">Macroeconomics</span>
-                </div>
-                <div class="paper-abstract">
-                    <div class="abstract-toggle">
-                        <span>▶</span> Show Summary
-                    </div>
-                    <div class="abstract-content">
-                        Application of natural gradient descent methods to Real Business Cycle (RBC) models. Demonstrates how information geometry can improve optimization in macroeconomic models with high-dimensional parameter spaces.
-                    </div>
-                </div>
-                <div class="paper-actions">
-                    <a href="../assets/study-notes/Natural Gradient Descent on RBC.pdf" class="action-btn" target="_blank">
-                        <span>📄</span> PDF
-                    </a>
-                </div>
-            </article>
-
-            <!-- Neural Networks -->
-            <article class="paper-entry" data-status="theory">
-                <span class="paper-status status-theory">Theory</span>
-                <h2 class="paper-title">Neural Network and Curse of Dimensionality</h2>
-                <div class="paper-venue">Personal Study Notes • 2024</div>
-                <div class="paper-tags">
-                    <span class="tag">Neural Networks</span>
-                    <span class="tag">High Dimensions</span>
-                    <span class="tag">Machine Learning</span>
-                    <span class="tag">Approximation Theory</span>
-                </div>
-                <div class="paper-abstract">
-                    <div class="abstract-toggle">
-                        <span>▶</span> Show Summary
-                    </div>
-                    <div class="abstract-content">
-                        Examination of how neural networks address the curse of dimensionality in high-dimensional function approximation. Covers universal approximation theorems and their implications for economic modeling.
-                    </div>
-                </div>
-                <div class="paper-actions">
-                    <a href="../assets/study-notes/Neural Network and Curse of Dimensionality.pdf" class="action-btn" target="_blank">
-                        <span>📄</span> PDF
-                    </a>
-                </div>
-            </article>
-
-            <!-- Stochastic Analysis -->
-            <article class="paper-entry" data-status="theory">
-                <span class="paper-status status-theory">Theory</span>
-                <h2 class="paper-title">Note on Stochastic Analysis</h2>
-                <div class="paper-venue">Personal Study Notes • 2024</div>
-                <div class="paper-tags">
-                    <span class="tag">Stochastic Processes</span>
-                    <span class="tag">Probability Theory</span>
-                    <span class="tag">Itô Calculus</span>
-                </div>
-                <div class="paper-abstract">
-                    <div class="abstract-toggle">
-                        <span>▶</span> Show Summary
-                    </div>
-                    <div class="abstract-content">
-                        Comprehensive notes on stochastic analysis including Brownian motion, Itô calculus, and stochastic differential equations. Applications to asset pricing and optimal control in continuous time.
-                    </div>
-                </div>
-                <div class="paper-actions">
-                    <a href="../assets/study-notes/Note on Stochastic Analysis.pdf" class="action-btn" target="_blank">
-                        <span>📄</span> PDF
-                    </a>
-                </div>
-            </article>
-
-            <!-- Positive Operators -->
-            <article class="paper-entry" data-status="theory">
-                <span class="paper-status status-theory">Theory</span>
-                <h2 class="paper-title">Positive Operators are Order Continuous</h2>
-                <div class="paper-venue">Personal Study Notes • 2024</div>
-                <div class="paper-tags">
-                    <span class="tag">Operator Theory</span>
-                    <span class="tag">Functional Analysis</span>
-                    <span class="tag">Order Theory</span>
-                </div>
-                <div class="paper-abstract">
-                    <div class="abstract-toggle">
-                        <span>▶</span> Show Summary
-                    </div>
-                    <div class="abstract-content">
-                        Proof and analysis of the order continuity property of positive operators. Important for understanding monotone operators in dynamic programming and fixed point theorems in economics.
-                    </div>
-                </div>
-                <div class="paper-actions">
-                    <a href="../assets/study-notes/Positive operators are Order continuous.pdf" class="action-btn" target="_blank">
-                        <span>📄</span> PDF
-                    </a>
-                </div>
-            </article>
-
-            <!-- Graph Neural Networks -->
-            <article class="paper-entry" data-status="theory">
-                <span class="paper-status status-theory">Theory</span>
-                <h2 class="paper-title">Power of Graph Neural Networks</h2>
-                <div class="paper-venue">Personal Study Notes • 2024</div>
-                <div class="paper-tags">
-                    <span class="tag">Graph Neural Networks</span>
-                    <span class="tag">Deep Learning</span>
-                    <span class="tag">Network Analysis</span>
-                </div>
-                <div class="paper-abstract">
-                    <div class="abstract-toggle">
-                        <span>▶</span> Show Summary
-                    </div>
-                    <div class="abstract-content">
-                        Investigation of the expressive power and capabilities of Graph Neural Networks. Explores applications to economic networks, social networks, and financial contagion models.
-                    </div>
-                </div>
-                <div class="paper-actions">
-                    <a href="../assets/study-notes/Power of Graph Neural Net.pdf" class="action-btn" target="_blank">
-                        <span>📄</span> PDF
-                    </a>
-                </div>
-            </article>
-
-            <!-- Present-bias Model -->
-            <article class="paper-entry" data-status="applications">
-                <span class="paper-status status-applications">Applications</span>
-                <h2 class="paper-title">Present-bias Aiyagari Model</h2>
-                <div class="paper-venue">Personal Study Notes • 2024</div>
-                <div class="paper-tags">
-                    <span class="tag">Behavioral Economics</span>
-                    <span class="tag">Aiyagari Model</span>
-                    <span class="tag">Present Bias</span>
-                    <span class="tag">Heterogeneous Agents</span>
-                </div>
-                <div class="paper-abstract">
-                    <div class="abstract-toggle">
-                        <span>▶</span> Show Summary
-                    </div>
-                    <div class="abstract-content">
-                        Extension of the Aiyagari model incorporating present-bias preferences and time-inconsistent behavior. Analyzes welfare implications and equilibrium wealth distributions under quasi-hyperbolic discounting.
-                    </div>
-                </div>
-                <div class="paper-actions">
-                    <a href="../assets/study-notes/Present-bias Ayagari Model.pdf" class="action-btn" target="_blank">
-                        <span>📄</span> PDF
-                    </a>
-                </div>
-            </article>
+        <!-- Papers container -->
+        <div class="papers-container" id="papers-container">
+            <!-- Placeholder for future research papers -->
+            <div style="text-align: center; padding: 60px 20px; color: var(--text-secondary);">
+                <p style="font-size: 1.2em; margin-bottom: 20px;">
+                    <span style="color: var(--accent-green);">//</span> Research papers coming soon
+                </p>
+                <p style="font-size: 0.95em; line-height: 1.6;">
+                    Currently working on several papers in computational economics and dynamic programming.<br>
+                    Check back later for updates.
+                </p>
+            </div>
             
-            <!-- Example structure for future notes (hidden by default) -->
-            <article class="paper-entry" data-status="theory" style="display: none;">
-                <span class="paper-status status-theory" style="background: var(--accent-purple);">Theory</span>
+            <!-- Example structure for future papers (hidden by default) -->
+            <article class="paper-entry" data-status="working" style="display: none;">
+                <span class="paper-status status-working" style="background: var(--accent-yellow);">Working Paper</span>
                 
                 <h2 class="paper-title">
-                    Example: Dynamic Programming Fundamentals
+                    Example: Computational Methods for Dynamic Economies
                 </h2>
                 
+                <div class="paper-authors">
+                    Longye Tian, John Stachurski
+                </div>
+                
                 <div class="paper-venue">
-                    Last updated: January 2025
+                    Working Paper • 2025
                 </div>
                 
                 <div class="paper-tags">
-                    <span class="tag">Bellman Equation</span>
-                    <span class="tag">Value Iteration</span>
-                    <span class="tag">Policy Iteration</span>
+                    <span class="tag">Dynamic Programming</span>
+                    <span class="tag">Computational Methods</span>
+                    <span class="tag">Economic Theory</span>
                 </div>
                 
                 <div class="paper-abstract">
                     <div class="abstract-toggle">
-                        <span>▶</span> Show Summary
+                        <span>▶</span> Show Abstract
                     </div>
                     <div class="abstract-content">
-                        Comprehensive notes on dynamic programming methods in economics, including 
-                        the Bellman equation, value function iteration, policy iteration, and 
-                        Howard's improvement algorithm. Includes Python implementations and 
-                        convergence proofs.
+                        This paper develops new computational methods for solving dynamic economic models
+                        with high-dimensional state spaces. We introduce a novel algorithm that combines
+                        reinforcement learning techniques with traditional dynamic programming approaches
+                        to achieve faster convergence and better accuracy.
                     </div>
-                </div>
-                
-                <div class="math-preview">
-                    <p style="color: var(--accent-green); font-size: 0.9em; margin-bottom: 15px;">
-                        // Bellman equation
-                    </p>
-                    $$V(x) = \max_{a \in \Gamma(x)} \{u(x,a) + \beta \mathbb{E}[V(x')|x,a]\}$$
                 </div>
                 
                 <div class="paper-actions">
                     <a href="#" class="action-btn">
-                        <span>📖</span> Read Note
+                        <span>📄</span> PDF
                     </a>
                     <a href="#" class="action-btn">
-                        <span>💻</span> View Code
+                        <span>📊</span> Slides
                     </a>
-                    <a href="#" class="action-btn show-math-btn">
-                        <span>∑</span> Key Equations
+                    <a href="#" class="action-btn">
+                        <span>💻</span> Code
+                    </a>
+                    <a href="#" class="action-btn">
+                        <span>📚</span> BibTeX
                     </a>
                 </div>
             </article>
