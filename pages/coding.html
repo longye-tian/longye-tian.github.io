@@ -67,12 +67,6 @@
                     <div class="stat-label">Following</div>
                 </div>
             </div>
-            
-            <!-- Debug buttons -->
-            <div style="margin-top: 10px;">
-                <button onclick="debugGitHub()" style="padding: 5px 10px; background: #333; color: #fff; border: 1px solid #555; cursor: pointer; margin-right: 10px;">Debug API</button>
-                <button onclick="clearCacheAndReload()" style="padding: 5px 10px; background: #333; color: #fff; border: 1px solid #555; cursor: pointer;">Clear Cache & Reload</button>
-            </div>
         </header>
         
         <!-- Loading indicator -->
@@ -84,44 +78,52 @@
         
         <!-- Projects Container -->
         <div id="projects-container" style="display: none;">
-            <!-- Git Log Section -->
-            <section style="margin-bottom: 40px;">
-                <h2 style="color: var(--accent-green); font-family: monospace; margin-bottom: 20px;">
-                    <span style="color: var(--accent-green);">$</span> git log --oneline --recent
-                    <span id="refresh-indicator" style="display: none; font-size: 0.6em; color: #6a9955; margin-left: 10px;">
-                        <span style="animation: spin 1s linear infinite; display: inline-block;">↻</span> updating...
-                    </span>
-                    <button onclick="loadGitHubCommits(true)" style="font-size: 0.6em; background: none; border: 1px solid #6a9955; color: #6a9955; padding: 2px 8px; margin-left: 10px; cursor: pointer; border-radius: 3px; font-family: monospace;">↻ Refresh</button>
-                </h2>
-                
-                <div style="background: #2d2d2d; border-radius: 8px; padding: 20px;">
-                    <div id="github-commits" style="min-height: 100px;">
-                        <div style="color: #6a9955; font-family: monospace; font-size: 0.9em;">
-                            Loading recent commits...
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
             <!-- Activity Graph -->
-            <section style="margin-bottom: 40px;">
-                <h2 style="color: var(--accent-green); font-family: monospace; margin-bottom: 20px;">
+            <section style="margin-bottom: 60px;">
+                <h2 style="color: var(--accent-green); font-family: monospace; margin-bottom: 30px;">
                     <span style="color: var(--accent-green);">//</span> Contribution Activity
+                    <span style="font-size: 0.7em; color: var(--text-secondary); margin-left: 20px;">Last 52 weeks</span>
                 </h2>
-                <div style="background: #2d2d2d; border-radius: 8px; padding: 20px; overflow-x: auto;">
-                    <div id="activity-graph" style="display: flex; gap: 3px; align-items: flex-end; min-height: 100px;">
-                        <!-- Activity graph will be populated here -->
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 10px; margin-top: 15px; font-size: 0.85em; color: var(--text-secondary);">
-                        <span>Less</span>
-                        <div style="display: flex; gap: 3px;">
-                            <div style="width: 12px; height: 12px; background: #161b22; border-radius: 2px;"></div>
-                            <div style="width: 12px; height: 12px; background: #0e4429; border-radius: 2px;"></div>
-                            <div style="width: 12px; height: 12px; background: #006d32; border-radius: 2px;"></div>
-                            <div style="width: 12px; height: 12px; background: #26a641; border-radius: 2px;"></div>
-                            <div style="width: 12px; height: 12px; background: #39d353; border-radius: 2px;"></div>
+                <div style="background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%); border-radius: 12px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); position: relative; overflow: hidden;">
+                    <!-- Animated background effect -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 50%, rgba(106, 153, 85, 0.1) 0%, transparent 50%); pointer-events: none;"></div>
+                    
+                    <!-- Stats summary -->
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 25px; position: relative;">
+                        <div>
+                            <div id="total-contributions" style="font-size: 2em; color: var(--accent-green); font-weight: bold;">0</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9em;">Total contributions</div>
                         </div>
-                        <span>More</span>
+                        <div style="text-align: right;">
+                            <div id="current-streak" style="font-size: 2em; color: var(--accent-yellow); font-weight: bold;">0</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9em;">Current streak</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Graph container with glow effect -->
+                    <div style="background: rgba(0, 0, 0, 0.2); border-radius: 8px; padding: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(106, 153, 85, 0.2);">
+                        <div id="activity-graph" style="display: flex; gap: 4px; align-items: flex-end; min-height: 120px; position: relative;">
+                            <!-- Activity graph will be populated here -->
+                        </div>
+                        
+                        <!-- Tooltip -->
+                        <div id="activity-tooltip" style="position: absolute; background: rgba(30, 30, 30, 0.95); border: 1px solid var(--accent-green); border-radius: 6px; padding: 8px 12px; font-size: 0.85em; display: none; pointer-events: none; z-index: 100; backdrop-filter: blur(5px);">
+                            <div style="color: var(--accent-green); font-weight: bold;">0 contributions</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9em;">on date</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Legend with gradient -->
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 20px; font-size: 0.85em;">
+                        <span style="color: var(--text-secondary);">Less</span>
+                        <div style="display: flex; gap: 4px; align-items: center;">
+                            <div style="width: 14px; height: 14px; background: #161b22; border-radius: 3px; border: 1px solid #30363d;"></div>
+                            <div style="width: 14px; height: 14px; background: #0e4429; border-radius: 3px; border: 1px solid #30363d;"></div>
+                            <div style="width: 14px; height: 14px; background: #006d32; border-radius: 3px; border: 1px solid #30363d;"></div>
+                            <div style="width: 14px; height: 14px; background: #26a641; border-radius: 3px; border: 1px solid #30363d;"></div>
+                            <div style="width: 14px; height: 14px; background: #39d353; border-radius: 3px; border: 1px solid #30363d; box-shadow: 0 0 10px rgba(57, 211, 83, 0.5);"></div>
+                        </div>
+                        <span style="color: var(--text-secondary);">More</span>
                     </div>
                 </div>
             </section>
@@ -171,62 +173,6 @@
     <script>
         const username = 'longye-tian';
         
-        // Debug: Test immediately
-        console.log('Script loaded. Testing GitHub API...');
-        fetch('https://api.github.com/users/longye-tian')
-            .then(r => r.json())
-            .then(data => {
-                console.log('Quick test - GitHub user data:', data);
-                console.log('Repos:', data.public_repos, 'Followers:', data.followers);
-            })
-            .catch(err => console.error('Quick test failed:', err));
-            
-        // Clear cache and reload
-        window.clearCacheAndReload = async function() {
-            localStorage.removeItem(CACHE_KEY);
-            console.log('Cache cleared, reloading data...');
-            
-            // Show loading state
-            document.getElementById('loading').style.display = 'block';
-            document.getElementById('projects-container').style.display = 'none';
-            document.getElementById('error-message').style.display = 'none';
-            
-            // Reload data
-            await initializeGitHub();
-        };
-        
-        // Debug function
-        window.debugGitHub = async function() {
-            console.log('=== DEBUG START ===');
-            console.log('Username:', username);
-            
-            // Check if elements exist
-            console.log('repo-count element:', document.getElementById('repo-count'));
-            console.log('star-count element:', document.getElementById('star-count'));
-            console.log('follower-count element:', document.getElementById('follower-count'));
-            console.log('following-count element:', document.getElementById('following-count'));
-            
-            // Try manual API call
-            try {
-                const response = await fetch(`https://api.github.com/users/${username}`);
-                console.log('API Response status:', response.status);
-                const data = await response.json();
-                console.log('API Data:', data);
-                
-                // Try manual update
-                if (document.getElementById('repo-count')) {
-                    document.getElementById('repo-count').textContent = data.public_repos || 0;
-                    console.log('Manually set repo-count to:', data.public_repos);
-                }
-                if (document.getElementById('follower-count')) {
-                    document.getElementById('follower-count').textContent = data.followers || 0;
-                    console.log('Manually set follower-count to:', data.followers);
-                }
-            } catch (error) {
-                console.error('Debug error:', error);
-            }
-            console.log('=== DEBUG END ===');
-        };
         const languageColors = {
             'Python': '#3572A5',
             'JavaScript': '#f1e05a',
@@ -530,30 +476,53 @@
         // Generate activity graph
         function generateActivityGraph(events) {
             const activityContainer = document.getElementById('activity-graph');
+            const totalContribElement = document.getElementById('total-contributions');
+            const streakElement = document.getElementById('current-streak');
+            const tooltip = document.getElementById('activity-tooltip');
+            
             if (!activityContainer) return;
             
             // Get activity for last 52 weeks
             const weeksData = [];
+            const weekDates = [];
             const today = new Date();
-            const oneWeekAgo = new Date(today);
-            oneWeekAgo.setDate(today.getDate() - 364); // ~52 weeks
+            const oneYearAgo = new Date(today);
+            oneYearAgo.setDate(today.getDate() - 364); // ~52 weeks
             
-            // Initialize 52 weeks with 0 activity
+            // Initialize 52 weeks with 0 activity and dates
             for (let i = 0; i < 52; i++) {
+                const weekStart = new Date(oneYearAgo);
+                weekStart.setDate(oneYearAgo.getDate() + (i * 7));
                 weeksData.push(0);
+                weekDates.push(weekStart);
             }
             
-            // Count events per week
+            // Count events per week and total
+            let totalContributions = 0;
             events.forEach(event => {
                 const eventDate = new Date(event.created_at);
-                if (eventDate >= oneWeekAgo) {
-                    const weeksSince = Math.floor((today - eventDate) / (7 * 24 * 60 * 60 * 1000));
-                    const weekIndex = 51 - weeksSince;
-                    if (weekIndex >= 0 && weekIndex < 52) {
-                        weeksData[weekIndex]++;
+                if (eventDate >= oneYearAgo) {
+                    totalContributions++;
+                    const weeksSince = Math.floor((eventDate - oneYearAgo) / (7 * 24 * 60 * 60 * 1000));
+                    if (weeksSince >= 0 && weeksSince < 52) {
+                        weeksData[weeksSince]++;
                     }
                 }
             });
+            
+            // Calculate current streak
+            let currentStreak = 0;
+            for (let i = 51; i >= 0; i--) {
+                if (weeksData[i] > 0) {
+                    currentStreak++;
+                } else if (i < 51) {
+                    break;
+                }
+            }
+            
+            // Update stats
+            if (totalContribElement) totalContribElement.textContent = totalContributions;
+            if (streakElement) streakElement.textContent = currentStreak + ' weeks';
             
             // Find max activity for scaling
             const maxActivity = Math.max(...weeksData, 1);
@@ -563,56 +532,76 @@
             
             weeksData.forEach((activity, index) => {
                 const weekDiv = document.createElement('div');
-                const height = activity > 0 ? Math.max(10, (activity / maxActivity) * 80) : 5;
+                const height = activity > 0 ? Math.max(20, (activity / maxActivity) * 100) : 10;
                 const intensity = activity === 0 ? 0 : Math.min(4, Math.ceil(activity / maxActivity * 4));
                 const colors = ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'];
+                const glowColors = ['none', 'none', 'rgba(0, 109, 50, 0.3)', 'rgba(38, 166, 65, 0.4)', 'rgba(57, 211, 83, 0.5)'];
                 
                 weekDiv.style.cssText = `
-                    width: 10px;
+                    width: 12px;
                     height: ${height}px;
                     background: ${colors[intensity]};
-                    border-radius: 2px;
+                    border-radius: 3px;
                     cursor: pointer;
-                    transition: all 0.2s ease;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 8px ${glowColors[intensity]};
+                    border: 1px solid ${intensity > 0 ? 'rgba(106, 153, 85, 0.3)' : 'transparent'};
+                    position: relative;
                 `;
                 
-                weekDiv.title = `Week ${index + 1}: ${activity} contributions`;
+                // Format date
+                const weekDate = weekDates[index];
+                const dateStr = weekDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
                 
-                weekDiv.addEventListener('mouseenter', function() {
-                    this.style.transform = 'scaleY(1.1)';
-                    this.style.filter = 'brightness(1.2)';
+                // Hover effects with tooltip
+                weekDiv.addEventListener('mouseenter', function(e) {
+                    this.style.transform = 'scaleY(1.2) translateY(-5px)';
+                    this.style.filter = 'brightness(1.3)';
+                    this.style.boxShadow = `0 4px 8px rgba(0, 0, 0, 0.3), 0 0 15px ${glowColors[intensity]}`;
+                    
+                    // Show tooltip
+                    if (tooltip) {
+                        tooltip.style.display = 'block';
+                        tooltip.innerHTML = `
+                            <div style="color: var(--accent-green); font-weight: bold;">${activity} contribution${activity !== 1 ? 's' : ''}</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9em;">Week of ${dateStr}</div>
+                        `;
+                        
+                        // Position tooltip
+                        const rect = this.getBoundingClientRect();
+                        const containerRect = activityContainer.getBoundingClientRect();
+                        tooltip.style.left = (rect.left - containerRect.left - 20) + 'px';
+                        tooltip.style.bottom = (containerRect.bottom - rect.top + 10) + 'px';
+                    }
                 });
                 
                 weekDiv.addEventListener('mouseleave', function() {
                     this.style.transform = 'scaleY(1)';
                     this.style.filter = 'brightness(1)';
+                    this.style.boxShadow = `0 2px 4px rgba(0, 0, 0, 0.2), 0 0 8px ${glowColors[intensity]}`;
+                    
+                    // Hide tooltip
+                    if (tooltip) {
+                        tooltip.style.display = 'none';
+                    }
                 });
                 
                 activityContainer.appendChild(weekDiv);
             });
         }
         
-        // Git commits loading function
-        async function loadGitHubCommits(isRefresh = false) {
-            const commitsContainer = document.getElementById('github-commits');
-            const refreshIndicator = document.getElementById('refresh-indicator');
-            
-            if (isRefresh && refreshIndicator) {
-                refreshIndicator.style.display = 'inline';
-            }
+        // Load GitHub events for activity graph
+        async function loadGitHubEvents() {
             
             try {
-                console.log('Loading GitHub commits for:', username);
+                console.log('Loading GitHub events for activity graph');
                 
                 const timestamp = new Date().getTime();
                 const url = `https://api.github.com/users/${username}/events/public?t=${timestamp}`;
-                console.log('Fetching events from:', url);
                 
                 const response = await fetch(url, {
                     cache: 'no-cache'
                 });
-                
-                console.log('Events response status:', response.status);
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -630,101 +619,15 @@
                     setCachedData(cached.user, cached.repos, events);
                 }
                 
-                const pushEvents = events.filter(event => event.type === 'PushEvent');
-                const commits = [];
-                
-                pushEvents.slice(0, 5).forEach(event => {
-                    event.payload.commits.forEach(commit => {
-                        commits.push({
-                            sha: commit.sha.substring(0, 7),
-                            message: commit.message.split('\n')[0],
-                            repo: event.repo.name,
-                            date: new Date(event.created_at),
-                            url: `https://github.com/${event.repo.name}/commit/${commit.sha}`
-                        });
-                    });
-                });
-                
-                if (commits.length > 0) {
-                    commitsContainer.innerHTML = commits.slice(0, 6).map((commit, index) => {
-                        const timeAgo = getTimeAgo(commit.date);
-                        return `
-                            <div style="padding: 10px 0; ${index < commits.length - 1 ? 'border-bottom: 1px solid #3e3e3e;' : ''} font-family: monospace; font-size: 0.95em; cursor: pointer; transition: all 0.2s ease;" 
-                                 onmouseover="this.style.backgroundColor='#3e3e3e'; this.style.paddingLeft='10px';" 
-                                 onmouseout="this.style.backgroundColor='transparent'; this.style.paddingLeft='0';"
-                                 onclick="window.open('${commit.url}', '_blank')">
-                                <span style="color: #dcdcaa; margin-right: 10px;">${commit.sha}</span>
-                                <span style="color: #d4d4d4;">${commit.message}</span>
-                                <div style="font-size: 0.8em; color: #808080; margin-top: 5px;">
-                                    <a href="https://github.com/${commit.repo}" style="color: #569cd6; text-decoration: none;" onclick="event.stopPropagation(); window.open('https://github.com/${commit.repo}', '_blank'); return false;">${commit.repo}</a> · ${timeAgo}
-                                </div>
-                            </div>
-                        `;
-                    }).join('');
-                } else {
-                    commitsContainer.innerHTML = '<p style="color: #808080;">No recent commits found. Push some commits to your public repositories!</p>';
-                }
-                
-                if (refreshIndicator) {
-                    refreshIndicator.style.display = 'none';
-                }
-                
             } catch (error) {
-                console.error('Error loading commits:', error);
-                let errorMessage = 'Unable to load commits. ';
-                if (error.message.includes('404')) {
-                    errorMessage += 'GitHub user not found. Please check the username.';
-                } else if (error.message.includes('403')) {
-                    errorMessage += 'API rate limit exceeded. Please try again later.';
+                console.error('Error loading events:', error);
+                if (error.message.includes('403')) {
                     // Try to use cached events if available
                     const cached = getCachedData();
                     if (cached && cached.events) {
                         console.log('Using cached events due to rate limit');
                         generateActivityGraph(cached.events);
-                        // Process cached events for commits
-                        const pushEvents = cached.events.filter(event => event.type === 'PushEvent');
-                        const commits = [];
-                        pushEvents.slice(0, 5).forEach(event => {
-                            event.payload.commits.forEach(commit => {
-                                commits.push({
-                                    sha: commit.sha.substring(0, 7),
-                                    message: commit.message.split('\n')[0],
-                                    repo: event.repo.name,
-                                    date: new Date(event.created_at),
-                                    url: `https://github.com/${event.repo.name}/commit/${commit.sha}`
-                                });
-                            });
-                        });
-                        
-                        if (commits.length > 0) {
-                            commitsContainer.innerHTML = '<p style="color: var(--accent-yellow); font-size: 0.85em; margin-bottom: 10px;">Showing cached commits due to rate limit</p>';
-                            commitsContainer.innerHTML += commits.slice(0, 6).map((commit, index) => {
-                                const timeAgo = getTimeAgo(commit.date);
-                                return `
-                                    <div style="padding: 10px 0; ${index < commits.length - 1 ? 'border-bottom: 1px solid #3e3e3e;' : ''} font-family: monospace; font-size: 0.95em; cursor: pointer; transition: all 0.2s ease;" 
-                                         onmouseover="this.style.backgroundColor='#3e3e3e'; this.style.paddingLeft='10px';" 
-                                         onmouseout="this.style.backgroundColor='transparent'; this.style.paddingLeft='0';"
-                                         onclick="window.open('${commit.url}', '_blank')">
-                                        <span style="color: #dcdcaa; margin-right: 10px;">${commit.sha}</span>
-                                        <span style="color: #d4d4d4;">${commit.message}</span>
-                                        <div style="font-size: 0.8em; color: #808080; margin-top: 5px;">
-                                            <a href="https://github.com/${commit.repo}" style="color: #569cd6; text-decoration: none;" onclick="event.stopPropagation(); window.open('https://github.com/${commit.repo}', '_blank'); return false;">${commit.repo}</a> · ${timeAgo}
-                                        </div>
-                                    </div>
-                                `;
-                            }).join('');
-                            if (refreshIndicator) {
-                                refreshIndicator.style.display = 'none';
-                            }
-                            return;
-                        }
                     }
-                } else {
-                    errorMessage += 'Please check your internet connection.';
-                }
-                commitsContainer.innerHTML = `<p style="color: #d16969;">${errorMessage}</p>`;
-                if (refreshIndicator) {
-                    refreshIndicator.style.display = 'none';
                 }
             }
         }
@@ -749,12 +652,7 @@
             
             // Then load fresh data
             await loadGitHubData();
-            await loadGitHubCommits();
-            
-            // Auto-refresh commits every 2 minutes
-            setInterval(() => {
-                loadGitHubCommits(true);
-            }, 2 * 60 * 1000);
+            await loadGitHubEvents();
         }
         
         // Wait for DOM to be ready
