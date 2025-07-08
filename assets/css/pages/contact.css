@@ -1,12 +1,42 @@
 /* Contact Page Specific Styles */
 
-/* Contact Grid */
-.contact-grid {
+/* Contact Container */
+.contact-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 40px;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 40px auto;
+}
+
+/* Contact Cards */
+.contact-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 40px;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-color: var(--accent-blue);
+}
+
+.card-title {
+    color: var(--accent-purple);
+    font-size: 1.4em;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
 /* Terminal Interface */
@@ -138,14 +168,15 @@
 
 .contact-method {
     display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px 0;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 0;
     border-bottom: 1px solid var(--bg-tertiary);
 }
 
 .contact-method:last-child {
     border-bottom: none;
+    padding-bottom: 0;
 }
 
 .contact-icon {
@@ -261,10 +292,15 @@
     gap: 10px;
 }
 
+.office-hours-content {
+    display: flex;
+    flex-direction: column;
+}
+
 .time-slot {
     display: flex;
     justify-content: space-between;
-    padding: 10px 0;
+    padding: 15px 0;
     border-bottom: 1px solid var(--bg-tertiary);
 }
 

@@ -52,105 +52,68 @@
             </p>
         </div>
         
-        <div class="contact-grid">
-            <!-- Terminal Interface -->
-            <div class="terminal-container">
-                <div class="terminal-header">
-                    <div class="terminal-buttons">
-                        <div class="terminal-button red"></div>
-                        <div class="terminal-button yellow"></div>
-                        <div class="terminal-button green"></div>
+        <div class="contact-container">
+            <!-- Direct Contact Card -->
+            <div class="contact-card">
+                <h3 class="card-title">
+                    <span>📧</span> Direct Contact
+                </h3>
+                <div class="contact-content">
+                    <div class="contact-method">
+                        <span class="contact-icon">✉️</span>
+                        <div class="contact-details">
+                            <div class="contact-label">Email</div>
+                            <a href="mailto:longye.tian@anu.edu.au" class="contact-value">
+                                longye.tian@anu.edu.au
+                            </a>
+                        </div>
                     </div>
-                    <div class="terminal-title">contact@longye:~</div>
-                </div>
-                <div class="terminal-body" id="terminal">
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">$</span>
-                        <span style="color: var(--accent-green);">./contact --init</span>
+                    <div class="contact-method">
+                        <span class="contact-icon">🏢</span>
+                        <div class="contact-details">
+                            <div class="contact-label">Office</div>
+                            <div style="color: var(--text-primary);">
+                                Room 1165, Copland Building<br>
+                                Research School of Economics<br>
+                                Australian National University
+                            </div>
+                        </div>
                     </div>
-                    <div class="terminal-output">
-Initializing contact interface...
-Type 'help' for available commands or start typing your message.
-                    </div>
-                    <div class="terminal-line" id="current-line">
-                        <span class="terminal-prompt">$</span>
-                        <input type="text" class="terminal-input" id="terminal-input" autofocus>
-                        <span class="terminal-cursor"></span>
+                    <div class="contact-method">
+                        <span class="contact-icon">📱</span>
+                        <div class="contact-details">
+                            <div class="contact-label">Phone</div>
+                            <a href="tel:+61434416144" style="color: var(--text-primary); text-decoration: none;">
+                                +61 434 416 144
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Info Panel -->
-            <div class="info-panel">
-                <div class="info-card">
-                    <h3 class="info-card-title">
-                        <span>📧</span> Direct Contact
-                    </h3>
-                    <div class="info-card-content">
-                        <div class="contact-method">
-                            <span class="contact-icon">✉️</span>
-                            <div class="contact-details">
-                                <div class="contact-label">Email</div>
-                                <a href="mailto:longye.tian@anu.edu.au" class="contact-value">
-                                    longye.tian@anu.edu.au
-                                </a>
-                            </div>
-                        </div>
-                        <div class="contact-method">
-                            <span class="contact-icon">🏢</span>
-                            <div class="contact-details">
-                                <div class="contact-label">Office</div>
-                                <div style="color: var(--text-primary);">
-                                    Room 2037, HW Arndt Building<br>
-                                    Australian National University
-                                </div>
-                            </div>
-                        </div>
-                        <div class="contact-method">
-                            <span class="contact-icon">📱</span>
-                            <div class="contact-details">
-                                <div class="contact-label">Phone</div>
-                                <div style="color: var(--text-primary);">+61 2 6125 XXXX</div>
-                            </div>
-                        </div>
+            <!-- Office Hours Card -->
+            <div class="contact-card">
+                <h3 class="card-title">
+                    <span>🕐</span> Office Hours (AEDT)
+                </h3>
+                <div class="office-hours-content">
+                    <div class="time-slot">
+                        <span class="day">Tuesday</span>
+                        <span class="time">2:00 PM - 4:00 PM</span>
                     </div>
-                </div>
-                
-                <div class="info-card">
-                    <h3 class="info-card-title">
-                        <span>🔬</span> Research Interests
-                    </h3>
-                    <div class="interests-grid">
-                        <div class="interest-tag" onclick="showInterestInfo('RL in Economics')">RL in Economics</div>
-                        <div class="interest-tag" onclick="showInterestInfo('GPU Computing')">GPU Computing</div>
-                        <div class="interest-tag" onclick="showInterestInfo('Dynamic Programming')">Dynamic Programming</div>
-                        <div class="interest-tag" onclick="showInterestInfo('Market Design')">Market Design</div>
-                        <div class="interest-tag" onclick="showInterestInfo('Climate Economics')">Climate Economics</div>
-                        <div class="interest-tag" onclick="showInterestInfo('Open Source Tools')">Open Source Tools</div>
+                    <div class="time-slot">
+                        <span class="day">Thursday</span>
+                        <span class="time">10:00 AM - 12:00 PM</span>
                     </div>
-                    <p style="color: var(--text-secondary); font-size: 0.85em; margin-top: 15px; font-style: italic;">
-                        Click on any topic to learn more about my work in that area
+                    <div class="time-slot">
+                        <span class="day">By Appointment</span>
+                        <span class="time">Email to schedule</span>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.9em; margin-top: 20px; font-style: italic;">
+                        Office hours may vary during semester breaks and conferences. 
+                        Please email ahead to confirm availability.
                     </p>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Office Hours -->
-        <div class="office-hours">
-            <h3 class="office-hours-title">
-                <span>🕐</span> Office Hours (AEDT)
-            </h3>
-            <div class="time-slot">
-                <span class="day">Tuesday</span>
-                <span class="time">2:00 PM - 4:00 PM</span>
-            </div>
-            <div class="time-slot">
-                <span class="day">Thursday</span>
-                <span class="time">10:00 AM - 12:00 PM</span>
-            </div>
-            <div class="time-slot">
-                <span class="day">By Appointment</span>
-                <span class="time">Email to schedule</span>
             </div>
         </div>
         
@@ -184,12 +147,6 @@ Type 'help' for available commands or start typing your message.
             <a href="https://orcid.org/0000-0000-0000-0000" class="social-link">
                 <span>🆔</span> ORCID
             </a>
-        </div>
-        
-        <!-- Response Message -->
-        <div class="response-message" id="response-message">
-            <p style="color: var(--accent-green); margin-bottom: 10px;">✓ Message sent successfully!</p>
-            <p style="color: var(--text-secondary);">I'll get back to you within 24-48 hours.</p>
         </div>
     </div>
     
