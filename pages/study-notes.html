@@ -520,25 +520,32 @@
             // Get all paper entries
             const entries = document.querySelectorAll('.paper-entry');
             
-            // Create intersection observer
+            // Show entries that are already in view immediately
+            entries.forEach(entry => {
+                const rect = entry.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    entry.classList.add('visible');
+                }
+            });
+            
+            // Create intersection observer for entries not yet in view
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
+                entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        // Add visible class with a slight delay for staggered effect
-                        setTimeout(() => {
-                            entry.target.classList.add('visible');
-                        }, index * 50);
+                        entry.target.classList.add('visible');
                         observer.unobserve(entry.target);
                     }
                 });
             }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
+                threshold: 0.01,
+                rootMargin: '50px'
             });
             
-            // Observe all entries
+            // Observe only entries that aren't visible yet
             entries.forEach(entry => {
-                observer.observe(entry);
+                if (!entry.classList.contains('visible')) {
+                    observer.observe(entry);
+                }
             });
             
             // Fix for filter animations
@@ -548,13 +555,13 @@
                     // Reset animations when filtering
                     setTimeout(() => {
                         const visibleEntries = document.querySelectorAll('.paper-entry:not([style*="display: none"])');
-                        visibleEntries.forEach((entry, index) => {
+                        visibleEntries.forEach((entry) => {
                             entry.classList.remove('visible');
-                            setTimeout(() => {
-                                entry.classList.add('visible');
-                            }, index * 50);
+                            // Force reflow
+                            void entry.offsetHeight;
+                            entry.classList.add('visible');
                         });
-                    }, 100);
+                    }, 10);
                 });
             });
         });
