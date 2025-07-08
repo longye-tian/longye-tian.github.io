@@ -223,11 +223,13 @@ nav a.current::before {
 }
 
 .info-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-color) !important;
     border-radius: 8px;
     padding: 25px;
     transition: transform 0.2s, box-shadow 0.2s;
+    display: block !important;
+    visibility: visible !important;
 }
 
 .info-card:hover {
@@ -299,8 +301,8 @@ nav a.current::before {
 .timeline-item {
     position: relative;
     margin-bottom: 40px;
-    opacity: 0;
-    transform: translateX(-20px);
+    opacity: 1 !important;
+    transform: translateX(0) !important;
     animation: slideIn 0.6s ease forwards;
 }
 
@@ -507,8 +509,8 @@ section h2 .prompt-symbol {
 .timeline-item {
     position: relative;
     margin-bottom: 40px;
-    opacity: 0;
-    transform: translateX(-20px);
+    opacity: 1 !important;
+    transform: translateX(0) !important;
     animation: slideIn 0.6s ease forwards;
 }
 
