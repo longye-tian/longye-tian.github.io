@@ -8,6 +8,17 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/pages/coding.css">
+    
+    <style>
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -67,6 +78,25 @@
         
         <!-- Projects Container -->
         <div id="projects-container" style="display: none;">
+            <!-- Git Log Section -->
+            <section style="margin-bottom: 40px;">
+                <h2 style="color: var(--accent-purple); font-family: monospace; margin-bottom: 20px;">
+                    <span style="color: var(--accent-green);">$</span> git log --oneline --recent
+                    <span id="refresh-indicator" style="display: none; font-size: 0.6em; color: #6a9955; margin-left: 10px;">
+                        <span style="animation: spin 1s linear infinite; display: inline-block;">↻</span> updating...
+                    </span>
+                    <button onclick="loadGitHubCommits(true)" style="font-size: 0.6em; background: none; border: 1px solid #6a9955; color: #6a9955; padding: 2px 8px; margin-left: 10px; cursor: pointer; border-radius: 3px; font-family: monospace;">↻ Refresh</button>
+                </h2>
+                
+                <div style="background: #2d2d2d; border-radius: 8px; padding: 20px;">
+                    <div id="github-commits" style="min-height: 100px;">
+                        <div style="color: #6a9955; font-family: monospace; font-size: 0.9em;">
+                            Loading recent commits...
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
             <!-- Language Stats -->
             <section style="margin-bottom: 40px;">
                 <h2 style="color: var(--accent-purple); font-family: monospace; margin-bottom: 20px;">
@@ -129,11 +159,23 @@
         
         async function loadGitHubData() {
             try {
+                console.log('Fetching GitHub data for:', username);
+                
                 // Fetch user data
                 const userResponse = await fetch(`https://api.github.com/users/${username}`);
+                console.log('User response status:', userResponse.status);
+                
+                if (!userResponse.ok) {
+                    throw new Error(`HTTP error! status: ${userResponse.status}`);
+                }
                 const userData = await userResponse.json();
                 
-                // Update stats
+                console.log('User data loaded:', userData);
+                console.log('Public repos:', userData.public_repos);
+                console.log('Followers:', userData.followers);
+                console.log('Following:', userData.following);
+                
+                // Update stats with better error handling
                 document.getElementById('repo-count').textContent = userData.public_repos || 0;
                 document.getElementById('follower-count').textContent = userData.followers || 0;
                 document.getElementById('following-count').textContent = userData.following || 0;
@@ -201,7 +243,18 @@
             } catch (error) {
                 console.error('Error loading GitHub data:', error);
                 document.getElementById('loading').style.display = 'none';
+                
+                // Set stats to 0 instead of NaN
+                document.getElementById('repo-count').textContent = '0';
+                document.getElementById('star-count').textContent = '0';
+                document.getElementById('follower-count').textContent = '0';
+                document.getElementById('following-count').textContent = '0';
+                
+                // Show error message
                 document.getElementById('error-message').style.display = 'block';
+                
+                // Still show the container so git log section is visible
+                document.getElementById('projects-container').style.display = 'block';
             }
         }
         
@@ -295,8 +348,98 @@
             return 'just now';
         }
         
+        // Git commits loading function
+        async function loadGitHubCommits(isRefresh = false) {
+            const commitsContainer = document.getElementById('github-commits');
+            const refreshIndicator = document.getElementById('refresh-indicator');
+            
+            if (isRefresh && refreshIndicator) {
+                refreshIndicator.style.display = 'inline';
+            }
+            
+            try {
+                console.log('Loading GitHub commits for:', username);
+                
+                const timestamp = new Date().getTime();
+                const url = `https://api.github.com/users/${username}/events/public?t=${timestamp}`;
+                console.log('Fetching events from:', url);
+                
+                const response = await fetch(url, {
+                    cache: 'no-cache'
+                });
+                
+                console.log('Events response status:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const events = await response.json();
+                console.log('Events loaded:', events.length, 'events found');
+                const pushEvents = events.filter(event => event.type === 'PushEvent');
+                const commits = [];
+                
+                pushEvents.slice(0, 5).forEach(event => {
+                    event.payload.commits.forEach(commit => {
+                        commits.push({
+                            sha: commit.sha.substring(0, 7),
+                            message: commit.message.split('\n')[0],
+                            repo: event.repo.name,
+                            date: new Date(event.created_at),
+                            url: `https://github.com/${event.repo.name}/commit/${commit.sha}`
+                        });
+                    });
+                });
+                
+                if (commits.length > 0) {
+                    commitsContainer.innerHTML = commits.slice(0, 6).map((commit, index) => {
+                        const timeAgo = getTimeAgo(commit.date);
+                        return `
+                            <div style="padding: 10px 0; ${index < commits.length - 1 ? 'border-bottom: 1px solid #3e3e3e;' : ''} font-family: monospace; font-size: 0.95em; cursor: pointer; transition: all 0.2s ease;" 
+                                 onmouseover="this.style.backgroundColor='#3e3e3e'; this.style.paddingLeft='10px';" 
+                                 onmouseout="this.style.backgroundColor='transparent'; this.style.paddingLeft='0';"
+                                 onclick="window.open('${commit.url}', '_blank')">
+                                <span style="color: #dcdcaa; margin-right: 10px;">${commit.sha}</span>
+                                <span style="color: #d4d4d4;">${commit.message}</span>
+                                <div style="font-size: 0.8em; color: #808080; margin-top: 5px;">
+                                    <a href="https://github.com/${commit.repo}" style="color: #569cd6; text-decoration: none;" onclick="event.stopPropagation(); window.open('https://github.com/${commit.repo}', '_blank'); return false;">${commit.repo}</a> · ${timeAgo}
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                } else {
+                    commitsContainer.innerHTML = '<p style="color: #808080;">No recent commits found. Push some commits to your public repositories!</p>';
+                }
+                
+                if (refreshIndicator) {
+                    refreshIndicator.style.display = 'none';
+                }
+                
+            } catch (error) {
+                console.error('Error loading commits:', error);
+                let errorMessage = 'Unable to load commits. ';
+                if (error.message.includes('404')) {
+                    errorMessage += 'GitHub user not found. Please check the username.';
+                } else if (error.message.includes('403')) {
+                    errorMessage += 'API rate limit exceeded. Please try again later.';
+                } else {
+                    errorMessage += 'Please check your internet connection.';
+                }
+                commitsContainer.innerHTML = `<p style="color: #d16969;">${errorMessage}</p>`;
+                if (refreshIndicator) {
+                    refreshIndicator.style.display = 'none';
+                }
+            }
+        }
+        
         // Load data when page loads
         loadGitHubData();
+        loadGitHubCommits();
+        
+        // Auto-refresh commits every 2 minutes
+        setInterval(() => {
+            loadGitHubCommits(true);
+        }, 2 * 60 * 1000);
     </script>
     
     <!-- External JavaScript -->
