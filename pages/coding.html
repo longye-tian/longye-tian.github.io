@@ -68,8 +68,11 @@
                 </div>
             </div>
             
-            <!-- Debug button -->
-            <button onclick="debugGitHub()" style="margin-top: 10px; padding: 5px 10px; background: #333; color: #fff; border: 1px solid #555; cursor: pointer;">Debug API</button>
+            <!-- Debug buttons -->
+            <div style="margin-top: 10px;">
+                <button onclick="debugGitHub()" style="padding: 5px 10px; background: #333; color: #fff; border: 1px solid #555; cursor: pointer; margin-right: 10px;">Debug API</button>
+                <button onclick="clearCacheAndReload()" style="padding: 5px 10px; background: #333; color: #fff; border: 1px solid #555; cursor: pointer;">Clear Cache & Reload</button>
+            </div>
         </header>
         
         <!-- Loading indicator -->
@@ -155,6 +158,13 @@
             })
             .catch(err => console.error('Quick test failed:', err));
             
+        // Clear cache and reload
+        window.clearCacheAndReload = function() {
+            localStorage.removeItem(CACHE_KEY);
+            console.log('Cache cleared, reloading...');
+            location.reload();
+        };
+        
         // Debug function
         window.debugGitHub = async function() {
             console.log('=== DEBUG START ===');
@@ -203,13 +213,131 @@
             'TypeScript': '#2b7489'
         };
         
+        // Cache management
+        const CACHE_KEY = 'github_data_cache';
+        const CACHE_DURATION = 30 * 60 * 1000; // 30 minutes
+        
+        function getCachedData() {
+            const cached = localStorage.getItem(CACHE_KEY);
+            if (cached) {
+                const data = JSON.parse(cached);
+                if (Date.now() - data.timestamp < CACHE_DURATION) {
+                    return data;
+                }
+            }
+            return null;
+        }
+        
+        function setCachedData(userData, repos) {
+            const data = {
+                timestamp: Date.now(),
+                user: userData,
+                repos: repos
+            };
+            localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+        }
+        
+        function updateUIWithData(userData, repos) {
+            // Update stats
+            const repoElement = document.getElementById('repo-count');
+            const followerElement = document.getElementById('follower-count');
+            const followingElement = document.getElementById('following-count');
+            const starElement = document.getElementById('star-count');
+            
+            if (repoElement) {
+                repoElement.textContent = userData.public_repos || 0;
+                repoElement.style.color = '#6a9955';
+            }
+            if (followerElement) {
+                followerElement.textContent = userData.followers || 0;
+                followerElement.style.color = '#6a9955';
+            }
+            if (followingElement) {
+                followingElement.textContent = userData.following || 0;
+                followingElement.style.color = '#6a9955';
+            }
+            
+            // Calculate total stars
+            const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+            if (starElement) {
+                starElement.textContent = totalStars;
+                starElement.style.color = '#6a9955';
+            }
+            
+            // Calculate language statistics
+            const languageStats = {};
+            repos.forEach(repo => {
+                if (repo.language) {
+                    languageStats[repo.language] = (languageStats[repo.language] || 0) + 1;
+                }
+            });
+            
+            // Display language stats
+            const languageStatsContainer = document.getElementById('language-stats');
+            languageStatsContainer.innerHTML = ''; // Clear existing
+            Object.entries(languageStats)
+                .sort((a, b) => b[1] - a[1])
+                .forEach(([language, count]) => {
+                    const color = languageColors[language] || '#666';
+                    const stat = document.createElement('div');
+                    stat.style.cssText = `
+                        background: var(--bg-secondary);
+                        border: 1px solid var(--border-color);
+                        border-radius: 8px;
+                        padding: 10px 20px;
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                    `;
+                    stat.innerHTML = `
+                        <span style="width: 12px; height: 12px; border-radius: 50%; background: ${color};"></span>
+                        <span style="color: var(--text-primary);">${language}</span>
+                        <span style="color: var(--text-secondary); font-size: 0.9em;">${count}</span>
+                    `;
+                    languageStatsContainer.appendChild(stat);
+                });
+            
+            // Display repositories
+            const projectsGrid = document.getElementById('projects-grid');
+            projectsGrid.innerHTML = ''; // Clear existing
+            repos
+                .filter(repo => !repo.fork)
+                .sort((a, b) => {
+                    if (b.stargazers_count !== a.stargazers_count) {
+                        return b.stargazers_count - a.stargazers_count;
+                    }
+                    return new Date(b.updated_at) - new Date(a.updated_at);
+                })
+                .forEach(repo => {
+                    const projectCard = createProjectCard(repo);
+                    projectsGrid.appendChild(projectCard);
+                });
+        }
+        
         async function loadGitHubData() {
             try {
                 console.log('Fetching GitHub data for:', username);
                 
+                // Check cache first
+                const cached = getCachedData();
+                if (cached) {
+                    console.log('Using cached data');
+                    updateUIWithData(cached.user, cached.repos);
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('projects-container').style.display = 'block';
+                    return;
+                }
+                
                 // Fetch user data
                 const userResponse = await fetch(`https://api.github.com/users/${username}`);
                 console.log('User response status:', userResponse.status);
+                
+                // Check for rate limit
+                if (userResponse.status === 403) {
+                    const rateLimitReset = userResponse.headers.get('X-RateLimit-Reset');
+                    const resetTime = rateLimitReset ? new Date(rateLimitReset * 1000) : new Date();
+                    throw new Error(`Rate limit exceeded. Resets at ${resetTime.toLocaleTimeString()}`);
+                }
                 
                 if (!userResponse.ok) {
                     throw new Error(`HTTP error! status: ${userResponse.status}`);
@@ -217,91 +345,23 @@
                 const userData = await userResponse.json();
                 
                 console.log('User data loaded:', userData);
-                console.log('Public repos:', userData.public_repos);
-                console.log('Followers:', userData.followers);
-                console.log('Following:', userData.following);
-                
-                // Update stats with better error handling
-                const repoElement = document.getElementById('repo-count');
-                const followerElement = document.getElementById('follower-count');
-                const followingElement = document.getElementById('following-count');
-                
-                if (repoElement) {
-                    repoElement.textContent = userData.public_repos || 0;
-                    repoElement.style.color = '#6a9955'; // Force green color
-                    console.log('Set repo count:', repoElement.textContent);
-                }
-                if (followerElement) {
-                    followerElement.textContent = userData.followers || 0;
-                    followerElement.style.color = '#6a9955'; // Force green color
-                    console.log('Set follower count:', followerElement.textContent);
-                }
-                if (followingElement) {
-                    followingElement.textContent = userData.following || 0;
-                    followingElement.style.color = '#6a9955'; // Force green color
-                    console.log('Set following count:', followingElement.textContent);
-                }
                 
                 // Fetch repositories
                 const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
-                const repos = await reposResponse.json();
                 
-                // Calculate total stars
-                const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
-                const starElement = document.getElementById('star-count');
-                if (starElement) {
-                    starElement.textContent = totalStars;
-                    starElement.style.color = '#6a9955'; // Force green color
-                    console.log('Set star count:', starElement.textContent);
+                if (reposResponse.status === 403) {
+                    const rateLimitReset = reposResponse.headers.get('X-RateLimit-Reset');
+                    const resetTime = rateLimitReset ? new Date(rateLimitReset * 1000) : new Date();
+                    throw new Error(`Rate limit exceeded. Resets at ${resetTime.toLocaleTimeString()}`);
                 }
                 
-                // Calculate language statistics
-                const languageStats = {};
-                repos.forEach(repo => {
-                    if (repo.language) {
-                        languageStats[repo.language] = (languageStats[repo.language] || 0) + 1;
-                    }
-                });
+                const repos = await reposResponse.json();
                 
-                // Display language stats
-                const languageStatsContainer = document.getElementById('language-stats');
-                Object.entries(languageStats)
-                    .sort((a, b) => b[1] - a[1])
-                    .forEach(([language, count]) => {
-                        const color = languageColors[language] || '#666';
-                        const stat = document.createElement('div');
-                        stat.style.cssText = `
-                            background: var(--bg-secondary);
-                            border: 1px solid var(--border-color);
-                            border-radius: 8px;
-                            padding: 10px 20px;
-                            display: flex;
-                            align-items: center;
-                            gap: 10px;
-                        `;
-                        stat.innerHTML = `
-                            <span style="width: 12px; height: 12px; border-radius: 50%; background: ${color};"></span>
-                            <span style="color: var(--text-primary);">${language}</span>
-                            <span style="color: var(--text-secondary); font-size: 0.9em;">${count}</span>
-                        `;
-                        languageStatsContainer.appendChild(stat);
-                    });
+                // Cache the data
+                setCachedData(userData, repos);
                 
-                // Display repositories
-                const projectsGrid = document.getElementById('projects-grid');
-                repos
-                    .filter(repo => !repo.fork) // Only show non-forked repos
-                    .sort((a, b) => {
-                        // Sort by stars, then by update date
-                        if (b.stargazers_count !== a.stargazers_count) {
-                            return b.stargazers_count - a.stargazers_count;
-                        }
-                        return new Date(b.updated_at) - new Date(a.updated_at);
-                    })
-                    .forEach(repo => {
-                        const projectCard = createProjectCard(repo);
-                        projectsGrid.appendChild(projectCard);
-                    });
+                // Update UI
+                updateUIWithData(userData, repos);
                 
                 // Hide loading and show content
                 document.getElementById('loading').style.display = 'none';
@@ -311,14 +371,35 @@
                 console.error('Error loading GitHub data:', error);
                 document.getElementById('loading').style.display = 'none';
                 
-                // Set stats to 0 instead of NaN
-                document.getElementById('repo-count').textContent = '0';
-                document.getElementById('star-count').textContent = '0';
-                document.getElementById('follower-count').textContent = '0';
-                document.getElementById('following-count').textContent = '0';
-                
-                // Show error message
-                document.getElementById('error-message').style.display = 'block';
+                // Check if we have cached data to fall back on
+                const cached = getCachedData();
+                if (cached) {
+                    console.log('Using cached data due to error');
+                    updateUIWithData(cached.user, cached.repos);
+                    
+                    // Show a message about using cached data
+                    const errorMsg = document.getElementById('error-message');
+                    errorMsg.innerHTML = `
+                        <p style="color: var(--accent-yellow); margin-bottom: 10px;">
+                            ${error.message}
+                        </p>
+                        <p style="color: var(--text-secondary);">
+                            Showing cached data from ${new Date(cached.timestamp).toLocaleTimeString()}
+                        </p>
+                    `;
+                    errorMsg.style.display = 'block';
+                } else {
+                    // No cached data, show zeros
+                    document.getElementById('repo-count').textContent = '0';
+                    document.getElementById('star-count').textContent = '0';
+                    document.getElementById('follower-count').textContent = '0';
+                    document.getElementById('following-count').textContent = '0';
+                    
+                    // Show error message
+                    const errorMsg = document.getElementById('error-message');
+                    errorMsg.innerHTML = `<p style="color: var(--accent-red);">${error.message}</p>`;
+                    errorMsg.style.display = 'block';
+                }
                 
                 // Still show the container so git log section is visible
                 document.getElementById('projects-container').style.display = 'block';
