@@ -14,18 +14,20 @@
     
     <!-- Custom styles for study notes -->
     <style>
+        /* Study Notes header with orange theme */
+        .research-header {
+            border-left: 4px solid var(--accent-orange) !important;
+        }
+        
+        .research-header h1 {
+            color: var(--accent-orange) !important;
+        }
+        
         /* Enhanced study notes styling */
         .paper-entry {
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        
-        .paper-entry.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .paper-entry:hover {
@@ -513,58 +515,5 @@
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/pages/research.js"></script>
     
-    <!-- Study notes specific animations -->
-    <script>
-        // Initialize animations when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get all paper entries
-            const entries = document.querySelectorAll('.paper-entry');
-            
-            // Show entries that are already in view immediately
-            entries.forEach(entry => {
-                const rect = entry.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    entry.classList.add('visible');
-                }
-            });
-            
-            // Create intersection observer for entries not yet in view
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.01,
-                rootMargin: '50px'
-            });
-            
-            // Observe only entries that aren't visible yet
-            entries.forEach(entry => {
-                if (!entry.classList.contains('visible')) {
-                    observer.observe(entry);
-                }
-            });
-            
-            // Fix for filter animations
-            const filterTabs = document.querySelectorAll('.filter-tab');
-            filterTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // Reset animations when filtering
-                    setTimeout(() => {
-                        const visibleEntries = document.querySelectorAll('.paper-entry:not([style*="display: none"])');
-                        visibleEntries.forEach((entry) => {
-                            entry.classList.remove('visible');
-                            // Force reflow
-                            void entry.offsetHeight;
-                            entry.classList.add('visible');
-                        });
-                    }, 10);
-                });
-            });
-        });
-    </script>
 </body>
 </html>
