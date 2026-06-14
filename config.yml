@@ -1,0 +1,101 @@
+baseURL: "https://longyetian.com/"
+title: Longye Tian · 田垄业
+theme: PaperMod
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+pagination:
+  pagerSize: 20
+
+taxonomies:
+  tag: tags
+
+menu:
+  main:
+    - name: CV
+      url: cv/
+      weight: 1
+    - name: Research
+      url: research/
+      weight: 2
+    - name: Teaching
+      url: teaching/
+      weight: 3
+    - name: Contact
+      url: contact/
+      weight: 4
+
+params:
+  description: "Longye Tian is a PhD Student at the Australian National University and Lead Developer at QuantEcon. His research interests are inequality, macroeconomic dynamics, and computational economics."
+  author: Longye Tian
+  authorLinks:
+    "Ian Crawford": "https://www.nuffield.ox.ac.uk/people/profiles/ian-crawford/"
+    "James Morley": "https://sites.google.com/site/jamescmorley/"
+  DateFormat: "January 2006"
+  defaultTheme: light
+  hideFooter: true
+  disableThemeToggle: true
+  ShowShareButtons: false
+  ShowReadingTime: false
+  disableSpecial1stPost: true
+  disableAnchoredHeadings: true
+  ShowPostNavLinks: false
+  ShowBreadCrumbs: false
+  ShowCodeCopyButtons: true
+  ShowAllPagesInArchive: false
+  MainSections: ["research", "teaching"]
+  ShowToc: false
+  disableScrollToTop: true
+  TocOpen: true
+  ShowWordCount: false
+  UseHugoToc: true
+  comments: false
+  math: true
+  profileMode:
+    enabled: true
+    title: Longye Tian · 田垄业
+    subtitle: "I am a PhD Student at the Australian National University. I am also a Lead Developer at [QuantEcon](https://quantecon.org/team/). I work on inequality, macroeconomic dynamics, and computational economics."
+    imageUrl: "images/longye-tian-profile-headshot.jpg"
+    imageTitle: "Longye Tian"
+    imageWidth: 150
+    imageHeight: 150
+    buttons:
+      - name: CV
+        url: cv/
+      - name: Research
+        url: research/
+      - name: Teaching
+        url: teaching/
+      - name: Contact
+        url: contact/
+
+  socialIcons:
+    - name: CV
+      url: /cv.pdf
+    - name: Email
+      url: mailto:longye.tian@anu.edu.au
+    - name: GitHub
+      url: https://github.com/longye-tian
+    - name: QuantEcon
+      title: QuantEcon
+      url: https://quantecon.org/team/
+
+  assets:
+    disableScrollBarStyle: true
+  cover:
+    hiddenInList: false
+    hiddenInSingle: true
+  label:
+    text: "Longye Tian · 田垄业"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    guessSyntax: true
+    style: autumn
+  tableOfContents:
+    endLevel: 2
+    ordered: false
+    startLevel: 2

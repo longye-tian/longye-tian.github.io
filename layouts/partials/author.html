@@ -1,0 +1,23 @@
+{{- if or .Params.author site.Params.author }}
+{{- $author := (.Params.author | default site.Params.author) }}
+{{- $authorLinks := site.Params.authorLinks | default dict }}
+{{- $authorType := (printf "%T" $author) }}
+{{- if (or (eq $authorType "[]string") (eq $authorType "[]interface {}")) }}
+{{- $linkedAuthors := slice }}
+{{- range $author }}
+{{- $name := . }}
+{{- with (index $authorLinks $name) }}
+{{- $linkedAuthors = $linkedAuthors | append (printf "<a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">%s</a>" . $name) }}
+{{- else }}
+{{- $linkedAuthors = $linkedAuthors | append $name }}
+{{- end }}
+{{- end }}
+{{- delimit $linkedAuthors ",&thinsp;" | safeHTML }}
+{{- else }}
+{{- with (index $authorLinks $author) }}
+<a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ $author }}</a>
+{{- else }}
+{{- $author }}
+{{- end }}
+{{- end }}
+{{- end -}}

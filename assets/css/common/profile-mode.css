@@ -1,0 +1,116 @@
+.buttons,
+.main .profile {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.main .profile {
+    align-items: center;
+    max-width: 600px;
+    min-height: calc(100dvh - var(--footer-height) - (var(--gap) * 2));
+    font-size: var(--homesize);
+    line-height: var(--lineheight);
+    padding: 0;
+}
+
+.profile .profile_inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+    max-width: 600px;
+    text-align: left;
+}
+
+.profile .profile_inner h1 {
+    font-size: 2.5rem;
+    margin-top: 8px;
+}
+
+.profile .profile_inner span {
+    max-width: 600px;
+    overflow-wrap: break-word;
+}
+
+.profile .social-icons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 14px;
+}
+
+.profile .social-icons a {
+    padding: 10px 0;
+}
+
+.profile img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 50%;
+    border: 1px solid var(--tertiary);
+}
+
+@media (max-width: 700px) {
+    .main .profile {
+        width: 100%;
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .profile .profile_inner {
+        width: min(340px, calc(100vw - (var(--gap) * 2)));
+        max-width: calc(100vw - (var(--gap) * 2));
+    }
+
+    .profile img {
+        transform: none;
+    }
+}
+
+.buttons {
+    flex-wrap: wrap;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    justify-content: flex-start;
+}
+
+.button {
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin: 6px 12px 6px 0;
+    padding: 10px;
+    transition: all 0.15s ease-in-out;
+}
+
+.button-inner {
+    padding: 0 8px;
+}
+
+.button:hover {
+    background: #e5e1f4;
+    border-color: #8e7bd0;
+}
+
+@media (max-width: 700px) {
+    .buttons {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        max-width: 220px;
+    }
+
+    .button {
+        margin: 0;
+        padding: 10px 8px;
+        text-align: center;
+    }
+
+    .button-inner {
+        padding: 0;
+    }
+}
