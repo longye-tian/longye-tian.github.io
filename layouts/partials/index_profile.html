@@ -11,20 +11,27 @@
             {{- if hugo.IsExtended -}}
                 {{- $processableFormats = $processableFormats | append "webp" -}}
             {{- end -}}
+            {{- $displayWidth := .imageWidth | default 150 }}
+            {{- $displayHeight := .imageHeight | default 150 }}
             {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
+            {{- $src := $img }}
+            {{- $srcset := "" }}
             {{- if and (in $processableFormats $img.MediaType.SubType) (eq $prod true)}}
                 {{- if (not (and (not .imageHeight) (not .imageWidth))) }}
-                    {{- $img = $img.Resize (printf "%dx%d" .imageWidth .imageHeight) }}
+                    {{- $src = $img.Resize "450x450" }}
+                    {{- $src2x := $img.Resize "900x900" }}
+                    {{- $src3x := $img.Resize "1350x1350" }}
+                    {{- $srcset = printf "%s 450w, %s 900w, %s 1350w, %s 1600w" $src.RelPermalink $src2x.RelPermalink $src3x.RelPermalink $img.RelPermalink }}
                 {{- else if .imageHeight }}
-                    {{- $img = $img.Resize (printf "x%d" .imageHeight) }}
+                    {{- $src = $img.Resize (printf "x%d" .imageHeight) }}
                 {{ else if .imageWidth }}
-                    {{- $img = $img.Resize (printf "%dx" .imageWidth) }}
+                    {{- $src = $img.Resize (printf "%dx" .imageWidth) }}
                 {{ else }}
-                    {{- $img = $img.Resize "150x150" }}
+                    {{- $src = $img.Resize "150x150" }}
                 {{- end }}
             {{- end }}
-            <img draggable="false" src="{{ $img.RelPermalink }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
-                height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
+            <img draggable="false" src="{{ $src.RelPermalink }}"{{ with $srcset }} srcset="{{ . }}" sizes="{{ $displayWidth }}px"{{ end }} alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
+                height="{{ $displayHeight }}" width="{{ $displayWidth }}" />
         {{- else }}
         <img draggable="false" src="{{ .imageUrl | absURL }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
             height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />

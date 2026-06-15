@@ -26,7 +26,10 @@
 
 .profile .profile_inner h1 {
     font-size: 2.5rem;
+    line-height: 1.08;
+    letter-spacing: 0;
     margin-top: 8px;
+    white-space: nowrap;
 }
 
 .profile .profile_inner span {
@@ -55,6 +58,7 @@
 
 @media (max-width: 700px) {
     .main .profile {
+        justify-content: center;
         width: 100%;
         padding-right: 0;
         padding-left: 0;
@@ -65,8 +69,46 @@
         max-width: calc(100vw - (var(--gap) * 2));
     }
 
+    .profile .profile_inner h1 {
+        align-self: center;
+        font-size: 2.05rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .profile .profile_inner span {
+        align-self: center;
+        width: min(34ch, 100%);
+        hyphens: auto;
+        line-height: 1.58;
+        text-align: justify;
+        text-align-last: center;
+        text-wrap: pretty;
+    }
+
+    .profile .social-icons,
+    .profile img {
+        align-self: center;
+    }
+
+    .profile .social-icons {
+        justify-content: center;
+    }
+
     .profile img {
         transform: none;
+    }
+}
+
+@media (max-width: 380px) {
+    .profile .profile_inner h1 {
+        font-size: 1.85rem;
+    }
+}
+
+@media (max-width: 340px) {
+    .profile .profile_inner h1 {
+        font-size: 1.72rem;
     }
 }
 
@@ -98,6 +140,7 @@
 
 @media (max-width: 700px) {
     .buttons {
+        align-self: center;
         display: grid;
         grid-template-columns: minmax(0, 1fr);
         gap: 12px;
