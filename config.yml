@@ -54,7 +54,7 @@ params:
   profileMode:
     enabled: true
     title: Longye Tian · 田垄业
-    subtitle: "I am a PhD student at the Australian National University and Lead Developer at [QuantEcon](https://quantecon.org/team/), studying inequality, macroeconomic dynamics, and computational economics."
+    subtitle: "PhD student at the Australian National University and Lead Developer at [QuantEcon](https://quantecon.org/team/), studying inequality, macroeconomic dynamics, and computational economics."
     imageUrl: "images/longye-tian-profile-headshot.jpg"
     imageTitle: "Longye Tian"
     imageWidth: 150

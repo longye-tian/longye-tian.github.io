@@ -79,11 +79,11 @@
     .profile .profile_inner span {
         align-self: center;
         width: min(34ch, 100%);
+        font-size: 0.98rem;
         hyphens: auto;
-        line-height: 1.58;
-        text-align: justify;
-        text-align-last: center;
-        text-wrap: pretty;
+        line-height: 1.55;
+        text-align: center;
+        text-wrap: balance;
     }
 
     .profile .social-icons,
@@ -109,6 +109,10 @@
 @media (max-width: 340px) {
     .profile .profile_inner h1 {
         font-size: 1.72rem;
+    }
+
+    .profile .profile_inner span {
+        font-size: 0.95rem;
     }
 }
 
