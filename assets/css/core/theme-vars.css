@@ -1,8 +1,8 @@
 :root {
-    --gap: 24px;
-    --content-gap: 20px;
+    --gap: 26px;
+    --content-gap: 22px;
     --nav-width: 1024px;
-    --main-width: 680px;
+    --main-width: 720px;
     --header-height: 44px;
     --footer-height: 70px;
     --radius: 8px;
@@ -19,12 +19,12 @@
     --darkcolor: #6a7ba2;
     --lightcolor: #cbd1de;
     --semibold: 500;
-    --homesize: 16px;
-    --textsize: 1.125rem;
-    --h1size: 1.5rem;
-    --entrysize: 1rem;
-    --headersize: 1.0625rem;
-    --footersize: 0.85rem;
+    --homesize: 17px;
+    --textsize: 1.2rem;
+    --h1size: 1.65rem;
+    --entrysize: 1.0625rem;
+    --headersize: 1.125rem;
+    --footersize: 0.9rem;
     --lineheight: 1.5;
     --lineclamp: 8;
     --marginleft: 26px;
