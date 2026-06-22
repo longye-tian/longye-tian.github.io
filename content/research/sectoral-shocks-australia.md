@@ -10,8 +10,6 @@ editPost:
   Text: "Revise and resubmit, Australian Economic Review"
 ---
 
----
-
 ##### Abstract
 
 We examine the role of sectoral shocks in driving aggregate fluctuations for the Australian economy between 1994 and 2023, focusing on the differences from before to after the onset of the COVID-19 pandemic. Using both statistical and structural factor models for disaggregated industrial production, we find that sectoral shocks accounted for a substantial portion of aggregate volatility prior to the pandemic.
