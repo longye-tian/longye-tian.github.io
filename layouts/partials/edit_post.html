@@ -1,8 +1,15 @@
-{{- if and (or .Params.editPost.URL site.Params.editPost.URL) (not (.Param "editPost.disabled")) -}}
-{{- $fileUrlPath := path.Join .File.Path }}
+{{- $editURL := .Params.editPost.URL | default site.Params.editPost.URL -}}
+{{- $editText := .Params.editPost.Text | default (site.Params.editPost.Text | default (i18n "edit_post" | default "Edit")) -}}
+{{- $hasPlainText := and .Params.editPost.Text (not .Params.editPost.URL) (not site.Params.editPost.URL) -}}
 
+{{- if and (or $editURL $hasPlainText) (not (.Param "editPost.disabled")) -}}
 {{- if or .Params.author site.Params.author (.Param "ShowReadingTime") (not .Date.IsZero) .IsTranslated }}&nbsp;&middot;&nbsp;{{- end -}}
-<a href="{{ .Params.editPost.URL | default site.Params.editPost.URL }}{{ if .Params.editPost.appendFilePath | default ( site.Params.editPost.appendFilePath | default false ) }}/{{ $fileUrlPath }}{{ end }}" rel="noopener noreferrer" target="_blank">
-    {{- .Params.editPost.Text | default (site.Params.editPost.Text | default (i18n "edit_post" | default "Edit")) -}}
+{{- if $editURL -}}
+{{- $fileUrlPath := path.Join .File.Path -}}
+<a href="{{ $editURL }}{{ if .Params.editPost.appendFilePath | default ( site.Params.editPost.appendFilePath | default false ) }}/{{ $fileUrlPath }}{{ end }}" rel="noopener noreferrer" target="_blank">
+    {{- $editText -}}
 </a>
+{{- else -}}
+{{- $editText -}}
+{{- end -}}
 {{- end }}

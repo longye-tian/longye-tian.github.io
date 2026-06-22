@@ -6,8 +6,7 @@ date: 2026-06-01
 author: ["Longye Tian", "James Morley"]
 hideMeta: false
 editPost:
-  URL: "https://melbourneinstitute.unimelb.edu.au/publications/australian-economic-review"
-  Text: "Revise and resubmit, Australian Economic Review"
+  Text: "R&R, Australian Economic Review"
 ---
 
 ##### Abstract
