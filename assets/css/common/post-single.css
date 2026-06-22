@@ -80,11 +80,23 @@
 }
 
 .post-content a,
-.post-meta a,
-.toc a:hover {
-    box-shadow: 0 1px 0 var(--secondary);
+.post-meta a {
     color: currentColor;
     overflow-wrap: anywhere;
+    text-decoration: underline;
+    text-decoration-color: #8e7bd0;
+    text-decoration-skip-ink: auto;
+    text-underline-offset: 2px;
+}
+
+.post-content a:hover,
+.post-meta a:hover,
+.toc a:hover {
+    color: currentColor;
+    text-decoration: underline;
+    text-decoration-color: #5e42bc;
+    text-decoration-skip-ink: auto;
+    text-underline-offset: 2px;
 }
 
 .post-content a code {
