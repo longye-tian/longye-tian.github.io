@@ -6,7 +6,7 @@ date: 2026-06-01
 author: ["Longye Tian", "James Morley"]
 hideMeta: false
 editPost:
-  Text: "R&R, Australian Economic Review"
+  Text: "Accepted, Australian Economic Review"
 ---
 
 ##### Abstract
