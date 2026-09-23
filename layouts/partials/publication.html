@@ -1,10 +1,13 @@
-{{- $page := . -}}
-{{- with .Params.publication -}}
+{{- $page := .page -}}
+{{- $isList := .isList -}}
+{{- with $page.Params.publication -}}
 {{- $publicationText := index . "text" -}}
 {{- $publicationURL := index . "url" -}}
 {{- if $publicationText -}}
 {{- if or $page.Params.author site.Params.author ($page.Param "ShowReadingTime") (not $page.Date.IsZero) $page.IsTranslated }}&nbsp;&middot;&nbsp;{{- end -}}
-{{- if $publicationURL -}}
+{{- if $isList -}}
+<strong class="publication-venue">{{ $publicationText }}</strong>
+{{- else if $publicationURL -}}
 <a class="publication-link" href="{{ $publicationURL }}" rel="noopener noreferrer" target="_blank">{{ $publicationText }}</a>
 {{- else -}}
 {{- $publicationText -}}

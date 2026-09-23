@@ -80,8 +80,7 @@
 }
 
 .post-content a,
-.post-meta a,
-.entry-footer .publication-link {
+.post-meta a {
     color: currentColor;
     overflow-wrap: anywhere;
     text-decoration: underline;
@@ -92,18 +91,12 @@
 
 .post-content a:hover,
 .post-meta a:hover,
-.entry-footer .publication-link:hover,
 .toc a:hover {
     color: currentColor;
     text-decoration: underline;
     text-decoration-color: #5e42bc;
     text-decoration-skip-ink: auto;
     text-underline-offset: 2px;
-}
-
-.entry-footer .publication-link {
-    position: relative;
-    z-index: 1;
 }
 
 .post-content a code {
