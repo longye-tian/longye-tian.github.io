@@ -5,9 +5,9 @@ summary: >-
 date: 2026-09-03
 author: ["Longye Tian", "James Morley"]
 hideMeta: false
-editPost:
+publication:
   URL: "https://doi.org/10.1111/1467-8462.70067"
-  Text: "Published, Australian Economic Review"
+  Text: "Australian Economic Review"
 ---
 
 ##### Abstract
