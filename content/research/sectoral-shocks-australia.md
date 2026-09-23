@@ -1,12 +1,13 @@
 ---
-title: "How Important are Sectoral Shocks in Australia?"
+title: "How Important Are Sectoral Shocks in Australia?"
 summary: >-
   This paper studies sectoral shocks and aggregate fluctuations in Australia from 1994 to 2023. It shows that production-network linkages make sector-specific shocks central before COVID, while the pandemic period is dominated by aggregate shocks.
-date: 2026-06-01
+date: 2026-09-03
 author: ["Longye Tian", "James Morley"]
 hideMeta: false
 editPost:
-  Text: "Accepted, Australian Economic Review"
+  URL: "https://doi.org/10.1111/1467-8462.70067"
+  Text: "Published, Australian Economic Review"
 ---
 
 ##### Abstract
