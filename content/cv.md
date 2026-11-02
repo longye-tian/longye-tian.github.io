@@ -8,27 +8,23 @@ hideMeta: true
 
 ## Profile
 
-PhD Student, Research School of Economics, Australian National University.
-
-## Research Interests
-
-Inequality; macroeconomic dynamics; computational economics; Markov dynamics; dynamic programming; reinforcement learning in economics.
+PhD Student, Research School of Economics, Australian National University. My research interests include inequality, macroeconomic dynamics, computational economics, Markov dynamics, dynamic programming, and reinforcement learning in economics.
 
 ## QuantEcon
 
 - [QuantEcon](https://quantecon.org/team/), Lead Developer, 2026-present.
 - QuantEcon, Developer, 2024-2025.
 
+## Research Papers
+
+- "The Empirical Content of Revealed Preference in High Dimensions," with [Ian Crawford](https://www.nuffield.ox.ac.uk/people/profiles/ian-crawford/). *Revise and resubmit*, ***Journal of Economic Theory***. [arXiv: 2605.29361](https://arxiv.org/abs/2605.29361); [SSRN DOI: 10.2139/ssrn.6880903](https://doi.org/10.2139/ssrn.6880903).
+- "How Important are Sectoral Shocks in Australia?" with [James Morley](https://sites.google.com/site/jamescmorley/). ***Australian Economic Review*** (2026). [DOI: 10.1111/1467-8462.70067](https://doi.org/10.1111/1467-8462.70067).
+
 ## Education
 
 - PhD in Economics, Australian National University, Research School of Economics, Canberra, Australia, 2025-present.
 - Master of Economic Analysis, The University of Sydney, Sydney, Australia, 2023-2024. Thesis: "How Important are Sectoral Shocks in Australia?" Supervisors: [James Morley](https://sites.google.com/site/jamescmorley/) and [Mariano Kulish](https://sites.google.com/site/marianokulish/).
 - Bachelor of Economics, Economics and Finance, The University of Sydney, Sydney, Australia, 2018-2023.
-
-## Research Papers
-
-- "The Empirical Content of Revealed Preference in High Dimensions," with [Ian Crawford](https://www.nuffield.ox.ac.uk/people/profiles/ian-crawford/). *Revise and resubmit*, ***Journal of Economic Theory***. [arXiv: 2605.29361](https://arxiv.org/abs/2605.29361); [SSRN DOI: 10.2139/ssrn.6880903](https://doi.org/10.2139/ssrn.6880903).
-- "How Important are Sectoral Shocks in Australia?" with [James Morley](https://sites.google.com/site/jamescmorley/). ***Australian Economic Review*** (2026). [DOI: 10.1111/1467-8462.70067](https://doi.org/10.1111/1467-8462.70067).
 
 ## Awards and Scholarships
 
