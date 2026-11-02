@@ -12,6 +12,8 @@ editPost:
 
 ---
 
+Revise and resubmit, *Journal of Economic Theory*.
+
 - [Paper](https://arxiv.org/abs/2605.29361)
 - [SSRN](https://doi.org/10.2139/ssrn.6880903)
 
