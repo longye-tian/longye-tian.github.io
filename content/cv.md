@@ -27,8 +27,8 @@ Inequality; macroeconomic dynamics; computational economics; Markov dynamics; dy
 
 ## Research Papers
 
-- "The Empirical Content of Revealed Preference in High Dimensions," with [Ian Crawford](https://www.nuffield.ox.ac.uk/people/profiles/ian-crawford/). Revise and resubmit, ***Journal of Economic Theory***. [arXiv: 2605.29361](https://arxiv.org/abs/2605.29361); [SSRN DOI: 10.2139/ssrn.6880903](https://doi.org/10.2139/ssrn.6880903).
-- "How Important are Sectoral Shocks in Australia?" with [James Morley](https://sites.google.com/site/jamescmorley/). Published in ***Australian Economic Review*** (2026). [DOI: 10.1111/1467-8462.70067](https://doi.org/10.1111/1467-8462.70067).
+- "The Empirical Content of Revealed Preference in High Dimensions," with [Ian Crawford](https://www.nuffield.ox.ac.uk/people/profiles/ian-crawford/). *Revise and resubmit*, ***Journal of Economic Theory***. [arXiv: 2605.29361](https://arxiv.org/abs/2605.29361); [SSRN DOI: 10.2139/ssrn.6880903](https://doi.org/10.2139/ssrn.6880903).
+- "How Important are Sectoral Shocks in Australia?" with [James Morley](https://sites.google.com/site/jamescmorley/). ***Australian Economic Review*** (2026). [DOI: 10.1111/1467-8462.70067](https://doi.org/10.1111/1467-8462.70067).
 
 ## Awards and Scholarships
 
