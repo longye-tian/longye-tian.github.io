@@ -17,9 +17,9 @@
     {{- if not (.Param "hideMeta") }}
     <div class="post-meta">
       {{- partial "post_meta.html" . -}}
-      {{- partial "publication.html" (dict "page" . "isList" false) -}}
       {{- partial "translation_list.html" . -}}
       {{- partial "edit_post.html" . -}}
+      {{- partial "publication.html" (dict "page" . "isList" false) -}}
       {{- partial "post_canonical.html" . -}}
     </div>
     {{- end }}
