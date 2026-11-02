@@ -5,14 +5,14 @@ summary: >-
 date: 2026-05-28
 author: ["Ian Crawford", "Longye Tian"]
 hideMeta: false
+publication:
+  Text: "Revise and resubmit, Journal of Economic Theory"
 editPost:
   URL: "https://arxiv.org/abs/2605.29361"
   Text: "arXiv"
 ---
 
 ---
-
-Revise and resubmit, *Journal of Economic Theory*.
 
 - [Paper](https://arxiv.org/abs/2605.29361)
 - [SSRN](https://doi.org/10.2139/ssrn.6880903)
